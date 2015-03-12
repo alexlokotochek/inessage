@@ -36,7 +36,6 @@ int main(void)
         //sendto(s, buf, recv_len, 0, (struct sockaddr*) &si_other, slen) == -1)
     }
     
-    [myPool drain];
     close(s);
     return 0;
 }

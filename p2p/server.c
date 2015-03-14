@@ -95,6 +95,6 @@ void launchServer(int port, int fd_write)
             buf[n] = '\0';
         else
             buf[511] = '\0';
-        write(fd_write, "yop", strlen("yop"));
+        write(fd_write, buf, strlen(buf));
     }
 }

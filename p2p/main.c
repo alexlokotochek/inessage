@@ -37,6 +37,7 @@ int main(void)
     
     while (1)
     {
+        printf("USAGE: write or read\n");
         printf("Enter a command : ");
         char buf[512];
         scanf("%s", buf);
@@ -58,6 +59,15 @@ int main(void)
             scanf("%s", sendline);
             
             sendto(sockfd, sendline, strlen(sendline), 0, (struct sockaddr *)&servaddr, sizeof(servaddr));
+        }
+        
+        if (strcmp(buf, "read") == 0)
+        {
+            char message[512];
+            memcpy(message, 0, 512);
+            
+            read(pipe_fd[0], message, 512);
+            printf("%s\n", message);
         }
     }
     

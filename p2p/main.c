@@ -6,6 +6,8 @@
 //  Copyright (c) 2015 Danil Tulin. All rights reserved.
 //
 
+#include <signal.h>
+
 #include <stdio.h>
 #include <unistd.h>
 #include <string.h>
@@ -29,7 +31,7 @@ int main(void)
     int pipe_fd[2];
     pipe(pipe_fd);
     
-    launchServer(PORT, pipe_fd[1]);
+    pid_t serverPid = launchServer(PORT, pipe_fd[1]);
     
     int sockfd;
     struct sockaddr_in servaddr;
@@ -67,6 +69,12 @@ int main(void)
             
             read(pipe_fd[0], message, 20);
             printf("%s\n", message);
+        }
+        
+        if (strcmp(buf, "exit") == 0)
+        {
+            kill(serverPid, SIGUSR1);
+            exit(1);
         }
     }
     

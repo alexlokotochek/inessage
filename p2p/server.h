@@ -17,4 +17,4 @@
 #endif
 #endif
 
-void launchServer(int port, int fd_write);
+pid_t launchServer(int port, int fd_write);

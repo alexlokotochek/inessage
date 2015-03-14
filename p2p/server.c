@@ -21,7 +21,7 @@
 
 #include "server.h"
 
-void launchServer(int port, int fd_write)
+pid_t launchServer(int port, int fd_write)
 {
     /* Our process ID and Session ID */
     pid_t pid, sid;
@@ -37,7 +37,7 @@ void launchServer(int port, int fd_write)
      we can exit the parent process. */
     if (pid > 0)
     {
-        return;
+        return pid;
     }
     
     /* Change the file mode mask */

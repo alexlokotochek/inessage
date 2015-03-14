@@ -29,7 +29,7 @@ int main(void)
     int pipe_fd[2];
     pipe(pipe_fd);
     
-//    launchServer(PORT, pipe_fd[1]);
+    launchServer(PORT, pipe_fd[1]);
     
     int sockfd;
     struct sockaddr_in servaddr;

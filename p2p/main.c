@@ -64,9 +64,8 @@ int main(void)
         if (strcmp(buf, "read") == 0)
         {
             char message[512];
-            memcpy(message, 0, 512);
             
-            read(pipe_fd[0], message, 512);
+            read(pipe_fd[0], message, 20);
             printf("%s\n", message);
         }
     }

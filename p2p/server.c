@@ -65,7 +65,7 @@ void launchServer(int port, int fd_write)
     int s;
     socklen_t slen = sizeof(si_other);
     char buf[512];
-    
+
     if((s = socket(AF_INET, SOCK_DGRAM, IPPROTO_UDP)) < 0)
     {
         DLog("Can't open a socket\n");
@@ -79,10 +79,9 @@ void launchServer(int port, int fd_write)
     
     if(bind(s, (struct sockaddr*)&si_me, sizeof(si_me)) < 0)
     {
-        DLog("Cam't bind the port\n");
+        DLog("Can't bind the port\n");
     }
     
-    /* Close out the standard file descriptors */
     close(STDIN_FILENO);
     close(STDOUT_FILENO);
     close(STDERR_FILENO);
@@ -96,6 +95,6 @@ void launchServer(int port, int fd_write)
             buf[n] = '\0';
         else
             buf[511] = '\0';
-        write(fd_write, buf, strlen(buf));
+        write(fd_write, "yop", strlen("yop"));
     }
 }

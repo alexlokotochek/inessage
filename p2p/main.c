@@ -77,6 +77,7 @@ int main(void)
                 
                 read(pipe_fd[0], message, 20);
                 printf("%s\n", message);
+                IS_MSGRCV = 0;
             }
             else
             {

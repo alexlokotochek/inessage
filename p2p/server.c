@@ -21,10 +21,13 @@
 
 #include "server.h"
 
+
 pid_t launchServer(int port, int fd_write)
 {
     /* Our process ID and Session ID */
     pid_t pid, sid;
+    
+    pid_t clientPid = getpid();
     
     /* Fork off the parent process */
     pid = fork();
@@ -96,5 +99,6 @@ pid_t launchServer(int port, int fd_write)
         else
             buf[511] = '\0';
         write(fd_write, buf, strlen(buf));
+        kill(clientPid, SIGUSR1);
     }
 }

@@ -19,12 +19,13 @@
 #include "server.h"
 #define PORT 8888
 
-typedef enum
+sig_atomic_t IS_MSGRCV = 0
+
+void serverHandler(int signalNumber)
 {
-    CommandWriteMessage,
-    CommandShowMessages,
+    IS_MSGRCV = 1;
 }
-command_t;
+
 
 int main(void)
 {
@@ -36,6 +37,11 @@ int main(void)
     int sockfd;
     struct sockaddr_in servaddr;
     sockfd=socket(AF_INET,SOCK_DGRAM,0);
+    
+    struct sigaction sa;
+    memset (&sa, 0, sizeof(sa));
+    sa.sa_handler = &serverHandler;
+    sigaction (SIGUSR1, &sa, NULL);
     
     while (1)
     {
@@ -65,15 +71,22 @@ int main(void)
         
         if (strcmp(buf, "read") == 0)
         {
-            char message[512];
-            
-            read(pipe_fd[0], message, 20);
-            printf("%s\n", message);
+            if (IS_MSGRCV)
+            {
+                char message[512];
+                
+                read(pipe_fd[0], message, 20);
+                printf("%s\n", message);
+            }
+            else
+            {
+                printf("No messages \n");
+            }
         }
         
         if (strcmp(buf, "exit") == 0)
         {
-            kill(serverPid, SIGUSR1);
+            kill(serverPid, SIGKILL);
             exit(1);
         }
     }

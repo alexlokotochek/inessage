@@ -19,7 +19,7 @@
 #include "server.h"
 #define PORT 8888
 
-sig_atomic_t IS_MSGRCV = 0
+sig_atomic_t IS_MSGRCV = 0;
 
 void serverHandler(int signalNumber)
 {

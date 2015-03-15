@@ -23,6 +23,7 @@ sig_atomic_t IS_MSGRCV = 0;
 
 void serverHandler(int signalNumber)
 {
+    printf("yo!\n");
     IS_MSGRCV = 1;
 }
 
@@ -41,14 +42,13 @@ int main(void)
     struct sigaction sa;
     memset (&sa, 0, sizeof(sa));
     sa.sa_handler = &serverHandler;
-    sigaction (SIGUSR1, &sa, NULL);
+    sigaction(SIGUSR1, &sa, NULL);
     
     while (1)
     {
-        printf("USAGE: write or read\n");
         printf("Enter a command : ");
         char buf[512];
-        scanf("%s", buf);
+        gets(buf);
         
         if (strcmp(buf, "write") == 0)
         {
@@ -64,7 +64,7 @@ int main(void)
             char sendline[1000];
             
             printf("Enter a message : ");
-            scanf("%s", sendline);
+            gets(sendline);
             
             sendto(sockfd, sendline, strlen(sendline), 0, (struct sockaddr *)&servaddr, sizeof(servaddr));
         }
@@ -78,6 +78,8 @@ int main(void)
                 read(pipe_fd[0], message, 20);
                 printf("%s\n", message);
                 IS_MSGRCV = 0;
+                
+                memset(message, 0, 512);
             }
             else
             {

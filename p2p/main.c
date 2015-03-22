@@ -36,7 +36,7 @@ void SIGINT_HANDLER(int signal_number)
     kill(getpid(), SIGTERM);
 }
 
-void SIGTERM_HANDLER(int signal_number)
+void PARENT_SIGTERM_HANDLER(int signal_number)
 {
     printf("\nParent's SIGTERM handler\n");
     kill(CHILD_PID, SIGTERM);
@@ -64,7 +64,7 @@ int main(int argc, char **argv)
     sigaction(SIGINT, &sa, NULL);
     
     memset(&sa, 0, sizeof(sa));
-    sa.sa_handler = &SIGTERM_HANDLER;
+    sa.sa_handler = &PARENT_SIGTERM_HANDLER;
     sigaction(SIGTERM, &sa, NULL);
     
     

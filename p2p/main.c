@@ -24,7 +24,7 @@
 
 sig_atomic_t IS_MSGRCV = 0;
 
-void serverHandler(int signalNumber)
+void SERVER_HANDLER(int signalNumber)
 {
     IS_MSGRCV = 1;
 }
@@ -40,9 +40,13 @@ void PARENT_SIGTERM_HANDLER(int signal_number)
 {
     printf("\nParent's SIGTERM handler\n");
     kill(CHILD_PID, SIGTERM);
-    wait(0);
     printf("Parent terminated\n");
     exit(0);
+}
+
+void CHILD_HANDLER(int signal_number)
+{
+    wait(0);
 }
 
 int main(int argc, char **argv)
@@ -56,7 +60,7 @@ int main(int argc, char **argv)
 
     struct sigaction sa;
     memset (&sa, 0, sizeof(sa));
-    sa.sa_handler = &serverHandler;
+    sa.sa_handler = &SERVER_HANDLER;
     sigaction(SIGUSR1, &sa, NULL);
     
     memset(&sa, 0, sizeof(sa));
@@ -66,6 +70,10 @@ int main(int argc, char **argv)
     memset(&sa, 0, sizeof(sa));
     sa.sa_handler = &PARENT_SIGTERM_HANDLER;
     sigaction(SIGTERM, &sa, NULL);
+    
+    memset(&sa, 0, sizeof(sa));
+    sa.sa_handler = &CHILD_HANDLER;
+    sigaction(SIGCHLD, &sa, NULL);
     
     
     int sockfd;

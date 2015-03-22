@@ -14,7 +14,8 @@ char *getString()
 {
     char *string = (char *)malloc(sizeof(char));
     int i = 0;
-    for (char c = '\0'; (c=getchar())!='\n' && c != EOF; i++)
+    char c;
+    for (c = '\0'; (c=getchar())!='\n' && c != EOF; i++)
         (string = (char *)realloc(string, i+1), *(string + i) = c);
     *(string + i) = '\0';
     return string;

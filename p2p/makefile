@@ -1,5 +1,5 @@
 CC=gcc
-CFLAGS=-c -std=c99
+CFLAGS=-c
 LDFLAGS=
 SOURCES=main.c server.c FILENO_MZFK.c
 OBJECTS=$(SOURCES:.c=.o)

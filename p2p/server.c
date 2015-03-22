@@ -15,6 +15,7 @@
 #include <unistd.h>
 #include <syslog.h>
 #include <string.h>
+#include <signal.h>
 
 #include <arpa/inet.h>
 #include <sys/socket.h>

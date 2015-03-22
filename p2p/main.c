@@ -13,13 +13,13 @@
 #include <string.h>
 #include <stdlib.h>
 
-#include "FILENO_MZFK.h"
-
 #include <sys/socket.h>
 #include <netinet/in.h>
 #include <arpa/inet.h>
 
+#include "FILENO_MZFK.h"
 #include "server.h"
+
 #define PORT 8888
 
 sig_atomic_t IS_MSGRCV = 0;

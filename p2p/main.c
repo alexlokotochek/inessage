@@ -80,7 +80,7 @@ int main(void)
             char sendline[1000];
             
             printf("Enter a message : ");
-            gets(sendline);
+            scanf("%s", sendline);
             
             sendto(sockfd, sendline, strlen(sendline), 0, (struct sockaddr *)&servaddr, sizeof(servaddr));
         }

@@ -109,17 +109,24 @@ pid_t launchServer(int port, int fd_write)
     while (1)
     {
         ssize_t n = recvfrom(s, buf, 512, 0, (struct sockaddr *) &si_other, &slen);
+        
         if (n < 512)
             buf[n] = '\0';
         else
             buf[511] = '\0';
-        write(fd_write, buf, strlen(buf));
-        kill(clientPid, SIGUSR1);
+        
+        if (strlen(buf))
+        {
+            write(fd_write, buf, strlen(buf));
+            kill(clientPid, SIGUSR1);
+        }
         
         if (shouldTerminate)
         {
             DLog("Server terminated\n");
             exit(0);
         }
+        
+        memset(buf, 0, 512);
     }
 }

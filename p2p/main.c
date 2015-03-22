@@ -13,6 +13,8 @@
 #include <string.h>
 #include <stdlib.h>
 
+#include "FILENO_MZFK.h"
+
 #include <sys/socket.h>
 #include <netinet/in.h>
 #include <arpa/inet.h>
@@ -29,9 +31,14 @@ void serverHandler(int signalNumber)
 
 sig_atomic_t CHILD_PID = 0;
 
-void sigIntHandler(int signalHandler)
+void sigIntHandler(int signal_number)
 {
-    printf("\nParent's SIG_INT handler\n");
+    kill(getpid(), SIGTERM);
+}
+
+void SIGTERM_HANDLER(int signal_number)
+{
+    printf("\nParent's SIGTERM handler\n");
     kill(CHILD_PID, SIGTERM);
     wait(0);
     printf("Parent terminated\n");
@@ -59,12 +66,16 @@ int main(void)
     memset(&sa, 0, sizeof(sa));
     sa.sa_handler = &sigIntHandler;
     sigaction(SIGINT, &sa, NULL);
+    
+    memset(&sa, 0, sizeof(sa));
+    sa.sa_handler = &SIGTERM_HANDLER;
+    sigaction(SIGTERM, &sa, NULL);
 
     while (1)
     {
         printf("Enter a command : ");
-        char buf[512];
-        gets(buf);
+        char *buf = (char *)malloc(sizeof(char));
+        getString(buf);
         
         if (strcmp(buf, "write") == 0)
         {
@@ -107,6 +118,8 @@ int main(void)
         {
             kill(getpid(), SIGINT);
         }
+        
+        free(buf);
     }
     
     return 0;

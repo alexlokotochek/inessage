@@ -1,6 +1,6 @@
 CC=gcc
 CFLAGS=-c
-LDFLAGS=
+LDFLAGS=-std=c99
 SOURCES=main.c server.c FILENO_MZFK.c
 OBJECTS=$(SOURCES:.c=.o)
 EXECUTABLE=p2p

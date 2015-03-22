@@ -21,7 +21,6 @@
 
 #include "server.h"
 
-
 pid_t launchServer(int port, int fd_write)
 {
     /* Our process ID and Session ID */

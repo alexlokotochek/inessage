@@ -124,6 +124,7 @@ pid_t launchServer(int port, int fd_write)
         if (shouldTerminate)
         {
             DLog("Server terminated\n");
+            close(s);
             exit(0);
         }
         

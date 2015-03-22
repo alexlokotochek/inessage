@@ -74,26 +74,25 @@ int main(void)
     while (1)
     {
         printf("Enter a command : ");
-        char *buf = (char *)malloc(sizeof(char));
-        getString(buf);
+        char *buf = getString();
         
         if (strcmp(buf, "write") == 0)
         {
             printf("Enter a ip : ");
-            char ip[30];
-            scanf("%s", ip);
+            char *ip = getString();
             
             bzero(&servaddr,sizeof(servaddr));
             servaddr.sin_family = AF_INET;
             servaddr.sin_addr.s_addr = inet_addr(ip);
             servaddr.sin_port = htons(8888);
             
-            char sendline[1000];
-            
             printf("Enter a message : ");
-            scanf("%s", sendline);
+            char *sendline = getString();
             
             sendto(sockfd, sendline, strlen(sendline), 0, (struct sockaddr *)&servaddr, sizeof(servaddr));
+            
+            free(sendline);
+            free(ip);
         }
         
         if (strcmp(buf, "read") == 0)

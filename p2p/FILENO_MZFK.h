@@ -11,6 +11,6 @@
 
 #include <stdio.h>
 
-void getString(char *string);
+char *getString();
 
 #endif /* defined(____FILENO_MZFK__) */

@@ -10,7 +10,7 @@
 
 #include <stdlib.h>
 
-char *getString()
+char *getString(int descriptor)
 {
     char *string = (char *)malloc(sizeof(char));
     int i = 0;

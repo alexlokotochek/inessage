@@ -16,9 +16,11 @@
 #include <sys/socket.h>
 #include <netinet/in.h>
 #include <arpa/inet.h>
+#include <fcntl.h>
 
 #include "FILENO_MZFK.h"
 #include "server.h"
+#include "message.h"
 
 #define PORT 8888
 
@@ -84,7 +86,7 @@ int main(int argc, char **argv)
     while (1)
     {
         printf("Enter a command : ");
-        char *buf = getString();
+        char *buf = getString(STDIN_FILENO);
         
         if (strcmp(buf, "write") == 0)
         {
@@ -99,7 +101,17 @@ int main(int argc, char **argv)
             printf("Enter a message : ");
             char *sendline = getString();
             
-            sendto(sockfd, sendline, strlen(sendline), 0, (struct sockaddr *)&servaddr, sizeof(servaddr));
+            Message message;
+            message.sender = (char *)malloc(20);
+            strcat(message.sender, "192.168.0.105");
+            message.reciever = (char *)malloc(20);
+            strcat(message.reciever, "192.177.0.102");
+            message.text = sendline;
+            
+            char *json;
+            json = JSONFromMessage(message);
+            
+            sendto(sockfd, json, strlen(json), 0, (struct sockaddr *)&servaddr, sizeof(servaddr));
             
             free(sendline);
             free(ip);
@@ -109,13 +121,12 @@ int main(int argc, char **argv)
         {
             if (IS_MSGRCV)
             {
-                char message[512];
+                char rcvm[512];
+                read(pipe_fd[0], rcvm, 512);
                 
-                read(pipe_fd[0], message, 20);
-                printf("%s\n", message);
-                IS_MSGRCV = 0;
-                
-                memset(message, 0, 512);
+                Message rcvMessage = messageFromJSON(rcvm);
+                printf("%s\n", rcvMessage.text);
+                printf("FROM : %s\n", rcvMessage.sender);
             }
             else
             {

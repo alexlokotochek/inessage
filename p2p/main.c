@@ -31,7 +31,7 @@ void serverHandler(int signalNumber)
 
 sig_atomic_t CHILD_PID = 0;
 
-void sigIntHandler(int signal_number)
+void SIGINT_HANDLER(int signal_number)
 {
     kill(getpid(), SIGTERM);
 }
@@ -42,10 +42,10 @@ void SIGTERM_HANDLER(int signal_number)
     kill(CHILD_PID, SIGTERM);
     wait(0);
     printf("Parent terminated\n");
-    exit(1);
+    exit(0);
 }
 
-int main(void)
+int main(int argc, char **argv)
 {
     int pipe_fd[2];
     pipe(pipe_fd);
@@ -54,22 +54,24 @@ int main(void)
 
     CHILD_PID = serverPid;
 
-    int sockfd;
-    struct sockaddr_in servaddr;
-    sockfd=socket(AF_INET,SOCK_DGRAM,0);
-    
     struct sigaction sa;
     memset (&sa, 0, sizeof(sa));
     sa.sa_handler = &serverHandler;
     sigaction(SIGUSR1, &sa, NULL);
-
+    
     memset(&sa, 0, sizeof(sa));
-    sa.sa_handler = &sigIntHandler;
+    sa.sa_handler = &SIGINT_HANDLER;
     sigaction(SIGINT, &sa, NULL);
     
     memset(&sa, 0, sizeof(sa));
     sa.sa_handler = &SIGTERM_HANDLER;
     sigaction(SIGTERM, &sa, NULL);
+    
+    
+    int sockfd;
+    struct sockaddr_in servaddr;
+    sockfd = socket(AF_INET, SOCK_DGRAM, 0);
+    
 
     while (1)
     {

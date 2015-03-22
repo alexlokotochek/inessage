@@ -24,7 +24,7 @@
 
 sig_atomic_t shouldTerminate = 0;
 
-void SIGTERM_handler(int signal_number)
+void SIGTERM_HANDLER(int signal_number)
 {
     DLog("Server's SIGTERM handler\n");
     shouldTerminate = 1;
@@ -78,7 +78,7 @@ pid_t launchServer(int port, int fd_write)
     socklen_t slen = sizeof(si_other);
     char buf[512];
 
-    if((s = socket(AF_INET, SOCK_DGRAM, IPPROTO_UDP)) < 0)
+    if((s = socket(AF_INET, SOCK_DGRAM, 0)) < 0)
     {
         DLog("Can't open a socket\n");
     }
@@ -91,7 +91,7 @@ pid_t launchServer(int port, int fd_write)
     
     struct sigaction sa;
     memset (&sa, 0, sizeof(sa));
-    sa.sa_handler = &SIGTERM_handler;
+    sa.sa_handler = &SIGTERM_HANDLER;
     sigaction(SIGTERM, &sa, NULL);
     
     if(bind(s, (struct sockaddr*)&si_me, sizeof(si_me)) < 0)

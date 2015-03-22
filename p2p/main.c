@@ -17,7 +17,7 @@
 #include <netinet/in.h>
 #include <arpa/inet.h>
 
-#include "fileno/FILENO_MZFK.h"
+#include "FILENO_MZFK.h"
 #include "server.h"
 
 #define PORT 8888

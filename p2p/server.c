@@ -22,6 +22,15 @@
 
 #include "server.h"
 
+sig_atomic_t shouldTerminate = 0;
+
+void SIGTERM_handler(int signal_number)
+{
+    DLog("Server's SIGTERM handler\n");
+    shouldTerminate = 1;
+    return;
+}
+
 pid_t launchServer(int port, int fd_write)
 {
     /* Our process ID and Session ID */
@@ -80,13 +89,19 @@ pid_t launchServer(int port, int fd_write)
     si_me.sin_port = htons(port);
     si_me.sin_addr.s_addr = htonl(INADDR_ANY);
     
+    struct sigaction sa;
+    memset (&sa, 0, sizeof(sa));
+    sa.sa_handler = &SIGTERM_handler;
+    sigaction(SIGTERM, &sa, NULL);
+    
     if(bind(s, (struct sockaddr*)&si_me, sizeof(si_me)) < 0)
     {
         DLog("Can't bind the port\n");
     }
     
     close(STDIN_FILENO);
-    close(STDOUT_FILENO);
+    if (!LOG)
+        close(STDOUT_FILENO);
     close(STDERR_FILENO);
     
     memset(buf, 0, 512);
@@ -100,5 +115,11 @@ pid_t launchServer(int port, int fd_write)
             buf[511] = '\0';
         write(fd_write, buf, strlen(buf));
         kill(clientPid, SIGUSR1);
+        
+        if (shouldTerminate)
+        {
+            DLog("Server terminated\n");
+            exit(0);
+        }
     }
 }

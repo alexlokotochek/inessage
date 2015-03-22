@@ -24,10 +24,19 @@ sig_atomic_t IS_MSGRCV = 0;
 
 void serverHandler(int signalNumber)
 {
-    printf("yo!\n");
     IS_MSGRCV = 1;
 }
 
+sig_atomic_t CHILD_PID = 0;
+
+void sigIntHandler(int signalHandler)
+{
+    printf("\nParent's SIG_INT handler\n");
+    kill(CHILD_PID, SIGTERM);
+    wait(0);
+    printf("Parent terminated\n");
+    exit(1);
+}
 
 int main(void)
 {
@@ -35,7 +44,9 @@ int main(void)
     pipe(pipe_fd);
     
     pid_t serverPid = launchServer(PORT, pipe_fd[1]);
-    
+
+    CHILD_PID = serverPid;
+
     int sockfd;
     struct sockaddr_in servaddr;
     sockfd=socket(AF_INET,SOCK_DGRAM,0);
@@ -44,7 +55,11 @@ int main(void)
     memset (&sa, 0, sizeof(sa));
     sa.sa_handler = &serverHandler;
     sigaction(SIGUSR1, &sa, NULL);
-    
+
+    memset(&sa, 0, sizeof(sa));
+    sa.sa_handler = &sigIntHandler;
+    sigaction(SIGINT, &sa, NULL);
+
     while (1)
     {
         printf("Enter a command : ");
@@ -90,8 +105,7 @@ int main(void)
         
         if (strcmp(buf, "exit") == 0)
         {
-            kill(serverPid, SIGKILL);
-            exit(1);
+            kill(getpid(), SIGINT);
         }
     }
     

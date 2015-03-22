@@ -1,15 +1,17 @@
-p2p: main.o server.o
-	gcc main.o server.o -o p2p
+CC=gcc
+CFLAGS=-c
+LDFLAGS=
+SOURCES=main.c server.c
+OBJECTS=$(SOURCES:.c=.o)
+EXECUTABLE=p2p
 
-main.o: main.c
-	gcc -c main.c -o main.o
+all: $(SOURCES) $(EXECUTABLE)
 
-server.o: server.c
-	gcc -c server.c -o server.o
-
-main.c:
-
-server.c:
-
+$(EXECUTABLE): $(OBJECTS)
+	   $(CC) $(LDFLAGS) $(OBJECTS) -o $@
+		 
+.c.o:
+	$(CC) $(CFLAGS) $< -o $@
+		    
 clean:
-	rm *.o p2p
+	rm *.o $(EXECUTABLE)

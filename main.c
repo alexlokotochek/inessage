@@ -90,7 +90,7 @@ int main(int argc, char **argv)
             msg->sender = (char *)malloc(20);
             strcat(msg->sender, "192.168.0.105");
             msg->reciever = (char *)malloc(20);
-            strcat(msg->reciever, "192.177.0.102");
+            strcat(msg->reciever, ip);
             msg->text = sendline;
             
             char *json;
@@ -132,7 +132,7 @@ int main(int argc, char **argv)
         
         if (strcmp(buf, "exit") == 0)
         {
-            kill(getpid(), SIGTERM);
+            kill(getpid(), SIGINT);
         }
         
         free(buf);

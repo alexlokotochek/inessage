@@ -32,7 +32,7 @@ void releaseMessage(Message *msg)
     
     if (msg->text == NULL)
     {
-        fprintf(stderr, "SERIOUS APP ERROR : releaseMessage : Can't handle nil text->sender\n");
+        fprintf(stderr, "SERIOUS APP ERROR : releaseMessage : Can't handle nil msg->text\n");
     }
     free(msg->text);
     
@@ -69,7 +69,7 @@ Message *messageFromJSON(char *json)
     reciever = json_object_get(data, RECIEVER_KEY);
     if(!json_is_string(reciever))
     {
-        fprintf(stderr, "JSON error: reciever is not an string\n");
+        fprintf(stderr, "JSON error: reciever is not a string\n");
         json_decref(data);
         return NULL;
     }

@@ -1,6 +1,6 @@
 CC=gcc
-CFLAGS=-c -I. 
-LDFLAGS=-L. -ljansson
+CFLAGS=-c -I./jansson 
+LDFLAGS=-L./jansson -ljansson
 SOURCES=main.c server.c input.c message.c
 OBJECTS=$(SOURCES:.c=.o)
 EXECUTABLE=p2p

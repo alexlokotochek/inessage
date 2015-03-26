@@ -1,11 +1,3 @@
-//
-//  server.c
-//  p2p
-//
-//  Created by Danil Tulin on 3/14/15.
-//  Copyright (c) 2015 Danil Tulin. All rights reserved.
-//
-
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <stdio.h>
@@ -42,7 +34,7 @@ pid_t launchServer(int port, int fd_write)
     pid = fork();
     if (pid < 0)
     {
-        DLog("Wrong pid\n");
+        fprintf(stderr, "Wrong pid\n");
         exit(EXIT_FAILURE);
     }
     /* If we got a good PID, then
@@ -61,14 +53,14 @@ pid_t launchServer(int port, int fd_write)
     sid = setsid();
     if (sid < 0)
     {
-        DLog("Wrong sid\n");
+        fprintf(stderr, "Wrong sid\n");
         exit(EXIT_FAILURE);
     }
     
     /* Change the current working directory */
     if ((chdir("/")) < 0)
     {
-        DLog("Can't read source dir\n");
+        fprintf(stderr, "Can't read source dir\n");
         exit(EXIT_FAILURE);
     }
     
@@ -80,7 +72,8 @@ pid_t launchServer(int port, int fd_write)
 
     if((s = socket(AF_INET, SOCK_DGRAM, 0)) < 0)
     {
-        DLog("Can't open a socket\n");
+        fprintf(stderr, "Can't open a socket\n");
+        exit(EXIT_FAILURE);
     }
     
     memset((char *) &si_me, 0, sizeof(si_me));
@@ -96,13 +89,14 @@ pid_t launchServer(int port, int fd_write)
     
     if(bind(s, (struct sockaddr*)&si_me, sizeof(si_me)) < 0)
     {
-        DLog("Can't bind the port\n");
+        fprintf(stderr, "Can't bind the port\n");
+        exit(EXIT_FAILURE);
     }
     
     close(STDIN_FILENO);
+    close(STDOUT_FILENO);
     if (!LOG)
-        close(STDOUT_FILENO);
-    close(STDERR_FILENO);
+        close(STDERR_FILENO);
     
     memset(buf, 0, 512);
     

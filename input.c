@@ -1,16 +1,8 @@
-//
-//  FILENO_MZFK.c
-//  
-//
-//  Created by Danil Tulin on 3/22/15.
-//
-//
-
 #include "input.h"
 
 #include <stdlib.h>
 
-char *getString(int descriptor)
+char *getString()
 {
     char *string = (char *)malloc(sizeof(char));
     int i = 0;

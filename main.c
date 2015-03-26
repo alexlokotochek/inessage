@@ -1,11 +1,3 @@
-//
-//  main.c
-//  p2p
-//
-//  Created by Danil Tulin on 3/14/15.
-//  Copyright (c) 2015 Danil Tulin. All rights reserved.
-//
-
 #include <signal.h>
 
 #include <stdio.h>
@@ -33,16 +25,11 @@ void SERVER_HANDLER(int signalNumber)
 
 sig_atomic_t CHILD_PID = 0;
 
-void SIGINT_HANDLER(int signal_number)
-{
-    kill(getpid(), SIGTERM);
-}
-
 void PARENT_SIGTERM_HANDLER(int signal_number)
 {
-    printf("\nParent's SIGTERM handler\n");
+    DLog("\nParent's SIGTERM handler\n");
     kill(CHILD_PID, SIGTERM);
-    printf("Parent terminated\n");
+    DLog("Parent terminated\n");
     exit(0);
 }
 
@@ -66,34 +53,32 @@ int main(int argc, char **argv)
     sigaction(SIGUSR1, &sa, NULL);
     
     memset(&sa, 0, sizeof(sa));
-    sa.sa_handler = &SIGINT_HANDLER;
+    sa.sa_handler = &PARENT_SIGTERM_HANDLER;
     sigaction(SIGINT, &sa, NULL);
     
     memset(&sa, 0, sizeof(sa));
     sa.sa_handler = &PARENT_SIGTERM_HANDLER;
-    sigaction(SIGTERM, &sa, NULL);
+    sigaction(SIGKILL, &sa, NULL);
     
     memset(&sa, 0, sizeof(sa));
     sa.sa_handler = &CHILD_HANDLER;
     sigaction(SIGCHLD, &sa, NULL);
     
-    
     int sockfd;
     struct sockaddr_in servaddr;
     sockfd = socket(AF_INET, SOCK_DGRAM, 0);
     
-
     while (1)
     {
         printf("Enter a command : ");
-        char *buf = getString(STDIN_FILENO);
+        char *buf = getString();
         
         if (strcmp(buf, "write") == 0)
         {
             printf("Enter a ip : ");
             char *ip = getString();
             
-            bzero(&servaddr,sizeof(servaddr));
+            bzero(&servaddr, sizeof(servaddr));
             servaddr.sin_family = AF_INET;
             servaddr.sin_addr.s_addr = inet_addr(ip);
             servaddr.sin_port = htons(8888);
@@ -101,20 +86,24 @@ int main(int argc, char **argv)
             printf("Enter a message : ");
             char *sendline = getString();
             
-            Message message;
-            message.sender = (char *)malloc(20);
-            strcat(message.sender, "192.168.0.105");
-            message.reciever = (char *)malloc(20);
-            strcat(message.reciever, "192.177.0.102");
-            message.text = sendline;
+            Message *msg = (Message *)malloc(sizeof(Message));
+            msg->sender = (char *)malloc(20);
+            strcat(msg->sender, "192.168.0.105");
+            msg->reciever = (char *)malloc(20);
+            strcat(msg->reciever, "192.177.0.102");
+            msg->text = sendline;
             
             char *json;
-            json = JSONFromMessage(message);
+            if ((json = JSONFromMessage(msg)) == NULL)
+            {
+                fprintf(stderr, "SERIOUS APP ERROR : JSONFromMessage returned nil\n");
+                kill(getpid(), SIGTERM);
+            }
             
             sendto(sockfd, json, strlen(json), 0, (struct sockaddr *)&servaddr, sizeof(servaddr));
             
-            free(sendline);
-            free(ip);
+            releaseMessage(msg);
+            free(json);
         }
         
         if (strcmp(buf, "read") == 0)
@@ -124,19 +113,26 @@ int main(int argc, char **argv)
                 char rcvm[512];
                 read(pipe_fd[0], rcvm, 512);
                 
-                Message rcvMessage = messageFromJSON(rcvm);
-                printf("%s\n", rcvMessage.text);
-                printf("FROM : %s\n", rcvMessage.sender);
+                Message *rcvmsg;
+                if ((rcvmsg = messageFromJSON(rcvm)) == NULL)
+                {
+                    fprintf(stderr, "SERIOUS APP ERROR : messageFromJSON returned nil\n");
+                    kill(getpid(), SIGTERM);
+                }
+                
+                printMessage(rcvmsg);
+                
+                free(rcvmsg);
             }
             else
             {
-                printf("No messages \n");
+                printf("No messages\n");
             }
         }
         
         if (strcmp(buf, "exit") == 0)
         {
-            kill(getpid(), SIGINT);
+            kill(getpid(), SIGTERM);
         }
         
         free(buf);

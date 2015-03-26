@@ -11,64 +11,128 @@ static char RECIEVER_KEY[] = "reciever";
 static char TEXT_KEY[] = "text";
 static char TIME_KEY[] = "time";
 
-Message messageFromJSON(char *text)
+void releaseMessage(Message *msg)
 {
-    Message message;
+    if (msg == NULL)
+    {
+        fprintf(stderr, "releaseMessage : Can't handle nil msg\n");
+    }
     
-    char *buf = text;
+    if (msg->sender == NULL)
+    {
+        fprintf(stderr, "SERIOUS APP ERROR : releaseMessage : Can't handle nil msg->sender\n");
+    }
+    free(msg->sender);
     
-    json_t *root = json_loads(text, 0, NULL);
+    if (msg->reciever == NULL)
+    {
+        fprintf(stderr, "SERIOUS APP ERROR : releaseMessage : Can't handle nil msg->reciever\n");
+    }
+    free(msg->reciever);
     
-    return message;
+    if (msg->text == NULL)
+    {
+        fprintf(stderr, "SERIOUS APP ERROR : releaseMessage : Can't handle nil text->sender\n");
+    }
+    free(msg->text);
+    
+    free(msg);
 }
 
-char *JSONFromMessage(Message message)
+Message *messageFromJSON(char *json)
 {
-    char *json = (char *)malloc(512);
-    *json = '\0';
-    strcat(json, "{");
+    if (json == NULL)
+    {
+        fprintf(stderr, "messageFromJSON : Can't handle nil json parameter\n");
+        return NULL;
+    }
     
-    strcat(json, "\"");
-    strcat(json, SENDER_KEY);
-    strcat(json, "\"");
-    strcat(json, ":");
+    json_error_t error;
     
-    strcat(json, "\"");
-    strcat(json, message.sender);
-    strcat(json, "\"");
-    strcat(json, ",");
+    json_t *data = json_loads(json, 0, &error);
+    if(!data)
+    {
+        fprintf(stderr, "JSON error: on line %d: %s\n", error.line, error.text);
+        return NULL;
+    }
     
-    strcat(json, "\"");
-    strcat(json, RECIEVER_KEY);
-    strcat(json, "\"");
-    strcat(json, ":");
+    json_t *sender, *reciever, *text, *time;
     
-    strcat(json, "\"");
-    strcat(json, message.reciever);
-    strcat(json, "\"");
-    strcat(json, ",");
+    sender = json_object_get(data, SENDER_KEY);
+    if(!json_is_string(sender))
+    {
+        fprintf(stderr, "JSON error: sender is not a string\n");
+        json_decref(data);
+        return NULL;
+    }
     
-    strcat(json, "\"");
-    strcat(json, TEXT_KEY);
-    strcat(json, "\"");
-    strcat(json, ":");
+    reciever = json_object_get(data, RECIEVER_KEY);
+    if(!json_is_string(reciever))
+    {
+        fprintf(stderr, "JSON error: reciever is not an string\n");
+        json_decref(data);
+        return NULL;
+    }
     
-    strcat(json, "\"");
-    strcat(json, message.text);
-    strcat(json, "\"");
-    strcat(json, ",");
+    text = json_object_get(data, TEXT_KEY);
+    if(!json_is_string(text))
+    {
+        fprintf(stderr, "JSON error: text is not a string\n");
+        json_decref(data);
+        return NULL;
+    }
     
-//    strcat(json, "\"");
-//    strcat(json, TIME_KEY);
-//    strcat(json, "\"");
-//    strcat(json, ":");
-//    
-//    strcat(json, "\"");
-//    strcat(json, message.time);
-//    strcat(json, "\"");
-//    strcat(json, ",");
+    time = json_object_get(data, TIME_KEY);
+    if(!json_is_string(time))
+    {
+        fprintf(stderr, "JSON error: time is not a number\n");
+        json_decref(data);
+        return NULL;
+    }
     
-    strcat(json, "}");
+    Message *msg = (Message *)malloc(sizeof(Message));
+    
+    msg->sender = (char *)malloc(strlen(json_string_value(sender)));
+    strcpy(msg->sender, json_string_value(sender));
+    
+    msg->reciever = (char *)malloc(strlen(json_string_value(reciever)));
+    strcpy(msg->reciever, json_string_value(reciever));
+    
+    msg->text = (char *)malloc(strlen(json_string_value(text)));
+    strcpy(msg->text, json_string_value(text));
+           
+    msg->time = (int)json_integer_value(time);
+    
+    json_decref(data);
+    return msg;
+}
+
+char *JSONFromMessage(Message *msg)
+{
+    if (msg == NULL)
+    {
+        fprintf(stderr, "JSONFromMessage : Can't handle nil message\n");
+        return NULL;
+    }
+    
+    msg->time = 0;
+    
+    char *json = (char *)malloc(1024);
+    memset(json, 0, 1024);
+    
+    sprintf(json, "{\"%s\":\"%s\",\"%s\":\"%s\",\"%s\":\"%s\",\"%s\":\"%d\"}", SENDER_KEY, msg->sender, RECIEVER_KEY, msg->reciever, TEXT_KEY, msg->text, TIME_KEY, msg->time);
+    
+    if (strlen(json) == 1024)
+    {
+        fprintf(stderr, "JSONFromMessage : JSON string is out of bounds\n");
+        return NULL;
+    }
+    json = (char *)realloc(json, strlen(json));
     
     return json;
+}
+
+void printMessage(Message *msg)
+{
+    printf("FROM : %s\nTO : %s\nTEXT : %s\nWHEN : %d\n", msg->sender, msg->reciever, msg->text, msg->time);
 }

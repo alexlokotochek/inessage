@@ -1,4 +1,3 @@
-
 typedef struct
 {
     char *sender;
@@ -7,5 +6,8 @@ typedef struct
     int time;
 } Message;
 
-Message messageFromJSON(char *text);
-char *JSONFromMessage(Message message);
+void releaseMessage(Message *);
+
+Message *messageFromJSON(char *);
+char *JSONFromMessage(Message *);
+void printMessage(Message *);

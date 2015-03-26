@@ -4,6 +4,8 @@
 #include <stdlib.h>
 #include "message.h"
 
+#include <jansson.h>
+
 static char SENDER_KEY[] = "sender";
 static char RECIEVER_KEY[] = "reciever";
 static char TEXT_KEY[] = "text";
@@ -15,7 +17,7 @@ Message messageFromJSON(char *text)
     
     char *buf = text;
     
-    
+    json_t *root = json_loads(text, 0, NULL);
     
     return message;
 }

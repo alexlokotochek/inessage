@@ -1,0 +1,572 @@
+The system is: Darwin - 14.3.0 - x86_64
+Compiling the C compiler identification source file "CMakeCCompilerId.c" succeeded.
+Compiler: /usr/bin/cc 
+Build flags: 
+Id flags: 
+
+The output was:
+0
+
+
+Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "a.out"
+
+The C compiler identification is AppleClang, found in "/Users/tulindanilcom/Downloads/jansson-2.6/build/CMakeFiles/3.1.0/CompilerIdC/a.out"
+
+Determining if the C compiler works passed with the following output:
+Change Dir: /Users/tulindanilcom/Downloads/jansson-2.6/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTryCompileExec2034632309/fast"
+/Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTryCompileExec2034632309.dir/build.make CMakeFiles/cmTryCompileExec2034632309.dir/build
+/usr/local/Cellar/cmake/3.1.0/bin/cmake -E cmake_progress_report /Users/tulindanilcom/Downloads/jansson-2.6/build/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec2034632309.dir/testCCompiler.c.o
+/usr/bin/cc   -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.10.sdk   -o CMakeFiles/cmTryCompileExec2034632309.dir/testCCompiler.c.o   -c /Users/tulindanilcom/Downloads/jansson-2.6/build/CMakeFiles/CMakeTmp/testCCompiler.c
+Linking C executable cmTryCompileExec2034632309
+/usr/local/Cellar/cmake/3.1.0/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec2034632309.dir/link.txt --verbose=1
+/usr/bin/cc    -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.10.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names  CMakeFiles/cmTryCompileExec2034632309.dir/testCCompiler.c.o  -o cmTryCompileExec2034632309  
+
+
+Detecting C compiler ABI info compiled with the following output:
+Change Dir: /Users/tulindanilcom/Downloads/jansson-2.6/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTryCompileExec2763837805/fast"
+/Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTryCompileExec2763837805.dir/build.make CMakeFiles/cmTryCompileExec2763837805.dir/build
+/usr/local/Cellar/cmake/3.1.0/bin/cmake -E cmake_progress_report /Users/tulindanilcom/Downloads/jansson-2.6/build/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec2763837805.dir/CMakeCCompilerABI.c.o
+/usr/bin/cc   -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.10.sdk   -o CMakeFiles/cmTryCompileExec2763837805.dir/CMakeCCompilerABI.c.o   -c /usr/local/Cellar/cmake/3.1.0/share/cmake/Modules/CMakeCCompilerABI.c
+Linking C executable cmTryCompileExec2763837805
+/usr/local/Cellar/cmake/3.1.0/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec2763837805.dir/link.txt --verbose=1
+/usr/bin/cc    -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.10.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names -v -Wl,-v CMakeFiles/cmTryCompileExec2763837805.dir/CMakeCCompilerABI.c.o  -o cmTryCompileExec2763837805   
+Apple LLVM version 6.0 (clang-600.0.56) (based on LLVM 3.5svn)
+Target: x86_64-apple-darwin14.3.0
+Thread model: posix
+ "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ld" -demangle -dynamic -arch x86_64 -macosx_version_min 10.10.0 -syslibroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.10.sdk -o cmTryCompileExec2763837805 -search_paths_first -headerpad_max_install_names -v CMakeFiles/cmTryCompileExec2763837805.dir/CMakeCCompilerABI.c.o -lSystem /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../lib/clang/6.0/lib/darwin/libclang_rt.osx.a
+@(#)PROGRAM:ld  PROJECT:ld64-241.9
+configured to support archs: armv6 armv7 armv7s arm64 i386 x86_64 x86_64h armv6m armv7m armv7em
+Library search paths:
+	/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.10.sdk/usr/lib
+Framework search paths:
+	/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.10.sdk/System/Library/Frameworks/
+
+
+Parsed C implicit link information from above output:
+  link line regex: [^( *|.*[/\])(ld|([^/\]+-)?ld|collect2)[^/\]*( |$)]
+  ignore line: [Change Dir: /Users/tulindanilcom/Downloads/jansson-2.6/build/CMakeFiles/CMakeTmp]
+  ignore line: []
+  ignore line: [Run Build Command:"/usr/bin/make" "cmTryCompileExec2763837805/fast"]
+  ignore line: [/Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTryCompileExec2763837805.dir/build.make CMakeFiles/cmTryCompileExec2763837805.dir/build]
+  ignore line: [/usr/local/Cellar/cmake/3.1.0/bin/cmake -E cmake_progress_report /Users/tulindanilcom/Downloads/jansson-2.6/build/CMakeFiles/CMakeTmp/CMakeFiles 1]
+  ignore line: [Building C object CMakeFiles/cmTryCompileExec2763837805.dir/CMakeCCompilerABI.c.o]
+  ignore line: [/usr/bin/cc   -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.10.sdk   -o CMakeFiles/cmTryCompileExec2763837805.dir/CMakeCCompilerABI.c.o   -c /usr/local/Cellar/cmake/3.1.0/share/cmake/Modules/CMakeCCompilerABI.c]
+  ignore line: [Linking C executable cmTryCompileExec2763837805]
+  ignore line: [/usr/local/Cellar/cmake/3.1.0/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec2763837805.dir/link.txt --verbose=1]
+  ignore line: [/usr/bin/cc    -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.10.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names -v -Wl,-v CMakeFiles/cmTryCompileExec2763837805.dir/CMakeCCompilerABI.c.o  -o cmTryCompileExec2763837805   ]
+  ignore line: [Apple LLVM version 6.0 (clang-600.0.56) (based on LLVM 3.5svn)]
+  ignore line: [Target: x86_64-apple-darwin14.3.0]
+  ignore line: [Thread model: posix]
+  link line: [ "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ld" -demangle -dynamic -arch x86_64 -macosx_version_min 10.10.0 -syslibroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.10.sdk -o cmTryCompileExec2763837805 -search_paths_first -headerpad_max_install_names -v CMakeFiles/cmTryCompileExec2763837805.dir/CMakeCCompilerABI.c.o -lSystem /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../lib/clang/6.0/lib/darwin/libclang_rt.osx.a]
+    arg [/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ld] ==> ignore
+    arg [-demangle] ==> ignore
+    arg [-dynamic] ==> ignore
+    arg [-arch] ==> ignore
+    arg [x86_64] ==> ignore
+    arg [-macosx_version_min] ==> ignore
+    arg [10.10.0] ==> ignore
+    arg [-syslibroot] ==> ignore
+    arg [/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.10.sdk] ==> ignore
+    arg [-o] ==> ignore
+    arg [cmTryCompileExec2763837805] ==> ignore
+    arg [-search_paths_first] ==> ignore
+    arg [-headerpad_max_install_names] ==> ignore
+    arg [-v] ==> ignore
+    arg [CMakeFiles/cmTryCompileExec2763837805.dir/CMakeCCompilerABI.c.o] ==> ignore
+    arg [-lSystem] ==> lib [System]
+    arg [/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../lib/clang/6.0/lib/darwin/libclang_rt.osx.a] ==> lib [/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../lib/clang/6.0/lib/darwin/libclang_rt.osx.a]
+  Library search paths: [;/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.10.sdk/usr/lib]
+  Framework search paths: [;/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.10.sdk/System/Library/Frameworks/]
+  remove lib [System]
+  collapse lib [/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../lib/clang/6.0/lib/darwin/libclang_rt.osx.a] ==> [/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/6.0/lib/darwin/libclang_rt.osx.a]
+  collapse library dir [/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.10.sdk/usr/lib] ==> [/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.10.sdk/usr/lib]
+  collapse framework dir [/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.10.sdk/System/Library/Frameworks/] ==> [/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.10.sdk/System/Library/Frameworks]
+  implicit libs: [/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/6.0/lib/darwin/libclang_rt.osx.a]
+  implicit dirs: [/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.10.sdk/usr/lib]
+  implicit fwks: [/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.10.sdk/System/Library/Frameworks]
+
+
+Determining if files fcntl.h exist passed with the following output:
+Change Dir: /Users/tulindanilcom/Downloads/jansson-2.6/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTryCompileExec1873682037/fast"
+/Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTryCompileExec1873682037.dir/build.make CMakeFiles/cmTryCompileExec1873682037.dir/build
+/usr/local/Cellar/cmake/3.1.0/bin/cmake -E cmake_progress_report /Users/tulindanilcom/Downloads/jansson-2.6/build/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec1873682037.dir/CheckIncludeFiles.c.o
+/usr/bin/cc   -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.10.sdk   -o CMakeFiles/cmTryCompileExec1873682037.dir/CheckIncludeFiles.c.o   -c /Users/tulindanilcom/Downloads/jansson-2.6/build/CMakeFiles/CMakeTmp/CheckIncludeFiles.c
+Linking C executable cmTryCompileExec1873682037
+/usr/local/Cellar/cmake/3.1.0/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec1873682037.dir/link.txt --verbose=1
+/usr/bin/cc    -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.10.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names  CMakeFiles/cmTryCompileExec1873682037.dir/CheckIncludeFiles.c.o  -o cmTryCompileExec1873682037  
+
+
+Determining if files sched.h exist passed with the following output:
+Change Dir: /Users/tulindanilcom/Downloads/jansson-2.6/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTryCompileExec340492494/fast"
+/Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTryCompileExec340492494.dir/build.make CMakeFiles/cmTryCompileExec340492494.dir/build
+/usr/local/Cellar/cmake/3.1.0/bin/cmake -E cmake_progress_report /Users/tulindanilcom/Downloads/jansson-2.6/build/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec340492494.dir/CheckIncludeFiles.c.o
+/usr/bin/cc   -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.10.sdk   -o CMakeFiles/cmTryCompileExec340492494.dir/CheckIncludeFiles.c.o   -c /Users/tulindanilcom/Downloads/jansson-2.6/build/CMakeFiles/CMakeTmp/CheckIncludeFiles.c
+Linking C executable cmTryCompileExec340492494
+/usr/local/Cellar/cmake/3.1.0/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec340492494.dir/link.txt --verbose=1
+/usr/bin/cc    -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.10.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names  CMakeFiles/cmTryCompileExec340492494.dir/CheckIncludeFiles.c.o  -o cmTryCompileExec340492494  
+
+
+Determining if files unistd.h exist passed with the following output:
+Change Dir: /Users/tulindanilcom/Downloads/jansson-2.6/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTryCompileExec3128717154/fast"
+/Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTryCompileExec3128717154.dir/build.make CMakeFiles/cmTryCompileExec3128717154.dir/build
+/usr/local/Cellar/cmake/3.1.0/bin/cmake -E cmake_progress_report /Users/tulindanilcom/Downloads/jansson-2.6/build/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec3128717154.dir/CheckIncludeFiles.c.o
+/usr/bin/cc   -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.10.sdk   -o CMakeFiles/cmTryCompileExec3128717154.dir/CheckIncludeFiles.c.o   -c /Users/tulindanilcom/Downloads/jansson-2.6/build/CMakeFiles/CMakeTmp/CheckIncludeFiles.c
+Linking C executable cmTryCompileExec3128717154
+/usr/local/Cellar/cmake/3.1.0/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec3128717154.dir/link.txt --verbose=1
+/usr/bin/cc    -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.10.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names  CMakeFiles/cmTryCompileExec3128717154.dir/CheckIncludeFiles.c.o  -o cmTryCompileExec3128717154  
+
+
+Determining if files sys/param.h exist passed with the following output:
+Change Dir: /Users/tulindanilcom/Downloads/jansson-2.6/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTryCompileExec1223071831/fast"
+/Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTryCompileExec1223071831.dir/build.make CMakeFiles/cmTryCompileExec1223071831.dir/build
+/usr/local/Cellar/cmake/3.1.0/bin/cmake -E cmake_progress_report /Users/tulindanilcom/Downloads/jansson-2.6/build/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec1223071831.dir/CheckIncludeFiles.c.o
+/usr/bin/cc   -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.10.sdk   -o CMakeFiles/cmTryCompileExec1223071831.dir/CheckIncludeFiles.c.o   -c /Users/tulindanilcom/Downloads/jansson-2.6/build/CMakeFiles/CMakeTmp/CheckIncludeFiles.c
+Linking C executable cmTryCompileExec1223071831
+/usr/local/Cellar/cmake/3.1.0/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec1223071831.dir/link.txt --verbose=1
+/usr/bin/cc    -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.10.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names  CMakeFiles/cmTryCompileExec1223071831.dir/CheckIncludeFiles.c.o  -o cmTryCompileExec1223071831  
+
+
+Determining if files sys/stat.h exist passed with the following output:
+Change Dir: /Users/tulindanilcom/Downloads/jansson-2.6/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTryCompileExec2255766929/fast"
+/Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTryCompileExec2255766929.dir/build.make CMakeFiles/cmTryCompileExec2255766929.dir/build
+/usr/local/Cellar/cmake/3.1.0/bin/cmake -E cmake_progress_report /Users/tulindanilcom/Downloads/jansson-2.6/build/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec2255766929.dir/CheckIncludeFiles.c.o
+/usr/bin/cc   -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.10.sdk   -o CMakeFiles/cmTryCompileExec2255766929.dir/CheckIncludeFiles.c.o   -c /Users/tulindanilcom/Downloads/jansson-2.6/build/CMakeFiles/CMakeTmp/CheckIncludeFiles.c
+Linking C executable cmTryCompileExec2255766929
+/usr/local/Cellar/cmake/3.1.0/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec2255766929.dir/link.txt --verbose=1
+/usr/bin/cc    -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.10.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names  CMakeFiles/cmTryCompileExec2255766929.dir/CheckIncludeFiles.c.o  -o cmTryCompileExec2255766929  
+
+
+Determining if files sys/time.h exist passed with the following output:
+Change Dir: /Users/tulindanilcom/Downloads/jansson-2.6/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTryCompileExec3629627331/fast"
+/Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTryCompileExec3629627331.dir/build.make CMakeFiles/cmTryCompileExec3629627331.dir/build
+/usr/local/Cellar/cmake/3.1.0/bin/cmake -E cmake_progress_report /Users/tulindanilcom/Downloads/jansson-2.6/build/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec3629627331.dir/CheckIncludeFiles.c.o
+/usr/bin/cc   -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.10.sdk   -o CMakeFiles/cmTryCompileExec3629627331.dir/CheckIncludeFiles.c.o   -c /Users/tulindanilcom/Downloads/jansson-2.6/build/CMakeFiles/CMakeTmp/CheckIncludeFiles.c
+Linking C executable cmTryCompileExec3629627331
+/usr/local/Cellar/cmake/3.1.0/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec3629627331.dir/link.txt --verbose=1
+/usr/bin/cc    -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.10.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names  CMakeFiles/cmTryCompileExec3629627331.dir/CheckIncludeFiles.c.o  -o cmTryCompileExec3629627331  
+
+
+Determining if files sys/time.h exist passed with the following output:
+Change Dir: /Users/tulindanilcom/Downloads/jansson-2.6/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTryCompileExec1969827599/fast"
+/Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTryCompileExec1969827599.dir/build.make CMakeFiles/cmTryCompileExec1969827599.dir/build
+/usr/local/Cellar/cmake/3.1.0/bin/cmake -E cmake_progress_report /Users/tulindanilcom/Downloads/jansson-2.6/build/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec1969827599.dir/CheckIncludeFiles.c.o
+/usr/bin/cc   -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.10.sdk   -o CMakeFiles/cmTryCompileExec1969827599.dir/CheckIncludeFiles.c.o   -c /Users/tulindanilcom/Downloads/jansson-2.6/build/CMakeFiles/CMakeTmp/CheckIncludeFiles.c
+Linking C executable cmTryCompileExec1969827599
+/usr/local/Cellar/cmake/3.1.0/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec1969827599.dir/link.txt --verbose=1
+/usr/bin/cc    -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.10.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names  CMakeFiles/cmTryCompileExec1969827599.dir/CheckIncludeFiles.c.o  -o cmTryCompileExec1969827599  
+
+
+Determining if the function close exists passed with the following output:
+Change Dir: /Users/tulindanilcom/Downloads/jansson-2.6/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTryCompileExec1887758492/fast"
+/Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTryCompileExec1887758492.dir/build.make CMakeFiles/cmTryCompileExec1887758492.dir/build
+/usr/local/Cellar/cmake/3.1.0/bin/cmake -E cmake_progress_report /Users/tulindanilcom/Downloads/jansson-2.6/build/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec1887758492.dir/CheckFunctionExists.c.o
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=close -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.10.sdk   -o CMakeFiles/cmTryCompileExec1887758492.dir/CheckFunctionExists.c.o   -c /usr/local/Cellar/cmake/3.1.0/share/cmake/Modules/CheckFunctionExists.c
+Linking C executable cmTryCompileExec1887758492
+/usr/local/Cellar/cmake/3.1.0/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec1887758492.dir/link.txt --verbose=1
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=close -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.10.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names  CMakeFiles/cmTryCompileExec1887758492.dir/CheckFunctionExists.c.o  -o cmTryCompileExec1887758492  
+
+
+Determining if the function getpid exists passed with the following output:
+Change Dir: /Users/tulindanilcom/Downloads/jansson-2.6/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTryCompileExec1115909365/fast"
+/Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTryCompileExec1115909365.dir/build.make CMakeFiles/cmTryCompileExec1115909365.dir/build
+/usr/local/Cellar/cmake/3.1.0/bin/cmake -E cmake_progress_report /Users/tulindanilcom/Downloads/jansson-2.6/build/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec1115909365.dir/CheckFunctionExists.c.o
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=getpid -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.10.sdk   -o CMakeFiles/cmTryCompileExec1115909365.dir/CheckFunctionExists.c.o   -c /usr/local/Cellar/cmake/3.1.0/share/cmake/Modules/CheckFunctionExists.c
+Linking C executable cmTryCompileExec1115909365
+/usr/local/Cellar/cmake/3.1.0/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec1115909365.dir/link.txt --verbose=1
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=getpid -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.10.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names  CMakeFiles/cmTryCompileExec1115909365.dir/CheckFunctionExists.c.o  -o cmTryCompileExec1115909365  
+
+
+Determining if the function gettimeofday exists passed with the following output:
+Change Dir: /Users/tulindanilcom/Downloads/jansson-2.6/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTryCompileExec3744398249/fast"
+/Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTryCompileExec3744398249.dir/build.make CMakeFiles/cmTryCompileExec3744398249.dir/build
+/usr/local/Cellar/cmake/3.1.0/bin/cmake -E cmake_progress_report /Users/tulindanilcom/Downloads/jansson-2.6/build/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec3744398249.dir/CheckFunctionExists.c.o
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=gettimeofday -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.10.sdk   -o CMakeFiles/cmTryCompileExec3744398249.dir/CheckFunctionExists.c.o   -c /usr/local/Cellar/cmake/3.1.0/share/cmake/Modules/CheckFunctionExists.c
+Linking C executable cmTryCompileExec3744398249
+/usr/local/Cellar/cmake/3.1.0/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec3744398249.dir/link.txt --verbose=1
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=gettimeofday -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.10.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names  CMakeFiles/cmTryCompileExec3744398249.dir/CheckFunctionExists.c.o  -o cmTryCompileExec3744398249  
+
+
+Determining if the function open exists passed with the following output:
+Change Dir: /Users/tulindanilcom/Downloads/jansson-2.6/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTryCompileExec713285785/fast"
+/Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTryCompileExec713285785.dir/build.make CMakeFiles/cmTryCompileExec713285785.dir/build
+/usr/local/Cellar/cmake/3.1.0/bin/cmake -E cmake_progress_report /Users/tulindanilcom/Downloads/jansson-2.6/build/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec713285785.dir/CheckFunctionExists.c.o
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=open -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.10.sdk   -o CMakeFiles/cmTryCompileExec713285785.dir/CheckFunctionExists.c.o   -c /usr/local/Cellar/cmake/3.1.0/share/cmake/Modules/CheckFunctionExists.c
+Linking C executable cmTryCompileExec713285785
+/usr/local/Cellar/cmake/3.1.0/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec713285785.dir/link.txt --verbose=1
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=open -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.10.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names  CMakeFiles/cmTryCompileExec713285785.dir/CheckFunctionExists.c.o  -o cmTryCompileExec713285785  
+
+
+Determining if the function read exists passed with the following output:
+Change Dir: /Users/tulindanilcom/Downloads/jansson-2.6/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTryCompileExec3139272625/fast"
+/Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTryCompileExec3139272625.dir/build.make CMakeFiles/cmTryCompileExec3139272625.dir/build
+/usr/local/Cellar/cmake/3.1.0/bin/cmake -E cmake_progress_report /Users/tulindanilcom/Downloads/jansson-2.6/build/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec3139272625.dir/CheckFunctionExists.c.o
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=read -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.10.sdk   -o CMakeFiles/cmTryCompileExec3139272625.dir/CheckFunctionExists.c.o   -c /usr/local/Cellar/cmake/3.1.0/share/cmake/Modules/CheckFunctionExists.c
+Linking C executable cmTryCompileExec3139272625
+/usr/local/Cellar/cmake/3.1.0/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec3139272625.dir/link.txt --verbose=1
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=read -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.10.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names  CMakeFiles/cmTryCompileExec3139272625.dir/CheckFunctionExists.c.o  -o cmTryCompileExec3139272625  
+
+
+Determining if the function sched_yield exists passed with the following output:
+Change Dir: /Users/tulindanilcom/Downloads/jansson-2.6/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTryCompileExec2122988722/fast"
+/Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTryCompileExec2122988722.dir/build.make CMakeFiles/cmTryCompileExec2122988722.dir/build
+/usr/local/Cellar/cmake/3.1.0/bin/cmake -E cmake_progress_report /Users/tulindanilcom/Downloads/jansson-2.6/build/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec2122988722.dir/CheckFunctionExists.c.o
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=sched_yield -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.10.sdk   -o CMakeFiles/cmTryCompileExec2122988722.dir/CheckFunctionExists.c.o   -c /usr/local/Cellar/cmake/3.1.0/share/cmake/Modules/CheckFunctionExists.c
+Linking C executable cmTryCompileExec2122988722
+/usr/local/Cellar/cmake/3.1.0/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec2122988722.dir/link.txt --verbose=1
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=sched_yield -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.10.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names  CMakeFiles/cmTryCompileExec2122988722.dir/CheckFunctionExists.c.o  -o cmTryCompileExec2122988722  
+
+
+Determining if files stdint.h exist passed with the following output:
+Change Dir: /Users/tulindanilcom/Downloads/jansson-2.6/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTryCompileExec675875186/fast"
+/Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTryCompileExec675875186.dir/build.make CMakeFiles/cmTryCompileExec675875186.dir/build
+/usr/local/Cellar/cmake/3.1.0/bin/cmake -E cmake_progress_report /Users/tulindanilcom/Downloads/jansson-2.6/build/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec675875186.dir/CheckIncludeFiles.c.o
+/usr/bin/cc   -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.10.sdk   -o CMakeFiles/cmTryCompileExec675875186.dir/CheckIncludeFiles.c.o   -c /Users/tulindanilcom/Downloads/jansson-2.6/build/CMakeFiles/CMakeTmp/CheckIncludeFiles.c
+Linking C executable cmTryCompileExec675875186
+/usr/local/Cellar/cmake/3.1.0/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec675875186.dir/link.txt --verbose=1
+/usr/bin/cc    -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.10.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names  CMakeFiles/cmTryCompileExec675875186.dir/CheckIncludeFiles.c.o  -o cmTryCompileExec675875186  
+
+
+Determining if the include file stddef.h exists passed with the following output:
+Change Dir: /Users/tulindanilcom/Downloads/jansson-2.6/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTryCompileExec1945337510/fast"
+/Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTryCompileExec1945337510.dir/build.make CMakeFiles/cmTryCompileExec1945337510.dir/build
+/usr/local/Cellar/cmake/3.1.0/bin/cmake -E cmake_progress_report /Users/tulindanilcom/Downloads/jansson-2.6/build/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec1945337510.dir/CheckIncludeFile.c.o
+/usr/bin/cc   -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.10.sdk   -o CMakeFiles/cmTryCompileExec1945337510.dir/CheckIncludeFile.c.o   -c /Users/tulindanilcom/Downloads/jansson-2.6/build/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTryCompileExec1945337510
+/usr/local/Cellar/cmake/3.1.0/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec1945337510.dir/link.txt --verbose=1
+/usr/bin/cc    -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.10.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names  CMakeFiles/cmTryCompileExec1945337510.dir/CheckIncludeFile.c.o  -o cmTryCompileExec1945337510  
+
+
+Determining size of int64_t passed with the following output:
+Change Dir: /Users/tulindanilcom/Downloads/jansson-2.6/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTryCompileExec3762726061/fast"
+/Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTryCompileExec3762726061.dir/build.make CMakeFiles/cmTryCompileExec3762726061.dir/build
+/usr/local/Cellar/cmake/3.1.0/bin/cmake -E cmake_progress_report /Users/tulindanilcom/Downloads/jansson-2.6/build/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec3762726061.dir/INT64_T.c.o
+/usr/bin/cc   -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.10.sdk   -o CMakeFiles/cmTryCompileExec3762726061.dir/INT64_T.c.o   -c /Users/tulindanilcom/Downloads/jansson-2.6/build/CMakeFiles/CheckTypeSize/INT64_T.c
+Linking C executable cmTryCompileExec3762726061
+/usr/local/Cellar/cmake/3.1.0/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec3762726061.dir/link.txt --verbose=1
+/usr/bin/cc    -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.10.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names  CMakeFiles/cmTryCompileExec3762726061.dir/INT64_T.c.o  -o cmTryCompileExec3762726061  
+
+
+Determining size of long long passed with the following output:
+Change Dir: /Users/tulindanilcom/Downloads/jansson-2.6/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTryCompileExec1271476202/fast"
+/Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTryCompileExec1271476202.dir/build.make CMakeFiles/cmTryCompileExec1271476202.dir/build
+/usr/local/Cellar/cmake/3.1.0/bin/cmake -E cmake_progress_report /Users/tulindanilcom/Downloads/jansson-2.6/build/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec1271476202.dir/LONG_LONG_INT.c.o
+/usr/bin/cc   -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.10.sdk   -o CMakeFiles/cmTryCompileExec1271476202.dir/LONG_LONG_INT.c.o   -c /Users/tulindanilcom/Downloads/jansson-2.6/build/CMakeFiles/CheckTypeSize/LONG_LONG_INT.c
+Linking C executable cmTryCompileExec1271476202
+/usr/local/Cellar/cmake/3.1.0/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec1271476202.dir/link.txt --verbose=1
+/usr/bin/cc    -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.10.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names  CMakeFiles/cmTryCompileExec1271476202.dir/LONG_LONG_INT.c.o  -o cmTryCompileExec1271476202  
+
+
+Determining size of int32_t passed with the following output:
+Change Dir: /Users/tulindanilcom/Downloads/jansson-2.6/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTryCompileExec287208226/fast"
+/Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTryCompileExec287208226.dir/build.make CMakeFiles/cmTryCompileExec287208226.dir/build
+/usr/local/Cellar/cmake/3.1.0/bin/cmake -E cmake_progress_report /Users/tulindanilcom/Downloads/jansson-2.6/build/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec287208226.dir/INT32_T.c.o
+/usr/bin/cc   -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.10.sdk   -o CMakeFiles/cmTryCompileExec287208226.dir/INT32_T.c.o   -c /Users/tulindanilcom/Downloads/jansson-2.6/build/CMakeFiles/CheckTypeSize/INT32_T.c
+Linking C executable cmTryCompileExec287208226
+/usr/local/Cellar/cmake/3.1.0/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec287208226.dir/link.txt --verbose=1
+/usr/bin/cc    -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.10.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names  CMakeFiles/cmTryCompileExec287208226.dir/INT32_T.c.o  -o cmTryCompileExec287208226  
+
+
+Determining size of long passed with the following output:
+Change Dir: /Users/tulindanilcom/Downloads/jansson-2.6/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTryCompileExec2539721547/fast"
+/Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTryCompileExec2539721547.dir/build.make CMakeFiles/cmTryCompileExec2539721547.dir/build
+/usr/local/Cellar/cmake/3.1.0/bin/cmake -E cmake_progress_report /Users/tulindanilcom/Downloads/jansson-2.6/build/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec2539721547.dir/LONG_INT.c.o
+/usr/bin/cc   -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.10.sdk   -o CMakeFiles/cmTryCompileExec2539721547.dir/LONG_INT.c.o   -c /Users/tulindanilcom/Downloads/jansson-2.6/build/CMakeFiles/CheckTypeSize/LONG_INT.c
+Linking C executable cmTryCompileExec2539721547
+/usr/local/Cellar/cmake/3.1.0/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec2539721547.dir/link.txt --verbose=1
+/usr/bin/cc    -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.10.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names  CMakeFiles/cmTryCompileExec2539721547.dir/LONG_INT.c.o  -o cmTryCompileExec2539721547  
+
+
+Determining size of int passed with the following output:
+Change Dir: /Users/tulindanilcom/Downloads/jansson-2.6/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTryCompileExec1541094682/fast"
+/Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTryCompileExec1541094682.dir/build.make CMakeFiles/cmTryCompileExec1541094682.dir/build
+/usr/local/Cellar/cmake/3.1.0/bin/cmake -E cmake_progress_report /Users/tulindanilcom/Downloads/jansson-2.6/build/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec1541094682.dir/INT.c.o
+/usr/bin/cc   -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.10.sdk   -o CMakeFiles/cmTryCompileExec1541094682.dir/INT.c.o   -c /Users/tulindanilcom/Downloads/jansson-2.6/build/CMakeFiles/CheckTypeSize/INT.c
+Linking C executable cmTryCompileExec1541094682
+/usr/local/Cellar/cmake/3.1.0/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec1541094682.dir/link.txt --verbose=1
+/usr/bin/cc    -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.10.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names  CMakeFiles/cmTryCompileExec1541094682.dir/INT.c.o  -o cmTryCompileExec1541094682  
+
+
+Determining size of uint32_t passed with the following output:
+Change Dir: /Users/tulindanilcom/Downloads/jansson-2.6/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTryCompileExec3689400047/fast"
+/Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTryCompileExec3689400047.dir/build.make CMakeFiles/cmTryCompileExec3689400047.dir/build
+/usr/local/Cellar/cmake/3.1.0/bin/cmake -E cmake_progress_report /Users/tulindanilcom/Downloads/jansson-2.6/build/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec3689400047.dir/UINT32_T.c.o
+/usr/bin/cc   -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.10.sdk   -o CMakeFiles/cmTryCompileExec3689400047.dir/UINT32_T.c.o   -c /Users/tulindanilcom/Downloads/jansson-2.6/build/CMakeFiles/CheckTypeSize/UINT32_T.c
+Linking C executable cmTryCompileExec3689400047
+/usr/local/Cellar/cmake/3.1.0/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec3689400047.dir/link.txt --verbose=1
+/usr/bin/cc    -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.10.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names  CMakeFiles/cmTryCompileExec3689400047.dir/UINT32_T.c.o  -o cmTryCompileExec3689400047  
+
+
+Determining size of unsigned long passed with the following output:
+Change Dir: /Users/tulindanilcom/Downloads/jansson-2.6/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTryCompileExec609802612/fast"
+/Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTryCompileExec609802612.dir/build.make CMakeFiles/cmTryCompileExec609802612.dir/build
+/usr/local/Cellar/cmake/3.1.0/bin/cmake -E cmake_progress_report /Users/tulindanilcom/Downloads/jansson-2.6/build/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec609802612.dir/UNSIGNED_LONG_INT.c.o
+/usr/bin/cc   -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.10.sdk   -o CMakeFiles/cmTryCompileExec609802612.dir/UNSIGNED_LONG_INT.c.o   -c /Users/tulindanilcom/Downloads/jansson-2.6/build/CMakeFiles/CheckTypeSize/UNSIGNED_LONG_INT.c
+Linking C executable cmTryCompileExec609802612
+/usr/local/Cellar/cmake/3.1.0/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec609802612.dir/link.txt --verbose=1
+/usr/bin/cc    -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.10.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names  CMakeFiles/cmTryCompileExec609802612.dir/UNSIGNED_LONG_INT.c.o  -o cmTryCompileExec609802612  
+
+
+Determining size of unsigned int passed with the following output:
+Change Dir: /Users/tulindanilcom/Downloads/jansson-2.6/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTryCompileExec3196674155/fast"
+/Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTryCompileExec3196674155.dir/build.make CMakeFiles/cmTryCompileExec3196674155.dir/build
+/usr/local/Cellar/cmake/3.1.0/bin/cmake -E cmake_progress_report /Users/tulindanilcom/Downloads/jansson-2.6/build/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec3196674155.dir/UNSIGNED_INT.c.o
+/usr/bin/cc   -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.10.sdk   -o CMakeFiles/cmTryCompileExec3196674155.dir/UNSIGNED_INT.c.o   -c /Users/tulindanilcom/Downloads/jansson-2.6/build/CMakeFiles/CheckTypeSize/UNSIGNED_INT.c
+Linking C executable cmTryCompileExec3196674155
+/usr/local/Cellar/cmake/3.1.0/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec3196674155.dir/link.txt --verbose=1
+/usr/bin/cc    -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.10.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names  CMakeFiles/cmTryCompileExec3196674155.dir/UNSIGNED_INT.c.o  -o cmTryCompileExec3196674155  
+
+
+Determining size of ssize_t passed with the following output:
+Change Dir: /Users/tulindanilcom/Downloads/jansson-2.6/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTryCompileExec555016480/fast"
+/Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTryCompileExec555016480.dir/build.make CMakeFiles/cmTryCompileExec555016480.dir/build
+/usr/local/Cellar/cmake/3.1.0/bin/cmake -E cmake_progress_report /Users/tulindanilcom/Downloads/jansson-2.6/build/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec555016480.dir/SSIZE_T.c.o
+/usr/bin/cc   -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.10.sdk   -o CMakeFiles/cmTryCompileExec555016480.dir/SSIZE_T.c.o   -c /Users/tulindanilcom/Downloads/jansson-2.6/build/CMakeFiles/CheckTypeSize/SSIZE_T.c
+Linking C executable cmTryCompileExec555016480
+/usr/local/Cellar/cmake/3.1.0/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec555016480.dir/link.txt --verbose=1
+/usr/bin/cc    -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.10.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names  CMakeFiles/cmTryCompileExec555016480.dir/SSIZE_T.c.o  -o cmTryCompileExec555016480  
+
+
+Determining if the function strtoll exists passed with the following output:
+Change Dir: /Users/tulindanilcom/Downloads/jansson-2.6/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTryCompileExec1332652127/fast"
+/Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTryCompileExec1332652127.dir/build.make CMakeFiles/cmTryCompileExec1332652127.dir/build
+/usr/local/Cellar/cmake/3.1.0/bin/cmake -E cmake_progress_report /Users/tulindanilcom/Downloads/jansson-2.6/build/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec1332652127.dir/CheckFunctionExists.c.o
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=strtoll -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.10.sdk   -o CMakeFiles/cmTryCompileExec1332652127.dir/CheckFunctionExists.c.o   -c /usr/local/Cellar/cmake/3.1.0/share/cmake/Modules/CheckFunctionExists.c
+Linking C executable cmTryCompileExec1332652127
+/usr/local/Cellar/cmake/3.1.0/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec1332652127.dir/link.txt --verbose=1
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=strtoll -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.10.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names  CMakeFiles/cmTryCompileExec1332652127.dir/CheckFunctionExists.c.o  -o cmTryCompileExec1332652127  
+
+
+Determining if the function strtoq exists passed with the following output:
+Change Dir: /Users/tulindanilcom/Downloads/jansson-2.6/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTryCompileExec2459719805/fast"
+/Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTryCompileExec2459719805.dir/build.make CMakeFiles/cmTryCompileExec2459719805.dir/build
+/usr/local/Cellar/cmake/3.1.0/bin/cmake -E cmake_progress_report /Users/tulindanilcom/Downloads/jansson-2.6/build/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec2459719805.dir/CheckFunctionExists.c.o
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=strtoq -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.10.sdk   -o CMakeFiles/cmTryCompileExec2459719805.dir/CheckFunctionExists.c.o   -c /usr/local/Cellar/cmake/3.1.0/share/cmake/Modules/CheckFunctionExists.c
+Linking C executable cmTryCompileExec2459719805
+/usr/local/Cellar/cmake/3.1.0/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec2459719805.dir/link.txt --verbose=1
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=strtoq -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.10.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names  CMakeFiles/cmTryCompileExec2459719805.dir/CheckFunctionExists.c.o  -o cmTryCompileExec2459719805  
+
+
+Determining if files locale.h exist passed with the following output:
+Change Dir: /Users/tulindanilcom/Downloads/jansson-2.6/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTryCompileExec3962218954/fast"
+/Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTryCompileExec3962218954.dir/build.make CMakeFiles/cmTryCompileExec3962218954.dir/build
+/usr/local/Cellar/cmake/3.1.0/bin/cmake -E cmake_progress_report /Users/tulindanilcom/Downloads/jansson-2.6/build/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec3962218954.dir/CheckIncludeFiles.c.o
+/usr/bin/cc   -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.10.sdk   -o CMakeFiles/cmTryCompileExec3962218954.dir/CheckIncludeFiles.c.o   -c /Users/tulindanilcom/Downloads/jansson-2.6/build/CMakeFiles/CMakeTmp/CheckIncludeFiles.c
+Linking C executable cmTryCompileExec3962218954
+/usr/local/Cellar/cmake/3.1.0/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec3962218954.dir/link.txt --verbose=1
+/usr/bin/cc    -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.10.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names  CMakeFiles/cmTryCompileExec3962218954.dir/CheckIncludeFiles.c.o  -o cmTryCompileExec3962218954  
+
+
+Determining if the function localeconv exists passed with the following output:
+Change Dir: /Users/tulindanilcom/Downloads/jansson-2.6/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTryCompileExec4163831409/fast"
+/Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTryCompileExec4163831409.dir/build.make CMakeFiles/cmTryCompileExec4163831409.dir/build
+/usr/local/Cellar/cmake/3.1.0/bin/cmake -E cmake_progress_report /Users/tulindanilcom/Downloads/jansson-2.6/build/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec4163831409.dir/CheckFunctionExists.c.o
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=localeconv -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.10.sdk   -o CMakeFiles/cmTryCompileExec4163831409.dir/CheckFunctionExists.c.o   -c /usr/local/Cellar/cmake/3.1.0/share/cmake/Modules/CheckFunctionExists.c
+Linking C executable cmTryCompileExec4163831409
+/usr/local/Cellar/cmake/3.1.0/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec4163831409.dir/link.txt --verbose=1
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=localeconv -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.10.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names  CMakeFiles/cmTryCompileExec4163831409.dir/CheckFunctionExists.c.o  -o cmTryCompileExec4163831409  
+
+
+Determining if the function setlocale exists passed with the following output:
+Change Dir: /Users/tulindanilcom/Downloads/jansson-2.6/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTryCompileExec3389102478/fast"
+/Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTryCompileExec3389102478.dir/build.make CMakeFiles/cmTryCompileExec3389102478.dir/build
+/usr/local/Cellar/cmake/3.1.0/bin/cmake -E cmake_progress_report /Users/tulindanilcom/Downloads/jansson-2.6/build/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec3389102478.dir/CheckFunctionExists.c.o
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=setlocale -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.10.sdk   -o CMakeFiles/cmTryCompileExec3389102478.dir/CheckFunctionExists.c.o   -c /usr/local/Cellar/cmake/3.1.0/share/cmake/Modules/CheckFunctionExists.c
+Linking C executable cmTryCompileExec3389102478
+/usr/local/Cellar/cmake/3.1.0/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec3389102478.dir/link.txt --verbose=1
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=setlocale -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.10.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names  CMakeFiles/cmTryCompileExec3389102478.dir/CheckFunctionExists.c.o  -o cmTryCompileExec3389102478  
+
+
+Performing C SOURCE FILE Test HAVE_INLINE succeded with the following output:
+Change Dir: /Users/tulindanilcom/Downloads/jansson-2.6/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTryCompileExec3229522259/fast"
+/Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTryCompileExec3229522259.dir/build.make CMakeFiles/cmTryCompileExec3229522259.dir/build
+/usr/local/Cellar/cmake/3.1.0/bin/cmake -E cmake_progress_report /Users/tulindanilcom/Downloads/jansson-2.6/build/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec3229522259.dir/src.c.o
+/usr/bin/cc   -DHAVE_INLINE -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.10.sdk   -o CMakeFiles/cmTryCompileExec3229522259.dir/src.c.o   -c /Users/tulindanilcom/Downloads/jansson-2.6/build/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTryCompileExec3229522259
+/usr/local/Cellar/cmake/3.1.0/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec3229522259.dir/link.txt --verbose=1
+/usr/bin/cc   -DHAVE_INLINE -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.10.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names  CMakeFiles/cmTryCompileExec3229522259.dir/src.c.o  -o cmTryCompileExec3229522259  
+
+Source file was:
+inline void func(); void func() { } int main() { func(); return 0; }
+Performing C SOURCE FILE Test HAVE___INLINE succeded with the following output:
+Change Dir: /Users/tulindanilcom/Downloads/jansson-2.6/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTryCompileExec13533811/fast"
+/Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTryCompileExec13533811.dir/build.make CMakeFiles/cmTryCompileExec13533811.dir/build
+/usr/local/Cellar/cmake/3.1.0/bin/cmake -E cmake_progress_report /Users/tulindanilcom/Downloads/jansson-2.6/build/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec13533811.dir/src.c.o
+/usr/bin/cc   -DHAVE___INLINE -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.10.sdk   -o CMakeFiles/cmTryCompileExec13533811.dir/src.c.o   -c /Users/tulindanilcom/Downloads/jansson-2.6/build/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTryCompileExec13533811
+/usr/local/Cellar/cmake/3.1.0/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec13533811.dir/link.txt --verbose=1
+/usr/bin/cc   -DHAVE___INLINE -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.10.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names  CMakeFiles/cmTryCompileExec13533811.dir/src.c.o  -o cmTryCompileExec13533811  
+
+Source file was:
+__inline void func(); void func() { } int main() { func(); return 0; }
+Performing C SOURCE FILE Test HAVE___INLINE__ succeded with the following output:
+Change Dir: /Users/tulindanilcom/Downloads/jansson-2.6/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTryCompileExec1303375370/fast"
+/Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTryCompileExec1303375370.dir/build.make CMakeFiles/cmTryCompileExec1303375370.dir/build
+/usr/local/Cellar/cmake/3.1.0/bin/cmake -E cmake_progress_report /Users/tulindanilcom/Downloads/jansson-2.6/build/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec1303375370.dir/src.c.o
+/usr/bin/cc   -DHAVE___INLINE__ -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.10.sdk   -o CMakeFiles/cmTryCompileExec1303375370.dir/src.c.o   -c /Users/tulindanilcom/Downloads/jansson-2.6/build/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTryCompileExec1303375370
+/usr/local/Cellar/cmake/3.1.0/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec1303375370.dir/link.txt --verbose=1
+/usr/bin/cc   -DHAVE___INLINE__ -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.10.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names  CMakeFiles/cmTryCompileExec1303375370.dir/src.c.o  -o cmTryCompileExec1303375370  
+
+Source file was:
+__inline__ void func(); void func() { } int main() { func(); return 0; }
+Determining if the function snprintf exists passed with the following output:
+Change Dir: /Users/tulindanilcom/Downloads/jansson-2.6/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTryCompileExec615666101/fast"
+/Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTryCompileExec615666101.dir/build.make CMakeFiles/cmTryCompileExec615666101.dir/build
+/usr/local/Cellar/cmake/3.1.0/bin/cmake -E cmake_progress_report /Users/tulindanilcom/Downloads/jansson-2.6/build/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec615666101.dir/CheckFunctionExists.c.o
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=snprintf -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.10.sdk   -o CMakeFiles/cmTryCompileExec615666101.dir/CheckFunctionExists.c.o   -c /usr/local/Cellar/cmake/3.1.0/share/cmake/Modules/CheckFunctionExists.c
+/usr/local/Cellar/cmake/3.1.0/share/cmake/Modules/CheckFunctionExists.c:3:6: warning: incompatible redeclaration of library function 'snprintf' [-Wincompatible-library-redeclaration]
+char CHECK_FUNCTION_EXISTS();
+     ^
+<command line>:1:31: note: expanded from here
+#define CHECK_FUNCTION_EXISTS snprintf
+                              ^
+/usr/local/Cellar/cmake/3.1.0/share/cmake/Modules/CheckFunctionExists.c:3:6: note: 'snprintf' is a builtin with type 'int (char *, unsigned long, const char *, ...)'
+<command line>:1:31: note: expanded from here
+#define CHECK_FUNCTION_EXISTS snprintf
+                              ^
+1 warning generated.
+Linking C executable cmTryCompileExec615666101
+/usr/local/Cellar/cmake/3.1.0/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec615666101.dir/link.txt --verbose=1
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=snprintf -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.10.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names  CMakeFiles/cmTryCompileExec615666101.dir/CheckFunctionExists.c.o  -o cmTryCompileExec615666101  
+
+
+Performing C SOURCE FILE Test HAVE_SYNC_BUILTINS succeded with the following output:
+Change Dir: /Users/tulindanilcom/Downloads/jansson-2.6/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTryCompileExec3945240624/fast"
+/Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTryCompileExec3945240624.dir/build.make CMakeFiles/cmTryCompileExec3945240624.dir/build
+/usr/local/Cellar/cmake/3.1.0/bin/cmake -E cmake_progress_report /Users/tulindanilcom/Downloads/jansson-2.6/build/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec3945240624.dir/src.c.o
+/usr/bin/cc   -DHAVE_SYNC_BUILTINS -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.10.sdk   -o CMakeFiles/cmTryCompileExec3945240624.dir/src.c.o   -c /Users/tulindanilcom/Downloads/jansson-2.6/build/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTryCompileExec3945240624
+/usr/local/Cellar/cmake/3.1.0/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec3945240624.dir/link.txt --verbose=1
+/usr/bin/cc   -DHAVE_SYNC_BUILTINS -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.10.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names  CMakeFiles/cmTryCompileExec3945240624.dir/src.c.o  -o cmTryCompileExec3945240624  
+
+Source file was:
+int main() { unsigned long val; __sync_bool_compare_and_swap(&val, 0, 1); return 0; } 
+Performing C SOURCE FILE Test HAVE_ATOMIC_BUILTINS succeded with the following output:
+Change Dir: /Users/tulindanilcom/Downloads/jansson-2.6/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTryCompileExec60129649/fast"
+/Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTryCompileExec60129649.dir/build.make CMakeFiles/cmTryCompileExec60129649.dir/build
+/usr/local/Cellar/cmake/3.1.0/bin/cmake -E cmake_progress_report /Users/tulindanilcom/Downloads/jansson-2.6/build/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec60129649.dir/src.c.o
+/usr/bin/cc   -DHAVE_ATOMIC_BUILTINS -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.10.sdk   -o CMakeFiles/cmTryCompileExec60129649.dir/src.c.o   -c /Users/tulindanilcom/Downloads/jansson-2.6/build/CMakeFiles/CMakeTmp/src.c
+/Users/tulindanilcom/Downloads/jansson-2.6/build/CMakeFiles/CMakeTmp/src.c:1:108: warning: memory order argument to atomic operation is invalid [-Watomic-memory-ordering]
+int main() { char l; unsigned long v; __atomic_test_and_set(&l, __ATOMIC_RELAXED); __atomic_store_n(&v, 1, __ATOMIC_ACQ_REL); __atomic_load_n(&v, __ATOMIC_ACQUIRE); return 0; }
+                                                                                                           ^~~~~~~~~~~~~~~~
+<built-in>:15:26: note: expanded from here
+#define __ATOMIC_ACQ_REL 4
+                         ^
+1 warning generated.
+Linking C executable cmTryCompileExec60129649
+/usr/local/Cellar/cmake/3.1.0/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec60129649.dir/link.txt --verbose=1
+/usr/bin/cc   -DHAVE_ATOMIC_BUILTINS -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.10.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names  CMakeFiles/cmTryCompileExec60129649.dir/src.c.o  -o cmTryCompileExec60129649  
+
+Source file was:
+int main() { char l; unsigned long v; __atomic_test_and_set(&l, __ATOMIC_RELAXED); __atomic_store_n(&v, 1, __ATOMIC_ACQ_REL); __atomic_load_n(&v, __ATOMIC_ACQUIRE); return 0; }

@@ -6,7 +6,7 @@
 //
 //
 
-#include "FILENO_MZFK.h"
+#include "input.h"
 
 #include <stdlib.h>
 

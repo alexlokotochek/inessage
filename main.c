@@ -18,7 +18,7 @@
 #include <arpa/inet.h>
 #include <fcntl.h>
 
-#include "FILENO_MZFK.h"
+#include "input.h"
 #include "server.h"
 #include "message.h"
 

@@ -1,7 +1,7 @@
 CC=gcc
-CFLAGS=-c
-LDFLAGS=
-SOURCES=main.c server.c FILENO_MZFK.c message.c
+CFLAGS=-c -I/usr/local/include 
+LDFLAGS=-L/usr/local/lib/pkgconfig -L/usr/local/lib -ljansson
+SOURCES=main.c server.c input.c message.c
 OBJECTS=$(SOURCES:.c=.o)
 EXECUTABLE=p2p
 

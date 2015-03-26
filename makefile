@@ -1,6 +1,6 @@
 CC=gcc
-CFLAGS=-c -I/usr/local/include 
-LDFLAGS=-L/usr/local/lib/pkgconfig -L/usr/local/lib -ljansson
+CFLAGS=-c -I. 
+LDFLAGS=-L. -ljansson
 SOURCES=main.c server.c input.c message.c
 OBJECTS=$(SOURCES:.c=.o)
 EXECUTABLE=p2p

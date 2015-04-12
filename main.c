@@ -103,28 +103,9 @@ int main(int argc, char **argv)
             printf("Enter a command : ");
         }
         
-        if (strcmp(buf, "r") == 0)
+        if (strcmp(buf, "l") == 0)
         {
-            if (IS_MSGRCV)
-            {
-                char rcvm[512];
-                read(pipe_fd[0], rcvm, 512);
-                
-                Message *rcvmsg;
-                if ((rcvmsg = messageFromJSON(rcvm)) == NULL)
-                {
-                    fprintf(stderr, "SERIOUS APP ERROR : messageFromJSON returned nil\n");
-                    kill(getpid(), SIGTERM);
-                }
-                
-                printMessage(rcvmsg);
-                
-                free(rcvmsg);
-            }
-            else
-            {
-                printf("No messages\n");
-            }
+            char **availableIPs = list();
             printf("Enter a command : ");
         }
         

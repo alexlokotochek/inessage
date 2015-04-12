@@ -3,3 +3,4 @@
 
 void sendMessage(Message *message);
 void sendBroadcastMessage(Message *message);
+char **list();

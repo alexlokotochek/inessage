@@ -13,6 +13,7 @@
 #include <sys/socket.h>
 
 #include "server.h"
+#include "msg_rcv.h"
 
 sig_atomic_t shouldTerminate = 0;
 
@@ -111,8 +112,7 @@ pid_t launchServer(int port, int fd_write)
         
         if (strlen(buf))
         {
-            write(fd_write, buf, strlen(buf));
-            kill(clientPid, SIGUSR1);
+            didRecieveMessage(buf);
         }
         
         if (shouldTerminate)

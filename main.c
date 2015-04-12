@@ -70,7 +70,7 @@ int main(int argc, char **argv)
     {
         char *buf = getString();
         
-        if (strcmp(buf, "write") == 0)
+        if (strcmp(buf, "w") == 0)
         {
             printf("Enter a ip : ");
             char *ip = getString();
@@ -89,7 +89,7 @@ int main(int argc, char **argv)
             printf("Enter a command : ");
         }
         
-        if (strcmp(buf, "broadcast") == 0)
+        if (strcmp(buf, "b") == 0)
         {
             printf("Enter a message : ");
             char *sendline = getString();
@@ -103,7 +103,7 @@ int main(int argc, char **argv)
             printf("Enter a command : ");
         }
         
-        if (strcmp(buf, "read") == 0)
+        if (strcmp(buf, "r") == 0)
         {
             if (IS_MSGRCV)
             {

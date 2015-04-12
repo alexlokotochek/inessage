@@ -105,7 +105,7 @@ int main(int argc, char **argv)
         
         if (strcmp(buf, "l") == 0)
         {
-            char **availableIPs = list();
+            char **availableIPs = list(pipe_fd[0]);
             printf("Enter a command : ");
         }
         

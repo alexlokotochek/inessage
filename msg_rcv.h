@@ -1,4 +1,4 @@
 #include <stdio.h>
 #include "message.h"
 
-void didRecieveMessage(char *);
+void didRecieveMessage(char *, int);

@@ -112,7 +112,7 @@ pid_t launchServer(int port, int fd_write)
         
         if (strlen(buf))
         {
-            didRecieveMessage(buf);
+            didRecieveMessage(buf, fd_write);
         }
         
         if (shouldTerminate)

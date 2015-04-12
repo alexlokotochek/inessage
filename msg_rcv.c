@@ -1,7 +1,13 @@
 #include "msg_rcv.h"
 #include "string.h"
 
-void didRecieveMessage(char *json)
+#include "msg_sender.h"
+
+#include <stdlib.h>
+#include <unistd.h>
+#include <fcntl.h>
+
+void didRecieveMessage(char *json, int fd)
 {
     Message *message;
     if ((message =  messageFromJSON(json)) == NULL)
@@ -12,8 +18,24 @@ void didRecieveMessage(char *json)
     
     if (!strcmp(message->text, "request_answer"))
     {
+        strcat(message->sender, "\n");
+        write(fd, message->sender, sizeof(message->sender));
+        releaseMessage(message);
         return;
     }
     
+    if (strcmp(message->text, "request"))
+    {
+        Message *msg = (Message *)malloc(sizeof(Message));
+        msg->reciever = message->sender;
+        msg->text = (char *)calloc(sizeof("request_answer"), 1);
+        strcat(msg->text, "request_answer");
+        
+        sendMessage(msg);
+        
+        releaseMessage(msg);
+    }
+    
     printMessage(message);
+    releaseMessage(message);
 }

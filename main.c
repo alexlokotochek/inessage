@@ -68,9 +68,10 @@ int main(int argc, char **argv)
     struct sockaddr_in servaddr;
     sockfd = socket(AF_INET, SOCK_DGRAM, 0);
     
+    printf("Enter a command : ");
+    
     while (1)
     {
-        printf("Enter a command : ");
         char *buf = getString();
         
         if (strcmp(buf, "write") == 0)
@@ -104,6 +105,8 @@ int main(int argc, char **argv)
             
             releaseMessage(msg);
             free(json);
+            
+            printf("Enter a command : ");
         }
         
         if (strcmp(buf, "read") == 0)
@@ -128,13 +131,13 @@ int main(int argc, char **argv)
             {
                 printf("No messages\n");
             }
+            printf("Enter a command : ");
         }
         
         if (strcmp(buf, "exit") == 0)
         {
             kill(getpid(), SIGINT);
         }
-        
         free(buf);
     }
     

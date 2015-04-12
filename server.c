@@ -95,7 +95,7 @@ pid_t launchServer(int port, int fd_write)
     }
     
     close(STDIN_FILENO);
-    close(STDOUT_FILENO);
+//    close(STDOUT_FILENO);
     if (!LOG)
         close(STDERR_FILENO);
     

@@ -10,6 +10,8 @@
 void didRecieveMessage(char *json, int fd)
 {
     Message *message;
+    printf("\n");
+    printMessage(message);
     if ((message =  messageFromJSON(json)) == NULL)
     {
         fprintf(stderr, "MSG_RCV : messageFromJSON returns nil");
@@ -24,7 +26,7 @@ void didRecieveMessage(char *json, int fd)
         return;
     }
     
-    if (strcmp(message->text, "request"))
+    if (!strcmp(message->text, "request"))
     {
         Message *msg = (Message *)malloc(sizeof(Message));
         msg->reciever = message->sender;
@@ -35,7 +37,5 @@ void didRecieveMessage(char *json, int fd)
         
         releaseMessage(msg);
     }
-    
-    printMessage(message);
     releaseMessage(message);
 }

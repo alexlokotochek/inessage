@@ -8,12 +8,17 @@
 #include <unistd.h>
 #include <signal.h>
 #include <stdlib.h>
+#include <ifaddrs.h>
+
+char *getMyIPV4Adress();
 
 void sendMessage(Message *message)
 {
     int sockfd;
     sockfd = socket(AF_INET, SOCK_DGRAM, 0);
     struct sockaddr_in servaddr;
+    
+    message->sender = getMyIPV4Adress();
     
     bzero(&servaddr, sizeof(servaddr));
     servaddr.sin_family = AF_INET;
@@ -32,9 +37,67 @@ void sendMessage(Message *message)
     close(sockfd);
 }
 
-void sendBroadcastMessage(char *text)
+char *getMyIPV4Adress()
 {
-    // Open a socket
+    struct ifaddrs *ifAddrStruct;
+    struct ifaddrs *ifa;
+    void *tmpAddrPtr;
+    
+    getifaddrs(&ifAddrStruct);
+    
+    for (ifa = ifAddrStruct; ifa != NULL; ifa = ifa->ifa_next)
+    {
+        if (!ifa->ifa_addr)
+        {
+            continue;
+        }
+        if (ifa->ifa_addr->sa_family == AF_INET)
+        {
+            tmpAddrPtr = &((struct sockaddr_in *)ifa->ifa_addr)->sin_addr;
+            char *addressBuffer = (char *)malloc(INET_ADDRSTRLEN);
+            inet_ntop(AF_INET, tmpAddrPtr, addressBuffer, INET_ADDRSTRLEN);
+            if (!strcmp(ifa->ifa_name, "en0"))
+            {
+                if (ifAddrStruct != NULL)
+                    freeifaddrs(ifAddrStruct);
+                return addressBuffer;
+            }
+        }
+    }
+    return NULL;
+}
+
+char *getIPV4BroadcastAdress()
+{
+    struct ifaddrs *ifAddrStruct;
+    struct ifaddrs *ifa;
+    void *tmpAddrPtr;
+    
+    getifaddrs(&ifAddrStruct);
+    
+    for (ifa = ifAddrStruct; ifa != NULL; ifa = ifa->ifa_next)
+    {
+        if (!ifa->ifa_addr) {
+            continue;
+        }
+        if (ifa->ifa_addr->sa_family == AF_INET)
+        {
+            tmpAddrPtr = &((struct sockaddr_in *)ifa->ifa_dstaddr)->sin_addr;
+            char *addressBuffer = (char *)malloc(INET_ADDRSTRLEN);
+            inet_ntop(AF_INET, tmpAddrPtr, addressBuffer, INET_ADDRSTRLEN);
+            if (!strcmp(ifa->ifa_name, "en0"))
+            {
+                if (ifAddrStruct != NULL)
+                    freeifaddrs(ifAddrStruct);
+                return addressBuffer;
+            }
+        }
+    }
+    return NULL;
+}
+
+void sendBroadcastMessage(Message *message)
+{
     int sd = socket(PF_INET, SOCK_DGRAM, IPPROTO_UDP);
     if (sd<=0)
     {
@@ -42,29 +105,36 @@ void sendBroadcastMessage(char *text)
         kill(getpid(), SIGTERM);
     }
     
-    // Set socket options
-    // Enable broadcast
     int broadcastEnable = 1;
     int ret = setsockopt(sd, SOL_SOCKET, SO_BROADCAST, &broadcastEnable, sizeof(broadcastEnable));
     if (ret)
     {
-        printf("Error: Could not open set socket to broadcast mode");
+        printf("Error: Could not open set socket zCXVto broadcast mode");
         close(sd);
         kill(getpid(), SIGTERM);
     }
     
-    // Since we don't call bind() here, the system decides on the port for us, which is what we want.
-    
-    // Configure the port and ip we want to send to
-    struct sockaddr_in broadcastAddr; // Make an endpoint
+    struct sockaddr_in broadcastAddr;
     memset(&broadcastAddr, 0, sizeof broadcastAddr);
     broadcastAddr.sin_family = AF_INET;
-    inet_pton(AF_INET, "172.20.10.15", &broadcastAddr.sin_addr); // Set the broadcast IP address
-    broadcastAddr.sin_port = htons(8888); // Set port 1900
     
-    // Send the broadcast request, ie "Any upnp devices out there?"
-    char *request = "M-SEARCH * HTTP/1.1\r\nHOST:239.255.255.250:1900\r\nMAN:\"ssdp:discover\"\r\nST:ssdp:all\r\nMX:1\r\n\r\n";
-    ret = sendto(sd, request, strlen(request), 0, (struct sockaddr*)&broadcastAddr, sizeof broadcastAddr);
+    char *IPV4Adress = getMyIPV4Adress();
+    char *IPV4BroadcastAdress = getIPV4BroadcastAdress();
+    
+    message->sender = IPV4Adress;
+    message->reciever = IPV4BroadcastAdress;
+    
+    inet_pton(AF_INET, IPV4BroadcastAdress, &broadcastAddr.sin_addr);
+    broadcastAddr.sin_port = htons(8888);
+    
+    char *json;
+    if ((json = JSONFromMessage(message)) == NULL)
+    {
+        fprintf(stderr, "SERIOUS APP ERROR : JSONFromMessage returned nil\n");
+        kill(getpid(), SIGTERM);
+    }
+    
+    ret = sendto(sd, json, strlen(json), 0, (struct sockaddr*)&broadcastAddr, sizeof broadcastAddr);
     if (ret<0)
     {
         printf("Error: Could not open send broadcast");
@@ -72,6 +142,7 @@ void sendBroadcastMessage(char *text)
         kill(getpid(), SIGTERM);
     }
     
-    // Get responses here using recvfrom if you want...
+    free(json);
+    
     close(sd);
 }

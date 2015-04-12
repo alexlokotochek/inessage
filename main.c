@@ -43,6 +43,8 @@ int main(int argc, char **argv)
     
     pid_t serverPid = launchServer(PORT, pipe_fd[1]);
 
+    printf("Client's pid : %d\nServer's pid : %d\n", getpid(), serverPid);
+    
     CHILD_PID = serverPid;
 
     struct sigaction sa;
@@ -77,13 +79,25 @@ int main(int argc, char **argv)
             char *sendline = getString();
             
             Message *msg = (Message *)malloc(sizeof(Message));
-            msg->sender = (char *)malloc(20);
-            strcat(msg->sender, "192.168.0.105");
             msg->reciever = (char *)malloc(20);
             strcat(msg->reciever, ip);
             msg->text = sendline;
             
             sendMessage(msg);
+            
+            releaseMessage(msg);
+            printf("Enter a command : ");
+        }
+        
+        if (strcmp(buf, "broadcast") == 0)
+        {
+            printf("Enter a message : ");
+            char *sendline = getString();
+            
+            Message *msg = (Message *)malloc(sizeof(Message));
+            msg->text = sendline;
+            
+            sendBroadcastMessage(msg);
             
             releaseMessage(msg);
             printf("Enter a command : ");

@@ -10,13 +10,14 @@
 void didRecieveMessage(char *json, int fd)
 {
     Message *message;
-    printf("\n");
-    printMessage(message);
     if ((message =  messageFromJSON(json)) == NULL)
     {
         fprintf(stderr, "MSG_RCV : messageFromJSON returns nil");
         return;
     }
+    
+    printf("\n");
+    printMessage(message);
     
     if (!strcmp(message->text, "request_answer"))
     {

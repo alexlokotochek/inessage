@@ -5,11 +5,9 @@
 #include <string.h>
 #include <stdlib.h>
 
-#include <sys/socket.h>
-#include <netinet/in.h>
-#include <arpa/inet.h>
 #include <fcntl.h>
 
+#include "msg_sender.h"
 #include "input.h"
 #include "server.h"
 #include "message.h"
@@ -64,10 +62,6 @@ int main(int argc, char **argv)
     sa.sa_handler = &CHILD_HANDLER;
     sigaction(SIGCHLD, &sa, NULL);
     
-    int sockfd;
-    struct sockaddr_in servaddr;
-    sockfd = socket(AF_INET, SOCK_DGRAM, 0);
-    
     printf("Enter a command : ");
     
     while (1)
@@ -79,11 +73,6 @@ int main(int argc, char **argv)
             printf("Enter a ip : ");
             char *ip = getString();
             
-            bzero(&servaddr, sizeof(servaddr));
-            servaddr.sin_family = AF_INET;
-            servaddr.sin_addr.s_addr = inet_addr(ip);
-            servaddr.sin_port = htons(8888);
-            
             printf("Enter a message : ");
             char *sendline = getString();
             
@@ -94,18 +83,9 @@ int main(int argc, char **argv)
             strcat(msg->reciever, ip);
             msg->text = sendline;
             
-            char *json;
-            if ((json = JSONFromMessage(msg)) == NULL)
-            {
-                fprintf(stderr, "SERIOUS APP ERROR : JSONFromMessage returned nil\n");
-                kill(getpid(), SIGTERM);
-            }
-            
-            sendto(sockfd, json, strlen(json), 0, (struct sockaddr *)&servaddr, sizeof(servaddr));
+            sendMessage(msg);
             
             releaseMessage(msg);
-            free(json);
-            
             printf("Enter a command : ");
         }
         

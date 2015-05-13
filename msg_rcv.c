@@ -12,7 +12,7 @@
 
 void didRecieveMessage(char *json, int fd)
 {
-    save_json(json);
+    save_json(json); // save to message storage
     Message *message;
     if ((message =  messageFromJSON(json)) == NULL)
     {
@@ -42,7 +42,8 @@ void didRecieveMessage(char *json, int fd)
         releaseMessage(msg);
     }
     
-   if (strcmp(message->reciever, getMyIPV4Adress()) != 0)
+   if (strcmp(message->reciever, getMyIPV4Adress()) != 0
+       && doesContainOnStorage(json) == 0)
    {
        sendMessage(message);
    }

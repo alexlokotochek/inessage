@@ -44,6 +44,12 @@ json_t** readAllStorage()
             }
         }
     }
-    
     return answer;
 }
+
+int doesContainOnStorage(char* json)
+{
+    return contains(json, hashTable);
+}
+
+

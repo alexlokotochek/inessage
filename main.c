@@ -11,8 +11,9 @@
 #include "input.h"
 #include "server.h"
 #include "message.h"
-#include "msg_sender.c"
-#include "storage.c"
+#include "storage.h"
+#include "jansson.h"
+#include "hash.h"
 
 #define PORT 8888
 
@@ -68,7 +69,7 @@ int main(int argc, char **argv)
     
     // список ip, к которым пользователь прибиндился, в msg_sender.c
     // создание пустой хэш-таблицы
-    initStorage();
+    init_storage();
     
     printf("Enter a command : ");
     

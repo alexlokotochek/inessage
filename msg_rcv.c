@@ -6,9 +6,9 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <fcntl.h>
-#include "local.c"
-#include "msg_sender.c"
-#include "storage.c"
+#include "local.h"
+#include "msg_sender.h"
+#include "storage.h"
 
 void didRecieveMessage(char *json, int fd)
 {

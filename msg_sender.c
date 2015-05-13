@@ -13,8 +13,6 @@
 #include "local.h"
 
 // список ip, к которым пользователь прибиндился
-char** friendsIP_list = NULL;
-int numberOfBinds = 0;
 
 void sendMessage(Message *message)
 {

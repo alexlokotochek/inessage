@@ -1,13 +1,11 @@
 #include <string.h>
 #include <stdio.h>
-#include "message.c"
+#include "storage.h"
 #include "message.h"
 #include "hash.h"
-#include "hash.c"
+#include "jansson.h"
 
-struct Table* hashTable;
-
-void initStorage()
+void init_storage()
 {
     hashTable = createTable(16);
 }

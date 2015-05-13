@@ -2,20 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <stdlib.h>
-
-struct ListNode{
-    char* key;
-    void* data;
-    struct ListNode* next;
-    struct ListNode* prev;
-};
-
-struct Table{
-    int numberOfCells;
-    int numberOfElements;
-    struct ListNode** cell;
-};
-
+#include "hash.h"
 struct Table* createTable(int size){
     struct Table* hashTable = (struct Table*)malloc(size*sizeof(struct Table));
     hashTable->cell = (struct ListNode**)malloc(size*sizeof(struct ListNode*));

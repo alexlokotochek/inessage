@@ -1,3 +1,20 @@
+
+struct ListNode{
+    char* key;
+    void* data;
+    struct ListNode* next;
+    struct ListNode* prev;
+};
+
+struct Table{
+    int numberOfCells;
+    int numberOfElements;
+    struct ListNode** cell;
+};
+
+
+struct Table* hashTable;
+
 struct Table* createTable(int size);
 
 int hashFunction(char* key, int size);

@@ -6,6 +6,8 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <fcntl.h>
+#include "local.c"
+#include "msg_sender.c"
 
 void didRecieveMessage(char *json, int fd)
 {
@@ -38,5 +40,11 @@ void didRecieveMessage(char *json, int fd)
         
         releaseMessage(msg);
     }
+    
+   if (strcmp(message->reciever, getMyIPV4Adress()) != 0)
+   {
+       sendMessage(message);
+   }
+    
     releaseMessage(message);
 }

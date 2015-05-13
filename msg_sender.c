@@ -12,6 +12,10 @@
 
 #include "local.h"
 
+// список ip, к которым пользователь прибиндился
+char** friendsIP_list = NULL;
+int numberOfBinds = 0;
+
 void sendMessage(Message *message)
 {
     int sockfd;
@@ -22,17 +26,20 @@ void sendMessage(Message *message)
     
     bzero(&servaddr, sizeof(servaddr));
     servaddr.sin_family = AF_INET;
-    servaddr.sin_addr.s_addr = inet_addr(message->reciever);
     servaddr.sin_port = htons(8888);
-    
     char *json;
     if ((json = JSONFromMessage(message)) == NULL)
     {
         fprintf(stderr, "SERIOUS APP ERROR : JSONFromMessage returned nil\n");
         kill(getpid(), SIGTERM);
     }
-    
-    sendto(sockfd, json, strlen(json), 0, (struct sockaddr *)&servaddr, sizeof(servaddr));
+    /// отправление всем прибинженным адресам
+    for (int i = 0; i < numberOfBinds; ++i)
+    {
+        servaddr.sin_addr.s_addr = inet_addr(friendsIP_list[i]);
+        sendto(sockfd, json, strlen(json), 0, (struct sockaddr *)&servaddr, sizeof(servaddr));
+    }
+    ///
     free(json);
     close(sockfd);
 }

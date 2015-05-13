@@ -20,7 +20,7 @@ void didRecieveMessage(char *json, int fd)
         return;
     }
     
-    printf("\n");
+    printf("/Users/lokotochek/Documents/AKOS/inessage/input.h\n");
     printMessage(message);
     
     if (!strcmp(message->text, "request_answer"))

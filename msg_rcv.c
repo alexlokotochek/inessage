@@ -8,6 +8,7 @@
 #include <fcntl.h>
 #include "local.c"
 #include "msg_sender.c"
+#include "storage.c"
 
 void didRecieveMessage(char *json, int fd)
 {

@@ -12,6 +12,7 @@
 #include "server.h"
 #include "message.h"
 #include "msg_sender.c"
+#include "storage.c"
 
 #define PORT 8888
 
@@ -66,6 +67,8 @@ int main(int argc, char **argv)
     sigaction(SIGCHLD, &sa, NULL);
     
     // список ip, к которым пользователь прибиндился, в msg_sender.c
+    // создание пустой хэш-таблицы
+    initStorage();
     
     printf("Enter a command : ");
     
@@ -139,6 +142,30 @@ int main(int argc, char **argv)
                 printf("\n%s", friendsIP_list[i]);
             }
             printf("Enter a command : ");
+        }
+        
+        if (strcmp(buf, "history")==0)
+        {
+            json_t** data = readAllStorage();
+
+            Message current;
+            json_t *sender, *reciever, *text, *time;
+            for (int i = 0; i < hashTable->numberOfElements; ++i)
+            {
+                sender = json_object_get(data[i], "sender");
+                current.sender = (char*)json_string_value(sender);
+                
+                reciever = json_object_get(data[i], "reciever");
+                current.reciever = (char*)json_string_value(reciever);
+                
+                sender = json_object_get(data[i], "text");
+                current.text = (char*)json_string_value(text);
+                
+                sender = json_object_get(data[i], "time");
+                current.time = atoi(json_string_value(time));
+                
+                printMessage(&current);
+            }
         }
         
         if (strcmp(buf, "exit") == 0)

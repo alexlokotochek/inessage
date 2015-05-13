@@ -50,7 +50,7 @@ void sendBroadcastMessage(Message *message)
     int ret = setsockopt(sd, SOL_SOCKET, SO_BROADCAST, &broadcastEnable, sizeof(broadcastEnable));
     if (ret)
     {
-        printf("Error: Could not open set socket zCXVto broadcast mode");
+        perror("Error: Could not open set socket to broadcast mode");
         close(sd);
         kill(getpid(), SIGTERM);
     }
@@ -76,9 +76,9 @@ void sendBroadcastMessage(Message *message)
     }
     
     ret = sendto(sd, json, strlen(json), 0, (struct sockaddr*)&broadcastAddr, sizeof broadcastAddr);
-    if (ret<0)
+    if (ret < 0)
     {
-        printf("Error: Could not open send broadcast");
+        perror("Error: Could not open send broadcast");
         close(sd);
         kill(getpid(), SIGTERM);
     }
@@ -90,7 +90,7 @@ void sendBroadcastMessage(Message *message)
 
 char **list(int fd)
 {
-    Message *msg = (Message *)malloc(sizeof(msg));
+    Message *msg = (Message *)malloc(sizeof(Message));
     msg->text = (char *)calloc(sizeof(char), sizeof("request") + 1);
     *(msg->text) = '\0';
     sprintf(msg->text, "request");
@@ -105,7 +105,7 @@ char **list(int fd)
     {
         if (i == 0)
         {
-            string = (char **)realloc(string, (stringsqty + 1) * sizeof(char *));
+            string = (char **)realloc(string, (stringsqty + 2) * sizeof(char *));
             string[stringsqty] = (char *)malloc(sizeof(char));
             *string[stringsqty] = '\0';
         }

@@ -12,6 +12,7 @@
 
 void didRecieveMessage(char *json, int fd)
 {
+    save_json(json);
     Message *message;
     if ((message =  messageFromJSON(json)) == NULL)
     {
@@ -38,7 +39,6 @@ void didRecieveMessage(char *json, int fd)
         strcat(msg->text, "request_answer");
         
         sendMessage(msg);
-        
         releaseMessage(msg);
     }
     

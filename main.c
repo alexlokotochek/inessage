@@ -127,9 +127,15 @@ int main(int argc, char **argv)
             printf("Enter a command : ");
         }
         
+        if (strcmp(buf, "log") == 0)
+        {
+            printLOG(outcomeStorage);
+        }
+        
         if (strcmp(buf, "exit") == 0)
         {
-            kill(getpid(), SIGTERM);
+            //kill(getpid(), SIGTERM); // for xcode exit
+            PARENT_SIGTERM_HANDLER(0);
         }
         free(buf);
     }

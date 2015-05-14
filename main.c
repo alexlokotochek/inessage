@@ -40,7 +40,7 @@ void CHILD_HANDLER(int signal_number)
 
 int main(int argc, char **argv)
 {
-    int friendsNumber;
+    int friendsNumber = 0;
     printf("Enter Friends Number : ");
     scanf("%d\n", &friendsNumber);
     char **neighbours = (char **)malloc((friendsNumber + 1) * sizeof(char *));
@@ -99,7 +99,7 @@ int main(int argc, char **argv)
             msg->last_sender = (char *)malloc(20);
             strcat(msg->reciever, ip);
             msg->text = sendline;
-            msg->time = time(NULL);
+            msg->time = (long)time(NULL);
             
             for(int i = 0; i < friendsNumber; ++i)
                 sendMessage(msg, neighbours[i]);
@@ -117,7 +117,6 @@ int main(int argc, char **argv)
             msg->text = sendline;
             msg->last_sender = getMyIPV4Adress();
             msg->time = time(NULL);
-
             
             sendBroadcastMessage(msg);
             

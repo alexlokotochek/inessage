@@ -9,7 +9,7 @@ typedef struct
     char *reciever;
     char *text;
     char *last_sender;
-    int time;
+    long time;
     
 } Message;
 

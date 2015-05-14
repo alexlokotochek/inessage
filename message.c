@@ -158,5 +158,5 @@ char *JSONFromMessage(Message *msg)
 
 void printMessage(Message *msg)
 {
-    printf("FROM : %s\nTO : %s\nLAST_SENDER : %s\nTEXT : %s\nWHEN : %d\n", msg->sender, msg->reciever, msg->last_sender, msg->text, msg->time);
+    printf("FROM : %s\nTO : %s %zu\nLAST_SENDER : %s\nTEXT : %s\nWHEN : %d\n", msg->sender, msg->reciever, strlen(msg->reciever), msg->last_sender, msg->text, msg->time);
 }

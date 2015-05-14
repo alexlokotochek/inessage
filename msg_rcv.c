@@ -40,7 +40,8 @@ void didRecieveMessage(char *json, char **neighbours)
         // пересылаем всем
         for (int i = 0; i < numberOfNeighbours; ++i)
         {
-            
+            printf("neighbours - %zu %s\n", strlen(neighbours[i]), neighbours[i]);
+            printf("lastsender - %zu %s\n", strlen(message->last_sender), message->last_sender);
             if (strcmp(neighbours[i], message->last_sender) != 0)
             {
                 // кроме того, от кого оно пришло

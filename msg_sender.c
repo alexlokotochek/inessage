@@ -20,6 +20,8 @@ void sendMessage(Message *message, char *address)
     
     message->last_sender = getMyIPV4Adress();
     
+    printMessage(message);
+    
     bzero(&servaddr, sizeof(servaddr));
     servaddr.sin_family = AF_INET;
     servaddr.sin_addr.s_addr = inet_addr(address);

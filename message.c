@@ -65,7 +65,6 @@ Message *messageFromJSON(char *json)
     if(!data)
     {
         fprintf(stderr, "JSON error: on line %d: %s\n", error.line, error.text);
-        abort();
         return NULL;
     }
     

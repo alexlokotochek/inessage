@@ -101,7 +101,7 @@ char **list(int fd)
     Message *msg = (Message *)malloc(sizeof(Message));
     msg->text = (char *)calloc(sizeof(char), sizeof("request") + 1);
     *(msg->text) = '\0';
-    sprintf(msg->text, "request");
+    strcat(msg->text, "request");
     sendBroadcastMessage(msg);
     
     sleep(3);

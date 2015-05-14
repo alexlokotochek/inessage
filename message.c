@@ -2,6 +2,7 @@
 #include <unistd.h>
 #include <string.h>
 #include <stdlib.h>
+#include <time.h>
 #include "message.h"
 
 #include "jansson.h"
@@ -104,7 +105,7 @@ Message *messageFromJSON(char *json)
     }
     
     time = json_object_get(data, TIME_KEY);
-    if(!json_is_string(time))
+    if(!json_is_number(time))
     {
         fprintf(stderr, "JSON error: time is not a number\n");
         json_decref(data);
@@ -139,12 +140,11 @@ char *JSONFromMessage(Message *msg)
         return NULL;
     }
     
-    msg->time = 0;
     
     char *json = (char *)malloc(1024);
     memset(json, 0, 1024);
     
-    sprintf(json, "{\"%s\":\"%s\",\"%s\":\"%s\",\"%s\":\"%s\",\"%s\":\"%s\",\"%s\":\"%d\"}", SENDER_KEY, msg->sender, RECIEVER_KEY, msg->reciever, LAST_SENDER_KEY, msg->last_sender, TEXT_KEY, msg->text, TIME_KEY, msg->time);
+    sprintf(json, "{\"%s\":\"%s\",\"%s\":\"%s\",\"%s\":\"%s\",\"%s\":\"%s\",\"%s\":%ld}", SENDER_KEY, msg->sender, RECIEVER_KEY, msg->reciever, LAST_SENDER_KEY, msg->last_sender, TEXT_KEY, msg->text, TIME_KEY, msg->time);
     
     if (strlen(json) == 1024)
     {
@@ -158,5 +158,5 @@ char *JSONFromMessage(Message *msg)
 
 void printMessage(Message *msg)
 {
-    printf("FROM : %s\nTO : %s %zu\nLAST_SENDER : %s\nTEXT : %s\nWHEN : %d\n", msg->sender, msg->reciever, strlen(msg->reciever), msg->last_sender, msg->text, msg->time);
+    printf("FROM : %s\nTO : %s %zu\nLAST_SENDER : %s\nTEXT : %s\nWHEN : %s\n", msg->sender, msg->reciever, strlen(msg->reciever), msg->last_sender, msg->text, ctime(&(msg->time)));
 }

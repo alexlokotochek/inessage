@@ -101,6 +101,7 @@ int main(int argc, char **argv)
             msg->last_sender = (char *)malloc(20);
             strcat(msg->reciever, ip);
             msg->text = sendline;
+            msg->time = (long)time(NULL);
             
             saveMessage_msg(msg, outcomeStorage);
             
@@ -119,6 +120,7 @@ int main(int argc, char **argv)
             Message *msg = (Message *)malloc(sizeof(Message));
             msg->text = sendline;
             msg->last_sender = getMyIPV4Adress();
+            msg->time = time(NULL);
             
             sendBroadcastMessage(msg);
             

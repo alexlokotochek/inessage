@@ -7,6 +7,7 @@
 //
 
 #include "storage.h"
+#include "message.h"
 #include <stdlib.h>
 
 
@@ -28,19 +29,19 @@ void saveMessage_msg(Message* msg, struct Table* storage)
 
 void printLOG(struct Table* storage)
 {
-    Message* msg = (Message*)malloc(sizeof(Message));
     for (int i = 0; i < storage->numberOfCells; ++i)
     {
         if (storage->cell[i] != NULL)
         {
             struct ListNode* currentNode = storage->cell[i];
             // current node == char* json
-            msg = messageFromJSON(currentNode->key);
+            Message* msg = messageFromJSON(currentNode->key);
             printMessage(msg);
             while (currentNode->next != NULL)
             {
+                releaseMessage(msg);
                 currentNode = currentNode->next;
-                msg = messageFromJSON(currentNode->key);
+                Message* msg = messageFromJSON(currentNode->key);
                 printMessage(msg);
             }
         }

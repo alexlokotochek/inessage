@@ -116,10 +116,9 @@ int main(int argc, char **argv)
         if (strcmp(buf, "b") == 0)
         {
             printf("Enter a message : ");
-            char *sendline = getString();
             
             Message *msg = (Message *)malloc(sizeof(Message));
-            msg->text = sendline;
+            msg->text = getString();
             msg->last_sender = getMyIPV4Adress();
             msg->time = time(NULL);
             
@@ -127,13 +126,15 @@ int main(int argc, char **argv)
             
             saveMessage_msg(msg, outcomeStorage);
             
+            printLOG(outcomeStorage);
+            
             releaseMessage(msg);
             printf("Enter a command : ");
         }
         
         if (strcmp(buf, "exit") == 0)
         {
-            kill(getpid(), SIGTERM);
+            PARENT_SIGTERM_HANDLER(0);
         }
         free(buf);
     }

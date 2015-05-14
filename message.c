@@ -65,6 +65,7 @@ Message *messageFromJSON(char *json)
     if(!data)
     {
         fprintf(stderr, "JSON error: on line %d: %s\n", error.line, error.text);
+        abort();
         return NULL;
     }
     
@@ -151,12 +152,23 @@ char *JSONFromMessage(Message *msg)
         fprintf(stderr, "JSONFromMessage : JSON string is out of bounds\n");
         return NULL;
     }
-    json = (char *)realloc(json, strlen(json));
+    json = (char *)realloc(json, strlen(json) + 1);
+    
+    Message *checker = messageFromJSON(json);
+    if (checker == NULL)
+    {
+        fprintf(stderr, "messageFromJSON returns non suitable");
+        return NULL;
+    }
+    releaseMessage(checker);
     
     return json;
 }
 
 void printMessage(Message *msg)
 {
-    printf("FROM : %s\nTO : %s %zu\nLAST_SENDER : %s\nTEXT : %s\nWHEN : %s\n", msg->sender, msg->reciever, strlen(msg->reciever), msg->last_sender, msg->text, ctime(&(msg->time)));
+    if (msg)
+    {
+        printf("FROM : %s\nTO : %s %zu\nLAST_SENDER : %s\nTEXT : %s\nWHEN : %s\n", msg->sender, msg->reciever, strlen(msg->reciever), msg->last_sender, msg->text, ctime(&(msg->time)));
+    }
 }

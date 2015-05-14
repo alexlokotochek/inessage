@@ -101,18 +101,19 @@ pid_t launchServer(int port, char **neighbours)
     if (!LOG)
         close(STDERR_FILENO);
     
-    memset(buf, 0, 512);
-    
     struct Table* inputStorage = initializeStorage();
     
     while (1)
     {
-        ssize_t n = recvfrom(s, buf, 512, 0, (struct sockaddr *) &si_other, &slen);
+        memset(buf, 0, 512);
+        char c = 0; int i = 0;
+        for (i = 0; (recvfrom(s, &c, 1, 0, (struct sockaddr *) &si_other, &slen)) > 0; i++)
+        {
+            buf[i] = c;
+            buf[i+1] = '\0';
+        }
         
-        if (n < 512)
-            buf[n] = '\0';
-        else
-            buf[511] = '\0';
+        printf("yo\n%d %zu\n", i, strlen(buf));
         
         if (strlen(buf))
         {

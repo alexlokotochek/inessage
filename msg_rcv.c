@@ -44,7 +44,8 @@ void didRecieveMessage(char *json, char **neighbours)
                 sendMessage(message, neighbours[i]);
             }
         }
-    }else
+    }
+    else
     {
         // сообщение пришло нам
         printf("You have a message:\n");

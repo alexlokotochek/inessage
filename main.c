@@ -38,10 +38,9 @@ void CHILD_HANDLER(int signal_number)
 
 int main(int argc, char **argv)
 {
-    int pipe_fd[2];
-    pipe(pipe_fd);
+    char **neighbours = NULL;
     
-    pid_t serverPid = launchServer(PORT, pipe_fd[1]);
+    pid_t serverPid = launchServer(PORT, neighbours);
 
     printf("Client's pid : %d\nServer's pid : %d\n", getpid(), serverPid);
     
@@ -109,7 +108,7 @@ int main(int argc, char **argv)
         
         if (strcmp(buf, "exit") == 0)
         {
-            kill(getpid(), SIGINT);
+            kill(getpid(), SIGTERM);
         }
         free(buf);
     }

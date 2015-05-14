@@ -24,12 +24,12 @@ void SIGTERM_HANDLER(int signal_number)
     return;
 }
 
-pid_t launchServer(int port, int fd_write)
+pid_t launchServer(int port, char **neighbours)
 {
     /* Our process ID and Session ID */
     pid_t pid, sid;
     
-    pid_t clientPid = getpid();
+//    pid_t clientPid = getpid();
     
     /* Fork off the parent process */
     pid = fork();
@@ -112,7 +112,7 @@ pid_t launchServer(int port, int fd_write)
         
         if (strlen(buf))
         {
-            didRecieveMessage(buf, fd_write);
+            didRecieveMessage(buf, neighbours);
         }
         
         if (shouldTerminate)

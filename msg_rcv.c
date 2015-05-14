@@ -7,7 +7,7 @@
 #include <unistd.h>
 #include <fcntl.h>
 
-void didRecieveMessage(char *json, int fd)
+void didRecieveMessage(char *json, char **neighbours)
 {
     Message *message;
     if ((message =  messageFromJSON(json)) == NULL)

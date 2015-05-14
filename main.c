@@ -100,7 +100,7 @@ int main(int argc, char **argv)
             msg->text = sendline;
             
             for(int i = 0; i < friendsNumber; ++i)
-                sendMessage(msg, msg->reciever);
+                sendMessage(msg, neighbours[i]);
             
             releaseMessage(msg);
             printf("Enter a command : ");

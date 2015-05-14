@@ -1,6 +1,5 @@
 #include "msg_rcv.h"
 #include "string.h"
-// sanechek
 #include "msg_sender.h"
 #include "local.h"
 

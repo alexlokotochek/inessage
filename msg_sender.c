@@ -12,17 +12,18 @@
 
 #include "local.h"
 
-void sendMessage(Message *message, char *adress)
+void sendMessage(Message *message, char *address)
 {
     int sockfd;
     sockfd = socket(AF_INET, SOCK_DGRAM, 0);
     struct sockaddr_in servaddr;
     
     message->sender = getMyIPV4Adress();
+    message->last_sender = message->sender;
     
     bzero(&servaddr, sizeof(servaddr));
     servaddr.sin_family = AF_INET;
-    servaddr.sin_addr.s_addr = inet_addr(message->reciever);
+    servaddr.sin_addr.s_addr = inet_addr(address);
     servaddr.sin_port = htons(8888);
     
     char *json;

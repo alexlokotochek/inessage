@@ -8,6 +8,7 @@
 
 static char SENDER_KEY[] = "sender";
 static char RECIEVER_KEY[] = "reciever";
+static char LAST_SENDER_KEY[] = "last_sender";
 static char TEXT_KEY[] = "text";
 static char TIME_KEY[] = "time";
 
@@ -29,6 +30,13 @@ void releaseMessage(Message *msg)
         fprintf(stderr, "SERIOUS APP ERROR : releaseMessage : Can't handle nil msg->reciever\n");
     }
     free(msg->reciever);
+    
+    
+    if (msg->last_sender == NULL)
+    {
+        fprintf(stderr, "SERIOUS APP ERROR : releaseMessage : Can't handle nil msg->last_sender\n");
+    }
+    free(msg->last_sender);
     
     if (msg->text == NULL)
     {
@@ -56,7 +64,7 @@ Message *messageFromJSON(char *json)
         return NULL;
     }
     
-    json_t *sender, *reciever, *text, *time;
+    json_t *sender, *reciever, *last_sender, *text, *time;
     
     sender = json_object_get(data, SENDER_KEY);
     if(!json_is_string(sender))
@@ -73,6 +81,16 @@ Message *messageFromJSON(char *json)
         json_decref(data);
         return NULL;
     }
+    
+    
+    last_sender = json_object_get(data, LAST_SENDER_KEY);
+    if(!json_is_string(last_sender))
+    {
+        fprintf(stderr, "JSON error: last_sender is not a string\n");
+        json_decref(data);
+        return NULL;
+    }
+
     
     text = json_object_get(data, TEXT_KEY);
     if(!json_is_string(text))
@@ -98,6 +116,9 @@ Message *messageFromJSON(char *json)
     msg->reciever = (char *)malloc(strlen(json_string_value(reciever)));
     strcpy(msg->reciever, json_string_value(reciever));
     
+    msg->last_sender = (char *)malloc(strlen(json_string_value(last_sender)));
+    strcpy(msg->last_sender, json_string_value(last_sender));
+    
     msg->text = (char *)malloc(strlen(json_string_value(text)));
     strcpy(msg->text, json_string_value(text));
            
@@ -120,7 +141,7 @@ char *JSONFromMessage(Message *msg)
     char *json = (char *)malloc(1024);
     memset(json, 0, 1024);
     
-    sprintf(json, "{\"%s\":\"%s\",\"%s\":\"%s\",\"%s\":\"%s\",\"%s\":\"%d\"}", SENDER_KEY, msg->sender, RECIEVER_KEY, msg->reciever, TEXT_KEY, msg->text, TIME_KEY, msg->time);
+    sprintf(json, "{\"%s\":\"%s\",\"%s\":\"%s\",\"%s\":\"%s\",\"%s\":\"%s\",\"%s\":\"%d\"}", SENDER_KEY, msg->sender, RECIEVER_KEY, msg->reciever, LAST_SENDER_KEY, msg->last_sender, TEXT_KEY, msg->text, TIME_KEY, msg->time);
     
     if (strlen(json) == 1024)
     {
@@ -134,5 +155,5 @@ char *JSONFromMessage(Message *msg)
 
 void printMessage(Message *msg)
 {
-    printf("FROM : %s\nTO : %s\nTEXT : %s\nWHEN : %d\n", msg->sender, msg->reciever, msg->text, msg->time);
+    printf("FROM : %s\nTO : %s\nLAST_SENDER : %s\nTEXT : %s\nWHEN : %d\n", msg->sender, msg->reciever, msg->last_sender, msg->text, msg->time);
 }

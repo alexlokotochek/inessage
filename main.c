@@ -61,6 +61,10 @@ int main(int argc, char **argv)
     sigaction(SIGKILL, &sa, NULL);
     
     memset(&sa, 0, sizeof(sa));
+    sa.sa_handler = &PARENT_SIGTERM_HANDLER;
+    sigaction(SIGSTOP, &sa, NULL);
+    
+    memset(&sa, 0, sizeof(sa));
     sa.sa_handler = &CHILD_HANDLER;
     sigaction(SIGCHLD, &sa, NULL);
     
@@ -100,12 +104,6 @@ int main(int argc, char **argv)
             sendBroadcastMessage(msg);
             
             releaseMessage(msg);
-            printf("Enter a command : ");
-        }
-        
-        if (strcmp(buf, "l") == 0)
-        {
-            char **availableIPs = list(pipe_fd[0]);
             printf("Enter a command : ");
         }
         

@@ -39,7 +39,7 @@ void sendMessage(Message *message)
 
 void sendBroadcastMessage(Message *message)
 {
-    int sd = socket(PF_INET, SOCK_DGRAM, IPPROTO_UDP);
+    int sd = socket(AF_INET, SOCK_DGRAM, IPPROTO_UDP);
     if (sd<=0)
     {
         printf("Error: Could not open socket");
@@ -86,45 +86,4 @@ void sendBroadcastMessage(Message *message)
     free(json);
     
     close(sd);
-}
-
-char **list(int fd)
-{
-    Message *msg = (Message *)malloc(sizeof(msg));
-    msg->text = (char *)calloc(sizeof(char), sizeof("request") + 1);
-    *(msg->text) = '\0';
-    sprintf(msg->text, "request");
-    sendBroadcastMessage(msg);
-    
-    sleep(3);
-    
-    char **string = (char **)malloc(sizeof(char *));
-    char c = 0;
-    size_t stringsqty = 0;
-    for (size_t i = 0; (read(fd, &c,  1)) > 0 && c != EOF && c != '\0'; i++)
-    {
-        if (i == 0)
-        {
-            string = (char **)realloc(string, (stringsqty + 1) * sizeof(char *));
-            string[stringsqty] = (char *)malloc(sizeof(char));
-            *string[stringsqty] = '\0';
-        }
-        
-        if (c == '\n')
-        {
-            i = -1;
-            stringsqty++;
-        }
-        else
-        {
-            string[stringsqty] = (char *)realloc(string[stringsqty], i + 2);
-            string[stringsqty][i] = c;
-            string[stringsqty][i+1] = '\0';
-        }
-    }
-    string = (char **)realloc(string, (stringsqty + 1) * sizeof(char *));
-    string[stringsqty] = (char *)malloc(sizeof(char));
-    string[stringsqty][0] = '\0';
-    
-    return string;
 }

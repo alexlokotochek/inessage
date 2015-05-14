@@ -1,3 +1,6 @@
+#ifndef __msg_sender__c
+#define __msg_sender__c
+
 #include "msg_sender.h"
 
 #include <sys/socket.h>
@@ -133,3 +136,5 @@ char **list(int fd)
     
     return string;
 }
+
+#endif

@@ -1,3 +1,7 @@
+
+#ifndef __msg_rcv__c
+#define __msg_rcv__c
+
 #include "msg_rcv.h"
 #include "string.h"
 #include "msg_sender.h"
@@ -48,3 +52,5 @@ void didRecieveMessage(char *json, int fd)
     
     releaseMessage(message);
 }
+
+#endif

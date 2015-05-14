@@ -1,8 +1,10 @@
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <stdlib.h>
 #include "hash.h"
+
 struct Table* createTable(int size){
     struct Table* hashTable = (struct Table*)malloc(size*sizeof(struct Table));
     hashTable->cell = (struct ListNode**)malloc(size*sizeof(struct ListNode*));

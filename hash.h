@@ -1,4 +1,9 @@
 
+#ifndef __hash__h__
+#define __hash__h__
+
+#include <stdio.h>
+
 struct ListNode{
     char* key;
     void* data;
@@ -32,3 +37,5 @@ struct Table* hashTableResize(struct Table* oldHashTable);
 void clearTable(struct Table* hashTable);
 
 struct Table* getDataFromConsole(struct Table* hashTable, int number);
+
+#endif

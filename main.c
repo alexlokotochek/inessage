@@ -113,6 +113,7 @@ int main(int argc, char **argv)
             
             Message *msg = (Message *)malloc(sizeof(Message));
             msg->text = sendline;
+            msg->last_sender = getMyIPV4Adress();
             
             sendBroadcastMessage(msg);
             

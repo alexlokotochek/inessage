@@ -1,5 +1,5 @@
 #include <signal.h>
-
+//
 #include <stdio.h>
 #include <unistd.h>
 #include <string.h>
@@ -38,8 +38,17 @@ void CHILD_HANDLER(int signal_number)
 
 int main(int argc, char **argv)
 {
-    char **neighbours = NULL;
+    int friendsNumber;
+    printf("Enter Friends Number : ");
+    scanf("%d\n", &friendsNumber);
+    char **neighbours = (char **)malloc((friendsNumber + 1) * sizeof(char *));
     
+    for(int i = 0; i < friendsNumber; ++i)
+    {
+        char *Ip = getString();
+        neighbours[i] = Ip;
+    }
+    neighbours[friendsNumber] = NULL;
     
     pid_t serverPid = launchServer(PORT, neighbours);
 
@@ -87,7 +96,8 @@ int main(int argc, char **argv)
             strcat(msg->reciever, ip);
             msg->text = sendline;
             
-            sendMessage(msg, msg->reciever);
+            for(int i = 0; i < friendsNumber; ++i)
+                sendMessage(msg, msg->reciever);
             
             releaseMessage(msg);
             printf("Enter a command : ");

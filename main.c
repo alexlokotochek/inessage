@@ -126,8 +126,6 @@ int main(int argc, char **argv)
             
             saveMessage_msg(msg, outcomeStorage);
             
-            printLOG(outcomeStorage);
-            
             releaseMessage(msg);
             printf("Enter a command : ");
         }

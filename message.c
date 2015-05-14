@@ -18,6 +18,7 @@ void releaseMessage(Message *msg)
     if (msg == NULL)
     {
         fprintf(stderr, "releaseMessage : Can't handle nil msg\n");
+        return;
     }
     
     if (msg->sender == NULL)

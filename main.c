@@ -40,6 +40,7 @@ int main(int argc, char **argv)
 {
     char **neighbours = NULL;
     
+    
     pid_t serverPid = launchServer(PORT, neighbours);
 
     printf("Client's pid : %d\nServer's pid : %d\n", getpid(), serverPid);

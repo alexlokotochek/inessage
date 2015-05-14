@@ -6,7 +6,9 @@ typedef struct
     char *sender;
     char *reciever;
     char *text;
+    char *last_sender;
     int time;
+    
 } Message;
 
 void releaseMessage(Message *);

@@ -12,7 +12,7 @@
 
 #include "local.h"
 
-void sendMessage(Message *message)
+void sendMessage(Message *message, char *adress)
 {
     int sockfd;
     sockfd = socket(AF_INET, SOCK_DGRAM, 0);

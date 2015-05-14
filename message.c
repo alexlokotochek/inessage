@@ -2,6 +2,7 @@
 #include <unistd.h>
 #include <string.h>
 #include <stdlib.h>
+#include <time.h>
 #include "message.h"
 
 #include "jansson.h"
@@ -158,5 +159,5 @@ char *JSONFromMessage(Message *msg)
 
 void printMessage(Message *msg)
 {
-    printf("FROM : %s\nTO : %s %zu\nLAST_SENDER : %s\nTEXT : %s\nWHEN : %d\n", msg->sender, msg->reciever, strlen(msg->reciever), msg->last_sender, msg->text, msg->time);
+    printf("FROM : %s\nTO : %s %zu\nLAST_SENDER : %s\nTEXT : %s\nWHEN : %s\n", msg->sender, msg->reciever, strlen(msg->reciever), msg->last_sender, msg->text, ctime(&(msg->time)));
 }

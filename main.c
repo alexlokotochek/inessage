@@ -12,6 +12,7 @@
 #include "server.h"
 #include "message.h"
 #include "local.h"
+#include <time.h>
 
 #define PORT 8888
 
@@ -98,6 +99,7 @@ int main(int argc, char **argv)
             msg->last_sender = (char *)malloc(20);
             strcat(msg->reciever, ip);
             msg->text = sendline;
+            msg->time = time(NULL);
             
             for(int i = 0; i < friendsNumber; ++i)
                 sendMessage(msg, neighbours[i]);
@@ -114,6 +116,8 @@ int main(int argc, char **argv)
             Message *msg = (Message *)malloc(sizeof(Message));
             msg->text = sendline;
             msg->last_sender = getMyIPV4Adress();
+            msg->time = time(NULL);
+
             
             sendBroadcastMessage(msg);
             

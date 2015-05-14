@@ -16,6 +16,8 @@ void didRecieveMessage(char *json, char **neighbours)
         return;
     }
     
+    printMessage(message);
+    
     int numberOfNeighbours = 0;
     while (neighbours[numberOfNeighbours] != NULL)
     {

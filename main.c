@@ -93,6 +93,7 @@ int main(int argc, char **argv)
             
             Message *msg = (Message *)malloc(sizeof(Message));
             msg->reciever = (char *)malloc(20);
+            msg->last_sender = (char *)malloc(20);
             strcat(msg->reciever, ip);
             msg->text = sendline;
             

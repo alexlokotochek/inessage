@@ -23,4 +23,6 @@ void saveMessage_msg(Message* msg, struct Table* storage);
 
 int isContainMessage(Message* msg, struct Table* storage);
 
+int isContainJson(char* json, struct Table* storage);
+
 #endif /* defined(__inessage__storage__) */

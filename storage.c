@@ -52,3 +52,8 @@ int isContainMessage(Message* msg, struct Table* storage)
     char* json = JSONFromMessage(msg);
     return contains(json, storage);
 }
+
+int isContainJson(char* json, struct Table* storage)
+{
+    return contains(json, storage);
+}

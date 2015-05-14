@@ -114,8 +114,7 @@ pid_t launchServer(int port, char **neighbours)
         else
             buf[511] = '\0';
         
-        Message* msg = messageFromJSON(buf);
-        if (isContainMessage(msg, inputStorage) == 1)
+        if (isContainJson(buf, inputStorage) == 1)
         {
             memset(buf, 0, 512);
             continue;

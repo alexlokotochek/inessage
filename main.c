@@ -13,6 +13,7 @@
 #include "message.h"
 #include "local.h"
 #include "storage.h"
+#include <time.h>
 
 #define PORT 8888
 
@@ -40,8 +41,8 @@ void CHILD_HANDLER(int signal_number)
 
 int main(int argc, char **argv)
 {
-    int friendsNumber;
-    printf("Enter friends number : ");
+    int friendsNumber = 0;
+    printf("Enter Friends Number : ");
     scanf("%d\n", &friendsNumber);
     char **neighbours = (char **)malloc((friendsNumber + 1) * sizeof(char *));
     

@@ -4,7 +4,7 @@
 #include <stdlib.h>
 #include "message.h"
 
-#include "jansson.h"
+#include <jansson.h>
 
 static char SENDER_KEY[] = "sender";
 static char RECIEVER_KEY[] = "reciever";

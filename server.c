@@ -26,24 +26,31 @@ void SIGTERM_HANDLER(int signal_number)
 
 pid_t launchServer(int port, int fd_write)
 {
+    /* Our process ID and Session ID */
     pid_t pid, sid;
     
     pid_t clientPid = getpid();
     
+    /* Fork off the parent process */
     pid = fork();
     if (pid < 0)
     {
         fprintf(stderr, "Wrong pid\n");
         exit(EXIT_FAILURE);
     }
-    
+    /* If we got a good PID, then
+     we can exit the parent process. */
     if (pid > 0)
     {
         return pid;
     }
     
+    /* Change the file mode mask */
     umask(0);
     
+    /* Open any logs here */
+    
+    /* Create a new SID for the child process */
     sid = setsid();
     if (sid < 0)
     {
@@ -51,6 +58,7 @@ pid_t launchServer(int port, int fd_write)
         exit(EXIT_FAILURE);
     }
     
+    /* Change the current working directory */
     if ((chdir("/")) < 0)
     {
         fprintf(stderr, "Can't read source dir\n");

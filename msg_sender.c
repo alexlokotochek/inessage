@@ -1,6 +1,3 @@
-#ifndef __msg_sender__c
-#define __msg_sender__c
-
 #include "msg_sender.h"
 
 #include <sys/socket.h>
@@ -15,8 +12,6 @@
 
 #include "local.h"
 
-// список ip, к которым пользователь прибиндился
-
 void sendMessage(Message *message)
 {
     int sockfd;
@@ -27,20 +22,17 @@ void sendMessage(Message *message)
     
     bzero(&servaddr, sizeof(servaddr));
     servaddr.sin_family = AF_INET;
+    servaddr.sin_addr.s_addr = inet_addr(message->reciever);
     servaddr.sin_port = htons(8888);
+    
     char *json;
     if ((json = JSONFromMessage(message)) == NULL)
     {
         fprintf(stderr, "SERIOUS APP ERROR : JSONFromMessage returned nil\n");
         kill(getpid(), SIGTERM);
     }
-    /// отправление всем прибинженным адресам
-    for (int i = 0; i < numberOfBinds; ++i)
-    {
-        servaddr.sin_addr.s_addr = inet_addr(friendsIP_list[i]);
-        sendto(sockfd, json, strlen(json), 0, (struct sockaddr *)&servaddr, sizeof(servaddr));
-    }
-    ///
+    
+    sendto(sockfd, json, strlen(json), 0, (struct sockaddr *)&servaddr, sizeof(servaddr));
     free(json);
     close(sockfd);
 }
@@ -58,7 +50,7 @@ void sendBroadcastMessage(Message *message)
     int ret = setsockopt(sd, SOL_SOCKET, SO_BROADCAST, &broadcastEnable, sizeof(broadcastEnable));
     if (ret)
     {
-        perror("Error: Could not open set socket to broadcast mode");
+        printf("Error: Could not open set socket zCXVto broadcast mode");
         close(sd);
         kill(getpid(), SIGTERM);
     }
@@ -84,9 +76,9 @@ void sendBroadcastMessage(Message *message)
     }
     
     ret = sendto(sd, json, strlen(json), 0, (struct sockaddr*)&broadcastAddr, sizeof broadcastAddr);
-    if (ret < 0)
+    if (ret<0)
     {
-        perror("Error: Could not open send broadcast");
+        printf("Error: Could not open send broadcast");
         close(sd);
         kill(getpid(), SIGTERM);
     }
@@ -98,10 +90,10 @@ void sendBroadcastMessage(Message *message)
 
 char **list(int fd)
 {
-    Message *msg = (Message *)malloc(sizeof(Message));
+    Message *msg = (Message *)malloc(sizeof(msg));
     msg->text = (char *)calloc(sizeof(char), sizeof("request") + 1);
     *(msg->text) = '\0';
-    strcat(msg->text, "request");
+    sprintf(msg->text, "request");
     sendBroadcastMessage(msg);
     
     sleep(3);
@@ -113,7 +105,7 @@ char **list(int fd)
     {
         if (i == 0)
         {
-            string = (char **)realloc(string, (stringsqty + 2) * sizeof(char *));
+            string = (char **)realloc(string, (stringsqty + 1) * sizeof(char *));
             string[stringsqty] = (char *)malloc(sizeof(char));
             *string[stringsqty] = '\0';
         }
@@ -136,5 +128,3 @@ char **list(int fd)
     
     return string;
 }
-
-#endif

@@ -1,20 +1,14 @@
-
-#ifndef __msg_rcv__c
-#define __msg_rcv__c
-
 #include "msg_rcv.h"
 #include "string.h"
+
 #include "msg_sender.h"
 
 #include <stdlib.h>
 #include <unistd.h>
 #include <fcntl.h>
-#include "local.h"
-#include "storage.h"
 
 void didRecieveMessage(char *json, int fd)
 {
-    save_json(json); // save to message storage
     Message *message;
     if ((message =  messageFromJSON(json)) == NULL)
     {
@@ -22,7 +16,7 @@ void didRecieveMessage(char *json, int fd)
         return;
     }
     
-    printf("/Users/lokotochek/Documents/AKOS/inessage/input.h\n");
+    printf("\n");
     printMessage(message);
     
     if (!strcmp(message->text, "request_answer"))
@@ -41,16 +35,8 @@ void didRecieveMessage(char *json, int fd)
         strcat(msg->text, "request_answer");
         
         sendMessage(msg);
+        
         releaseMessage(msg);
     }
-    
-   if (strcmp(message->reciever, getMyIPV4Adress()) != 0
-       && doesContainOnStorage(json) == 0)
-   {
-       sendMessage(message);
-   }
-    
     releaseMessage(message);
 }
-
-#endif

@@ -11,9 +11,6 @@
 #include "input.h"
 #include "server.h"
 #include "message.h"
-#include "storage.h"
-#include "jansson.h"
-#include "hash.h"
 
 #define PORT 8888
 
@@ -67,10 +64,6 @@ int main(int argc, char **argv)
     sa.sa_handler = &CHILD_HANDLER;
     sigaction(SIGCHLD, &sa, NULL);
     
-    // список ip, к которым пользователь прибиндился, в msg_sender.c
-    // создание пустой хэш-таблицы
-    init_storage();
-    
     printf("Enter a command : ");
     
     while (1)
@@ -79,7 +72,7 @@ int main(int argc, char **argv)
         
         if (strcmp(buf, "w") == 0)
         {
-            printf("Enter ip : ");
+            printf("Enter a ip : ");
             char *ip = getString();
             
             printf("Enter a message : ");
@@ -113,59 +106,7 @@ int main(int argc, char **argv)
         if (strcmp(buf, "l") == 0)
         {
             char **availableIPs = list(pipe_fd[0]);
-            
-            /////
-            int i = 0;
-            while (availableIPs[i][0] != '\0')
-            {
-                printf("%s\n", availableIPs[i]);
-                ++i;
-            }
-            printf("Enter number of IPs to bind and them separating by newline: \n");
-            scanf("%d", &numberOfBinds);
-            friendsIP_list = (char**)malloc(numberOfBinds*sizeof(char*));
-            char* input = (char*)malloc(64*sizeof(input));
-            for (int i = 0; i < numberOfBinds; ++i)
-            {
-                scanf("%s", input);
-                friendsIP_list[i] = (char*)malloc(strlen(input));
-                strcpy(friendsIP_list[i], input);
-            }
-            free(input);
-            
             printf("Enter a command : ");
-        }
-        
-        if (strcmp(buf, "friends")==0)
-        {
-            for (int i = 0; i < numberOfBinds; ++i){
-                printf("\n%s", friendsIP_list[i]);
-            }
-            printf("Enter a command : ");
-        }
-        
-        if (strcmp(buf, "history")==0)
-        {
-            json_t** data = readAllStorage();
-
-            Message current;
-            json_t *sender, *reciever, *text, *time;
-            for (int i = 0; i < hashTable->numberOfElements; ++i)
-            {
-                sender = json_object_get(data[i], "sender");
-                current.sender = (char*)json_string_value(sender);
-                
-                reciever = json_object_get(data[i], "reciever");
-                current.reciever = (char*)json_string_value(reciever);
-                
-                sender = json_object_get(data[i], "text");
-                current.text = (char*)json_string_value(text);
-                
-                sender = json_object_get(data[i], "time");
-                current.time = atoi(json_string_value(time));
-                
-                printMessage(&current);
-            }
         }
         
         if (strcmp(buf, "exit") == 0)

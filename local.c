@@ -10,7 +10,6 @@
 #include <stdlib.h>
 #include <ifaddrs.h>
 
-
 char *getMyIPV4Adress()
 {
     struct ifaddrs *ifAddrStruct;

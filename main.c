@@ -11,6 +11,7 @@
 #include "input.h"
 #include "server.h"
 #include "message.h"
+#include "local.h"
 
 #define PORT 8888
 
@@ -92,6 +93,7 @@ int main(int argc, char **argv)
             char *sendline = getString();
             
             Message *msg = (Message *)malloc(sizeof(Message));
+            msg->sender = getMyIPV4Adress();
             msg->reciever = (char *)malloc(20);
             msg->last_sender = (char *)malloc(20);
             strcat(msg->reciever, ip);

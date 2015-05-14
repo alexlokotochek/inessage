@@ -38,10 +38,9 @@ void CHILD_HANDLER(int signal_number)
 
 int main(int argc, char **argv)
 {
-    int pipe_fd[2];
-    pipe(pipe_fd);
+    char **neighbours = NULL;
     
-    pid_t serverPid = launchServer(PORT, pipe_fd[1]);
+    pid_t serverPid = launchServer(PORT, neighbours);
 
     printf("Client's pid : %d\nServer's pid : %d\n", getpid(), serverPid);
     
@@ -59,6 +58,10 @@ int main(int argc, char **argv)
     memset(&sa, 0, sizeof(sa));
     sa.sa_handler = &PARENT_SIGTERM_HANDLER;
     sigaction(SIGKILL, &sa, NULL);
+    
+    memset(&sa, 0, sizeof(sa));
+    sa.sa_handler = &PARENT_SIGTERM_HANDLER;
+    sigaction(SIGSTOP, &sa, NULL);
     
     memset(&sa, 0, sizeof(sa));
     sa.sa_handler = &CHILD_HANDLER;
@@ -103,15 +106,9 @@ int main(int argc, char **argv)
             printf("Enter a command : ");
         }
         
-        if (strcmp(buf, "l") == 0)
-        {
-            char **availableIPs = list(pipe_fd[0]);
-            printf("Enter a command : ");
-        }
-        
         if (strcmp(buf, "exit") == 0)
         {
-            kill(getpid(), SIGINT);
+            kill(getpid(), SIGTERM);
         }
         free(buf);
     }

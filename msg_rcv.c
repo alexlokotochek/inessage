@@ -1,13 +1,11 @@
 #include "msg_rcv.h"
 #include "string.h"
-
 #include "msg_sender.h"
 
 #include <stdlib.h>
 #include <unistd.h>
 #include <fcntl.h>
 #include "local.h"
-#include "msg_sender.h"
 #include "storage.h"
 
 void didRecieveMessage(char *json, int fd)

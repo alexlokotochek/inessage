@@ -1,5 +1,5 @@
-#ifndef __message__c
-#define __message__c
+#ifndef __message__h
+#define __message__h
 
 typedef struct
 {

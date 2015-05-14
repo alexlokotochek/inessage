@@ -132,7 +132,6 @@ int main(int argc, char **argv)
                 strcpy(friendsIP_list[i], input);
             }
             free(input);
-            /////
             
             printf("Enter a command : ");
         }

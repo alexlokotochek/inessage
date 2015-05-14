@@ -23,26 +23,29 @@ void releaseMessage(Message *msg)
     {
         fprintf(stderr, "SERIOUS APP ERROR : releaseMessage : Can't handle nil msg->sender\n");
     }
-    free(msg->sender);
+    if (msg->sender)
+        free(msg->sender);
     
     if (msg->reciever == NULL)
     {
         fprintf(stderr, "SERIOUS APP ERROR : releaseMessage : Can't handle nil msg->reciever\n");
     }
-    free(msg->reciever);
-    
+    if (msg->reciever)
+        free(msg->reciever);
     
     if (msg->last_sender == NULL)
     {
         fprintf(stderr, "SERIOUS APP ERROR : releaseMessage : Can't handle nil msg->last_sender\n");
     }
-    free(msg->last_sender);
+    if (msg->last_sender)
+        free(msg->last_sender);
     
     if (msg->text == NULL)
     {
         fprintf(stderr, "SERIOUS APP ERROR : releaseMessage : Can't handle nil msg->text\n");
     }
-    free(msg->text);
+    if (msg->text)
+        free(msg->text);
     
     free(msg);
 }

@@ -1,6 +1,5 @@
 #include "msg_rcv.h"
 #include "string.h"
-// sanechek
 #include "msg_sender.h"
 #include "local.h"
 
@@ -26,14 +25,11 @@ void didRecieveMessage(char *json, char **neighbours)
     char* myIP = getMyIPV4Adress();
     if (strcmp(myIP, message->reciever) != 0)
     {
-        
-        
         //debug - выводим, что мы являемся звеном пересылки
         printf("---resending:");
         printMessage(message);
         printf("---end of resending\n");
         //debug end
-        
         
         // пересылаем всем
         for (int i = 0; i < numberOfNeighbours; ++i)
@@ -44,6 +40,11 @@ void didRecieveMessage(char *json, char **neighbours)
                 sendMessage(message, neighbours[i]);
             }
         }
+    }
+    else if (strcmp(getIPV4BroadcastAdress(), message->reciever) == 0)
+    {
+        printf("You have a broadcast message:\n");
+        printMessage(message);
     }
     else
     {

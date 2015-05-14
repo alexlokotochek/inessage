@@ -87,7 +87,7 @@ int main(int argc, char **argv)
             strcat(msg->reciever, ip);
             msg->text = sendline;
             
-            sendMessage(msg);
+            sendMessage(msg, msg->reciever);
             
             releaseMessage(msg);
             printf("Enter a command : ");

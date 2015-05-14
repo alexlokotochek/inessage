@@ -4,7 +4,8 @@
 
 #include <stdio.h>
 #include "message.h"
+#include "storage.h"
 
-int didRecieveMessage(char *, char **neighbours);
+void didRecieveMessage(char *, char **neighbours, struct Table* storage);
 
 #endif

@@ -7,16 +7,19 @@
 #include <unistd.h>
 #include <fcntl.h>
 
-int didRecieveMessage(char *json, char **neighbours)
+void didRecieveMessage(char *json, char **neighbours, struct Table* storage)
 {
     Message *message;
     if ((message =  messageFromJSON(json)) == NULL)
     {
         fprintf(stderr, "MSG_RCV : messageFromJSON returns nil");
-        return -1;
+        return;
     }
     
-    
+    if (isContainMessage (message, storage) == 1)
+    {
+        return;
+    }
     
     int numberOfNeighbours = 0;
     while (neighbours[numberOfNeighbours] != NULL)
@@ -45,16 +48,14 @@ int didRecieveMessage(char *json, char **neighbours)
                 sendMessage(message, neighbours[i]);
             }
         }
-        releaseMessage(message);
-        return 0;
     }else
     {
         // сообщение пришло нам
+        saveMessage_json(json, storage);
         printf("You have a message:\n");
         printMessage(message);
-        releaseMessage(message);
-        return 1;
     }
 
-    
+    releaseMessage(message);
+
 }

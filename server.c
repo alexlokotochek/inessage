@@ -114,23 +114,9 @@ pid_t launchServer(int port, char **neighbours)
         else
             buf[511] = '\0';
         
-        if (isContainJson(buf, inputStorage) == 1)
-        {
-            memset(buf, 0, 512);
-            continue;
-        }
-        
-        int isMessageForMe = 0;
-        
         if (strlen(buf))
         {
-            isMessageForMe = didRecieveMessage(buf, neighbours);
-        }
-        
-        if (isMessageForMe == 1)
-        {
-            // нужно сохранить в лог
-            saveMessage_json(buf, inputStorage);
+            didRecieveMessage(buf, neighbours, inputStorage);
         }
         
         if (shouldTerminate)

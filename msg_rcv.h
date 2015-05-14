@@ -5,6 +5,6 @@
 #include <stdio.h>
 #include "message.h"
 
-void didRecieveMessage(char *, char **neighbours);
+int didRecieveMessage(char *, char **neighbours);
 
 #endif

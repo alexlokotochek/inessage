@@ -75,7 +75,7 @@ void sendBroadcastMessage(Message *message)
         kill(getpid(), SIGTERM);
     }
     
-    ret = sendto(sd, json, strlen(json), 0, (struct sockaddr*)&broadcastAddr, sizeof broadcastAddr);
+    ret = (int)sendto(sd, json, strlen(json), 0, (struct sockaddr*)&broadcastAddr, sizeof broadcastAddr);
     if (ret<0)
     {
         printf("Error: Could not open send broadcast");

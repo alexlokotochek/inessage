@@ -34,7 +34,12 @@ void sendMessage(Message *message, char *address)
         kill(getpid(), SIGTERM);
     }
     
-    sendto(sockfd, json, strlen(json), 0, (struct sockaddr *)&servaddr, sizeof(servaddr));
+    if ((sendto(sockfd, json, strlen(json), 0, (struct sockaddr *)&servaddr, sizeof(servaddr))) < 0)
+    {
+        printf("Error: Could not send msg");
+        close(sockfd);
+        kill(getpid(), SIGTERM);
+    }
     free(json);
     close(sockfd);
 }
@@ -79,7 +84,7 @@ void sendBroadcastMessage(Message *message)
     
     if ((sendto(sd, json, strlen(json), 0, (struct sockaddr*)&broadcastAddr, sizeof broadcastAddr)) < 0)
     {
-        printf("Error: Could not open send broadcast");
+        printf("Error: Could not send broadcast");
         close(sd);
         kill(getpid(), SIGTERM);
     }

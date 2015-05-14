@@ -14,6 +14,8 @@
 
 #include "server.h"
 #include "msg_rcv.h"
+#include "storage.h"
+#include "message.h"
 
 sig_atomic_t shouldTerminate = 0;
 
@@ -101,6 +103,8 @@ pid_t launchServer(int port, char **neighbours)
     
     memset(buf, 0, 512);
     
+    struct Table* inputStorage = initializeStorage();
+    
     while (1)
     {
         ssize_t n = recvfrom(s, buf, 512, 0, (struct sockaddr *) &si_other, &slen);
@@ -112,7 +116,7 @@ pid_t launchServer(int port, char **neighbours)
         
         if (strlen(buf))
         {
-            didRecieveMessage(buf, neighbours);
+            didRecieveMessage(buf, neighbours, inputStorage);
         }
         
         if (shouldTerminate)

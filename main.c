@@ -12,6 +12,7 @@
 #include "server.h"
 #include "message.h"
 #include "local.h"
+#include "storage.h"
 
 #define PORT 8888
 
@@ -40,7 +41,7 @@ void CHILD_HANDLER(int signal_number)
 int main(int argc, char **argv)
 {
     int friendsNumber;
-    printf("Enter Friends Number : ");
+    printf("Enter friends number : ");
     scanf("%d\n", &friendsNumber);
     char **neighbours = (char **)malloc((friendsNumber + 1) * sizeof(char *));
     
@@ -78,6 +79,8 @@ int main(int argc, char **argv)
     sa.sa_handler = &CHILD_HANDLER;
     sigaction(SIGCHLD, &sa, NULL);
     
+    struct Table* outcomeStorage = initializeStorage();
+    
     printf("Enter a command : ");
     
     while (1)
@@ -99,6 +102,8 @@ int main(int argc, char **argv)
             strcat(msg->reciever, ip);
             msg->text = sendline;
             
+            saveMessage_msg(msg, outcomeStorage);
+            
             for(int i = 0; i < friendsNumber; ++i)
                 sendMessage(msg, neighbours[i]);
             
@@ -116,6 +121,8 @@ int main(int argc, char **argv)
             msg->last_sender = getMyIPV4Adress();
             
             sendBroadcastMessage(msg);
+            
+            saveMessage_msg(msg, outcomeStorage);
             
             releaseMessage(msg);
             printf("Enter a command : ");

@@ -7,12 +7,17 @@
 #include <unistd.h>
 #include <fcntl.h>
 
-void didRecieveMessage(char *json, char **neighbours)
+void didRecieveMessage(char *json, char **neighbours, struct Table* storage)
 {
     Message *message;
     if ((message =  messageFromJSON(json)) == NULL)
     {
         fprintf(stderr, "MSG_RCV : messageFromJSON returns nil");
+        return;
+    }
+    
+    if (isContainMessage (message, storage) == 1)
+    {
         return;
     }
     
@@ -52,10 +57,11 @@ void didRecieveMessage(char *json, char **neighbours)
     else
     {
         // сообщение пришло нам
+        saveMessage_json(json, storage);
         printf("You have a message:\n");
         printMessage(message);
     }
 
-    
     releaseMessage(message);
+
 }

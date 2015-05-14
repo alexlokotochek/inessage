@@ -18,8 +18,7 @@ void sendMessage(Message *message, char *address)
     sockfd = socket(AF_INET, SOCK_DGRAM, 0);
     struct sockaddr_in servaddr;
     
-    message->sender = getMyIPV4Adress();
-    message->last_sender = message->sender;
+    message->last_sender = getMyIPV4Adress();
     
     bzero(&servaddr, sizeof(servaddr));
     servaddr.sin_family = AF_INET;

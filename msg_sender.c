@@ -33,7 +33,7 @@ void sendMessage(Message *message, char *address)
     char *json;
     if ((json = JSONFromMessage(message)) == NULL)
     {
-        fprintf(stderr, "SERIOUS APP ERROR : JSONFromMessage returned nil\n");
+        fprintf(stdout, "SERIOUS APP ERROR : JSONFromMessage returned nil\n");
         kill(getpid(), SIGTERM);
     }
     

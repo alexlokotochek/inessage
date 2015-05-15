@@ -100,7 +100,6 @@ int main(int argc, char **argv)
             Message *msg = (Message *)malloc(sizeof(Message));
             msg->sender = getMyIPV4Adress();
             msg->reciever = (char *)malloc(20);
-            msg->last_sender = (char *)malloc(20);
             msg->last_sender = getMyIPV4Adress();
             //Возможно, cтоит уже здесь инициализировать ластсендера
             strcat(msg->reciever, ip);

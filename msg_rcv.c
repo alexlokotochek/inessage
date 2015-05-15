@@ -17,6 +17,7 @@ void didRecieveMessage(char *json, char **neighbours, struct Table* storage)
         return;
     }
     
+    DLog("Server recieved raw data:%s\n", json);
     
     if (isContainMessage(message, storage) || ((time(NULL) - message -> time) >= 5))
     {

@@ -18,18 +18,16 @@ void didRecieveMessage(char *json, char **neighbours, struct Table* storage)
     
     printf("JanssonMZFK %s\n", json);
     
-//    if (isContainMessage (message, storage) == 1)
-//    {
-//        return;
-//    }
+    if (isContainMessage (message, storage) == 1)
+    {
+        return;
+    }
     
     int numberOfNeighbours = 0;
     while (neighbours[numberOfNeighbours] != NULL)
     {
         ++numberOfNeighbours;
     }
-    
-    printf("Number Of Neighbors = %d\n", numberOfNeighbours);
     
     char* myIP = getMyIPV4Adress();
     

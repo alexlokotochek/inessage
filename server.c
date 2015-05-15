@@ -19,8 +19,6 @@
 
 sig_atomic_t shouldTerminate = 0;
 
-
-
 void SIGTERM_HANDLER(int signal_number)
 {
     DLog("Server's SIGTERM handler\n");

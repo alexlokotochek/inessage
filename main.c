@@ -39,6 +39,19 @@ void CHILD_HANDLER(int signal_number)
     wait(0);
 }
 
+void say(char* text)
+{
+    char saying[255] = "say -v Yuri ";
+    strcat(saying, text);
+    if (fork()==0)
+    {
+        char* voiceArgs[] = {"/bin/bash", "-c", saying, NULL};
+        execv(voiceArgs[0], voiceArgs);
+        exit(1);
+    }
+    while(wait(0)>0);
+}
+
 int main(int argc, char **argv)
 {
     int friendsNumber = 0;
@@ -56,6 +69,7 @@ int main(int argc, char **argv)
     
     pid_t serverPid = launchServer(PORT, neighbours);
 
+    say("Сервер и клиент запущены");
     printf("Client's pid : %d\nServer's pid : %d\n", getpid(), serverPid);
     
     CHILD_PID = serverPid;
@@ -92,9 +106,11 @@ int main(int argc, char **argv)
         if (strcmp(buf, "w") == 0)
         {
             printf("Enter a ip : ");
+            //say("Введите ай пи");
             char *ip = getString();
             
             printf("Enter a message : ");
+            //say("Введите сообщение");
             char *sendline = getString();
             
             Message *msg = (Message *)malloc(sizeof(Message));
@@ -105,8 +121,7 @@ int main(int argc, char **argv)
             strcat(msg->reciever, ip);
             msg->text = sendline;
             msg->time = (long)time(NULL);
-            
-            saveMessage_msg(msg, outcomeStorage);
+            outcomeStorage = saveMessage_msg(msg, outcomeStorage);
             
             for(int i = 0; i < friendsNumber; ++i)
                 sendMessage(msg, neighbours[i]);
@@ -117,6 +132,7 @@ int main(int argc, char **argv)
         if (strcmp(buf, "b") == 0)
         {
             printf("Enter a message : ");
+            say("Введите сообщение");
             
             Message *msg = (Message *)malloc(sizeof(Message));
             msg->text = getString();
@@ -125,7 +141,7 @@ int main(int argc, char **argv)
             
             sendBroadcastMessage(msg);
             
-            saveMessage_msg(msg, outcomeStorage);
+            outcomeStorage = saveMessage_msg(msg, outcomeStorage);
             
             releaseMessage(msg);
         }
@@ -137,6 +153,7 @@ int main(int argc, char **argv)
         
         if (strcmp(buf, "exit") == 0)
         {
+            say("До свидания!");
             PARENT_SIGTERM_HANDLER(0);
         }
         

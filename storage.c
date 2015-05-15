@@ -13,18 +13,20 @@
 
 struct Table* initializeStorage()
 {
-    return createTable(16);
+    return createTable(4);
 }
 
-void saveMessage_json(char* json, struct Table* storage)
+struct Table* saveMessage_json(char* json, struct Table* storage)
 {
     storage = insert(json, NULL, storage);
+    return storage;
 }
 
-void saveMessage_msg(Message* msg, struct Table* storage)
+struct Table* saveMessage_msg(Message* msg, struct Table* storage)
 {
     char* json = JSONFromMessage(msg);
     storage = insert(json, NULL, storage);
+    return storage;
 }
 
 void printLOG(struct Table* storage)
@@ -44,6 +46,9 @@ void printLOG(struct Table* storage)
                 {
                     printMessage(msg);
                     releaseMessage(msg);
+                }else
+                {
+                    continue;
                 }
             }
             
@@ -58,6 +63,9 @@ void printLOG(struct Table* storage)
                     //printf("\n%s\n", currentNode->key);
                     printMessage(msg);
                     releaseMessage(msg);
+                }else
+                {
+                    continue;
                 }
             }
         }

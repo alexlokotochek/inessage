@@ -57,8 +57,8 @@ struct Table* hashTableResize(struct Table* oldHashTable){
         if (oldHashTable->cell[i] != NULL){
             struct ListNode* currentNode = oldHashTable->cell[i];
             while (currentNode->next != NULL){
-                currentNode = currentNode->next;
                 insert(currentNode->key, currentNode->data, newHashTable);
+                currentNode = currentNode->next;
                 free (currentNode->prev);
             }
             insert(currentNode->key, currentNode->data, newHashTable);

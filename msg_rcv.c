@@ -57,7 +57,7 @@ void didRecieveMessage(char *json, char **neighbours, struct Table* storage)
     else
     {
         // сообщение пришло нам
-        saveMessage_json(json, storage);
+        storage = saveMessage_json(json, storage);
         printf("You have a message:\n");
         printMessage(message);
     }

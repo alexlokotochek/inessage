@@ -39,17 +39,17 @@ void CHILD_HANDLER(int signal_number)
     wait(0);
 }
 
-void say(char* text)
+void say(char *text)
 {
-    char saying[255] = "say -v Yuri ";
-    strcat(saying, text);
-    if (fork()==0)
-    {
-        char* voiceArgs[] = {"/bin/bash", "-c", saying, NULL};
-        execv(voiceArgs[0], voiceArgs);
-        exit(1);
-    }
-    while(wait(0)>0);
+//    char saying[255] = "say -v Yuri ";
+//    strcat(saying, text);
+//    if (fork() == 0)
+//    {
+//        char* voiceArgs[] = {"/bin/bash", "-c", saying, NULL};
+//        execv(voiceArgs[0], voiceArgs);
+//        exit(1);
+//    }
+//    while(wait(0) > 0);
 }
 
 int main(int argc, char **argv)
@@ -63,9 +63,9 @@ int main(int argc, char **argv)
     
     for(int i = 0; i < friendsNumber; ++i)
     {
-        char *Ip = malloc(255);
-        scanf("%s", Ip);
-        neighbours[i] = Ip;
+        char *ip = malloc(255);
+        scanf("%s", ip);
+        neighbours[i] = ip;
     }
     neighbours[friendsNumber] = NULL;
     

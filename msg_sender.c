@@ -20,7 +20,9 @@ void sendMessage(Message *message, char *address)
     
     message->last_sender = getMyIPV4Adress();
     
+    printf("-------------\nSending a message");
     printMessage(message);
+    printf("-------------\n");
     
     bzero(&servaddr, sizeof(servaddr));
     servaddr.sin_family = AF_INET;

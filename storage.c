@@ -29,20 +29,36 @@ void saveMessage_msg(Message* msg, struct Table* storage)
 
 void printLOG(struct Table* storage)
 {
+    struct ListNode* currentNode = (struct ListNode*)malloc(sizeof(struct ListNode));
     for (int i = 0; i < storage->numberOfCells; ++i)
     {
         if (storage->cell[i] != NULL)
         {
-            struct ListNode* currentNode = storage->cell[i];
-            // current node == char* json
-            Message* msg = messageFromJSON(currentNode->key);
-            printMessage(msg);
+            currentNode = storage->cell[i];
+            Message* msg = (Message*)malloc(sizeof(Message));
+            if (currentNode->key != NULL)
+            {
+                msg = messageFromJSON(currentNode->key);
+                //printf("\n%s\n", currentNode->key);
+                if (msg != NULL)
+                {
+                    printMessage(msg);
+                    releaseMessage(msg);
+                }
+            }
+            
             while (currentNode->next != NULL)
             {
-                releaseMessage(msg);
+                if (msg == NULL || currentNode->key == NULL)
+                    break;
                 currentNode = currentNode->next;
                 Message* msg = messageFromJSON(currentNode->key);
-                printMessage(msg);
+                if (msg != NULL)
+                {
+                    //printf("\n%s\n", currentNode->key);
+                    printMessage(msg);
+                    releaseMessage(msg);
+                }
             }
         }
     }

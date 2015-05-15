@@ -62,6 +62,9 @@ Message *messageFromJSON(char *json)
     
     json_error_t error;
     
+    char* fixJson = strstr(json, "}");
+    *(fixJson + 1) = '\0';
+    
     json_t *data = json_loads(json, 0, &error);
     if(!data)
     {

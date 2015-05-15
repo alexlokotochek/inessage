@@ -6,6 +6,7 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <fcntl.h>
+#include <time.h>
 
 void didRecieveMessage(char *json, char **neighbours, struct Table* storage)
 {
@@ -17,7 +18,7 @@ void didRecieveMessage(char *json, char **neighbours, struct Table* storage)
     }
     
     
-    if (isContainMessage (message, storage) == 1)
+    if (isContainMessage(message, storage) || ((time(NULL) - message -> time) >= 5))
     {
         return;
     }
@@ -38,7 +39,7 @@ void didRecieveMessage(char *json, char **neighbours, struct Table* storage)
     else if (strcmp(myIP, message->reciever) != 0)
     {
         //debug - выводим, что мы являемся звеном пересылки
-        printf("---resending:");
+        printf("\n---resending :\n");
         printMessage(message);
         printf("---end of resending\n");
         //debug end
@@ -46,8 +47,6 @@ void didRecieveMessage(char *json, char **neighbours, struct Table* storage)
         // пересылаем всем
         for (int i = 0; i < numberOfNeighbours; ++i)
         {
-            printf("neighbours - %zu %s\n", strlen(neighbours[i]), neighbours[i]);
-            printf("lastsender - %zu %s\n", strlen(message->last_sender), message->last_sender);
             if (strcmp(neighbours[i], message->last_sender) != 0)
             {
                 // кроме того, от кого оно пришло

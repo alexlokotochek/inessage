@@ -43,12 +43,13 @@ int main(int argc, char **argv)
 {
     int friendsNumber = 0;
     printf("Enter Friends Number : ");
-    scanf("%d\n", &friendsNumber);
+    scanf("%d", &friendsNumber);
     char **neighbours = (char **)malloc((friendsNumber + 1) * sizeof(char *));
     
     for(int i = 0; i < friendsNumber; ++i)
     {
-        char *Ip = getString();
+        char *Ip = malloc(255);
+        scanf("%s", Ip);
         neighbours[i] = Ip;
     }
     neighbours[friendsNumber] = NULL;
@@ -100,6 +101,7 @@ int main(int argc, char **argv)
             msg->sender = getMyIPV4Adress();
             msg->reciever = (char *)malloc(20);
             msg->last_sender = (char *)malloc(20);
+            msg->last_sender = getMyIPV4Adress();
             //Возможно, cтоит уже здесь инициализировать ластсендера
             strcat(msg->reciever, ip);
             msg->text = sendline;
@@ -111,7 +113,6 @@ int main(int argc, char **argv)
                 sendMessage(msg, neighbours[i]);
             
             releaseMessage(msg);
-            printf("Enter a command : ");
         }
         
         if (strcmp(buf, "b") == 0)
@@ -128,7 +129,6 @@ int main(int argc, char **argv)
             saveMessage_msg(msg, outcomeStorage);
             
             releaseMessage(msg);
-            printf("Enter a command : ");
         }
         
         if (strcmp(buf, "log") == 0)
@@ -140,6 +140,8 @@ int main(int argc, char **argv)
         {
             PARENT_SIGTERM_HANDLER(0);
         }
+        
+        printf("\nEnter a Command : ");
         free(buf);
     }
     

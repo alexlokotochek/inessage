@@ -54,7 +54,7 @@ void releaseMessage(Message *msg)
 
 Message *messageFromJSON(char *json)
 {
-    if (json == NULL)
+    if (json == NULL || strlen(json) == 0)
     {
         fprintf(stderr, "messageFromJSON : Can't handle nil json parameter\n");
         return NULL;
@@ -63,6 +63,11 @@ Message *messageFromJSON(char *json)
     json_error_t error;
     
     char* fixJson = strstr(json, "}");
+    if (fixJson == NULL)
+    {
+        fprintf(stderr, "bad json format\n");
+        return NULL;
+    }
     *(fixJson + 1) = '\0';
     
     json_t *data = json_loads(json, 0, &error);

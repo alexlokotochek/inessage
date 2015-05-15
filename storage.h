@@ -15,11 +15,11 @@
 
 struct Table* initializeStorage();
 
-void saveMessage_json(char* json, struct Table* storage);
+struct Table* saveMessage_json(char* json, struct Table* storage);
+
+struct Table* saveMessage_msg(Message* msg, struct Table* storage);
 
 void printLOG(struct Table* storage);
-
-void saveMessage_msg(Message* msg, struct Table* storage);
 
 int isContainMessage(Message* msg, struct Table* storage);
 

@@ -22,6 +22,7 @@ void sendMessage(Message *message, char *address)
     
     printf("-------------\nSending a message\n");
     printMessage(message);
+    printf("To addr: %s\n", address);
     printf("-------------\n");
     
     bzero(&servaddr, sizeof(servaddr));

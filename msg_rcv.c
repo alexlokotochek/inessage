@@ -20,6 +20,8 @@ void didRecieveMessage(char *json, char **neighbours, struct Table* storage)
     
     if (isContainMessage(message, storage) || ((time(NULL) - message -> time) >= 5))
     {
+        DLog("Decline a message\n");
+        printMessage(message);
         return;
     }
     

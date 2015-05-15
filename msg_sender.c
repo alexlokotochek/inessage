@@ -20,7 +20,7 @@ void sendMessage(Message *message, char *address)
     
     message->last_sender = getMyIPV4Adress();
     
-    printf("-------------\nSending a message");
+    printf("-------------\nSending a message\n");
     printMessage(message);
     printf("-------------\n");
     

@@ -39,9 +39,9 @@ void didRecieveMessage(char *json, char **neighbours, struct Table* storage)
     else if (strcmp(myIP, message->reciever) != 0)
     {
         //debug - выводим, что мы являемся звеном пересылки
-        printf("\n---resending :\n");
+        DLog("\n---resending :\n");
         printMessage(message);
-        printf("---end of resending\n");
+        DLog("---end of resending\n");
         //debug end
         
         // пересылаем всем
@@ -49,6 +49,7 @@ void didRecieveMessage(char *json, char **neighbours, struct Table* storage)
         {
             if (strcmp(neighbours[i], message->last_sender) != 0)
             {
+                DLog("Rescending to %s\n", neighbours[i]);
                 // кроме того, от кого оно пришло
                 sendMessage(message, neighbours[i]);
             }

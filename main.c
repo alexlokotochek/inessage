@@ -55,7 +55,7 @@ void say(char *text)
 int main(int argc, char **argv)
 {
     int friendsNumber = 0;
-    
+    printf("Your IP: %s\n", getMyIPV4Adress());
     //say("Введите количество друзей");
     printf("Enter friends number and list of them: ");
     scanf("%d", &friendsNumber);

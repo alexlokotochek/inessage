@@ -16,7 +16,6 @@ void didRecieveMessage(char *json, char **neighbours, struct Table* storage)
         return;
     }
     
-    printf("JanssonMZFK %s\n", json);
     
     if (isContainMessage (message, storage) == 1)
     {

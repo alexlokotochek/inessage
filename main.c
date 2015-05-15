@@ -55,7 +55,9 @@ void say(char* text)
 int main(int argc, char **argv)
 {
     int friendsNumber = 0;
-    printf("Enter Friends Number : ");
+    
+    //say("Введите количество друзей");
+    printf("Enter friends number and list of them: ");
     scanf("%d", &friendsNumber);
     char **neighbours = (char **)malloc((friendsNumber + 1) * sizeof(char *));
     
@@ -127,6 +129,8 @@ int main(int argc, char **argv)
                 sendMessage(msg, neighbours[i]);
             
             releaseMessage(msg);
+            printf("Enter a command : ");
+            //say("Введите команду");
         }
         
         if (strcmp(buf, "b") == 0)
@@ -144,6 +148,8 @@ int main(int argc, char **argv)
             outcomeStorage = saveMessage_msg(msg, outcomeStorage);
             
             releaseMessage(msg);
+            printf("Enter a command : ");
+            say("Введите команду");
         }
         
         if (strcmp(buf, "log") == 0)

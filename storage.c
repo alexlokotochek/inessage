@@ -13,7 +13,7 @@
 
 struct Table* initializeStorage()
 {
-    return createTable(4);
+    return createTable(32);
 }
 
 struct Table* saveMessage_json(char* json, struct Table* storage)

@@ -65,7 +65,6 @@ Message *messageFromJSON(char *json)
     char* fixJson = strstr(json, "}");
     if (fixJson == NULL)
     {
-        fprintf(stderr, "bad json format\n");
         return NULL;
     }
     *(fixJson + 1) = '\0';

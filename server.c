@@ -19,6 +19,8 @@
 
 sig_atomic_t shouldTerminate = 0;
 
+
+
 void SIGTERM_HANDLER(int signal_number)
 {
     DLog("Server's SIGTERM handler\n");
@@ -106,14 +108,13 @@ pid_t launchServer(int port, char **neighbours)
     while (1)
     {
         memset(buf, 0, 512);
-        char c = 0; int i = 0;
-        for (i = 0; (recvfrom(s, &c, 1, 0, (struct sockaddr *) &si_other, &slen)) > 0; i++)
-        {
-            buf[i] = c;
-            buf[i+1] = '\0';
-        }
+        ssize_t n = recvfrom(s, buf, 512, 0, (struct sockaddr *) &si_other, &slen);
         
-        printf("yo\n%d %zu\n", i, strlen(buf));
+        if (n < 512)
+            buf[n] = '\0';
+        else
+            buf[511] = '\0';
+
         
         if (strlen(buf))
         {

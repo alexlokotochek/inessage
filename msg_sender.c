@@ -14,8 +14,12 @@
 
 void sendMessage(Message *message, char *address)
 {
-    int sockfd;
-    sockfd = socket(AF_INET, SOCK_DGRAM, 0);
+    int sockfd = socket(AF_INET, SOCK_DGRAM, IPPROTO_UDP);
+    if (sockfd <= 0)
+    {
+        printf("Error: Could not open socket");
+        kill(getpid(), SIGTERM);
+    }
     struct sockaddr_in servaddr;
     
     message->last_sender = getMyIPV4Adress();
@@ -50,7 +54,7 @@ void sendMessage(Message *message, char *address)
 void sendBroadcastMessage(Message *message)
 {
     int sd = socket(AF_INET, SOCK_DGRAM, IPPROTO_UDP);
-    if (sd<=0)
+    if (sd <= 0)
     {
         printf("Error: Could not open socket");
         kill(getpid(), SIGTERM);

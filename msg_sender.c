@@ -41,7 +41,7 @@ void sendMessage(Message *message, char *address)
         kill(getpid(), SIGTERM);
     }
     
-    if ((sendto(sockfd, json, strlen(json), 0, (struct sockaddr *)&servaddr, sizeof(servaddr))) < 0)
+    if ((sendto(sockfd, json, strlen(json), 0, (struct sockaddr *)&servaddr, sizeof(servaddr))) <= 0)
     {
         printf("Error: Could not send msg");
         close(sockfd);

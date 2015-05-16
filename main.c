@@ -97,7 +97,7 @@ int main(int argc, char **argv)
     sa.sa_handler = &CHILD_HANDLER;
     sigaction(SIGCHLD, &sa, NULL);
     
-    struct Table* outcomeStorage = initializeStorage();
+//    struct Table* outcomeStorage = initializeStorage();
     
     printf("Enter a command : ");
     
@@ -123,7 +123,7 @@ int main(int argc, char **argv)
             strcat(msg->reciever, ip);
             msg->text = sendline;
             msg->time = (long)time(NULL);
-            outcomeStorage = saveMessage_msg(msg, outcomeStorage);
+//            outcomeStorage = saveMessage_msg(msg, outcomeStorage);
             
             for(int i = 0; i < friendsNumber; ++i)
                 sendMessage(msg, neighbours[i]);
@@ -145,7 +145,7 @@ int main(int argc, char **argv)
             
             sendBroadcastMessage(msg);
             
-            outcomeStorage = saveMessage_msg(msg, outcomeStorage);
+//            outcomeStorage = saveMessage_msg(msg, outcomeStorage);
             
             releaseMessage(msg);
             printf("Enter a command : ");
@@ -154,7 +154,7 @@ int main(int argc, char **argv)
         
         if (strcmp(buf, "log") == 0)
         {
-            printLOG(outcomeStorage);
+//            printLOG(outcomeStorage);
         }
         
         if (strcmp(buf, "exit") == 0)

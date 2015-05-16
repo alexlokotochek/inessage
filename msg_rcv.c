@@ -2,6 +2,7 @@
 #include "string.h"
 #include "msg_sender.h"
 #include "local.h"
+#include "input.h"
 
 #include <stdlib.h>
 #include <unistd.h>
@@ -41,13 +42,9 @@ void didRecieveMessage(char *json, char **neighbours, struct Table* storage)
     }
     else if (strcmp(myIP, message->reciever) != 0)
     {
-        //debug - выводим, что мы являемся звеном пересылки
-        DLog("\n---resending :\n");
+        DLog("\nRescending a message :\n");
         printMessage(message);
-        DLog("---end of resending\n");
-        //debug end
         
-        // пересылаем всем
         for (int i = 0; i < numberOfNeighbours; ++i)
         {
             if (strcmp(neighbours[i], message->last_sender) != 0)
@@ -60,12 +57,10 @@ void didRecieveMessage(char *json, char **neighbours, struct Table* storage)
     }
     else
     {
-        // сообщение пришло нам
         storage = saveMessage_json(json, storage);
         printf("You have a message:\n");
         printMessage(message);
     }
 
     releaseMessage(message);
-
 }

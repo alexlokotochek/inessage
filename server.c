@@ -16,6 +16,7 @@
 #include "msg_rcv.h"
 #include "storage.h"
 #include "message.h"
+#include "input.h"
 
 sig_atomic_t shouldTerminate = 0;
 
@@ -108,11 +109,19 @@ pid_t launchServer(int port, char **neighbours)
         memset(buf, 0, 512);
         ssize_t n = recvfrom(s, buf, 512, 0, (struct sockaddr *) &si_other, &slen);
         
+        if (n < 0)
+        {
+            perror("rcvfrom issue");
+            exit(EXIT_FAILURE);
+        }
+        
         if (n < 512)
             buf[n] = '\0';
         else
             buf[511] = '\0';
 
+        DLog("Server got %zdz bytes\n", n);
+        DLog("Row data: %s\n", buf);
         
         if (strlen(buf))
         {

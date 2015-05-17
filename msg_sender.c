@@ -46,12 +46,12 @@ void sendMessage(Message *message, char *address)
     
     
     
-    printf("KuKaReKu\n");
+    printf("%d KuKaReKu\n", msgSize);
     
     
-    if ((sendto(sockfd, (void*)(&msgSize), sizeof(int), 0, (struct sockaddr*)&servaddr, sizeof (servaddr))) < 0)
+    if ((sendto(sockfd, (void*)&msgSize, sizeof(int), 0, (struct sockaddr*)&servaddr, sizeof (servaddr))) < 0)
     {
-        printf("Error: Could not send broadcast msg size");
+        printf("Error: Could not send msg size");
         close(sockfd);
         kill(getpid(), SIGTERM);
     }

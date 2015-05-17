@@ -18,6 +18,8 @@
 #include "message.h"
 #include "input.h"
 
+#include "math.h"
+
 sig_atomic_t shouldTerminate = 0;
 
 void SIGTERM_HANDLER(int signal_number)
@@ -109,18 +111,21 @@ pid_t launchServer(int port, char **neighbours)
         memset(buf, 0, 512);
         int msgSize = 0;
         //ssize_t n = recvfrom(s, buf, 512, 0, (struct sockaddr *) &si_other, &slen);
-        if (recvfrom(mySocket, (void*)&msgSize, sizeof(int), 0, (struct sockaddr *) &si_other, &slen) != sizeof(unsigned long)){
+        if (recvfrom(mySocket, (void*)&msgSize, sizeof(int), 0, (struct sockaddr *) &si_other, &slen) != sizeof(int)){
             perror("couldn't recieve msg size");
             exit(EXIT_FAILURE);
         }
         
         printf("\nMSG SIZE: %d\n", msgSize);
+        if (msgSize > 512)
+            continue;
         ssize_t recievedSize = 0, currentSize = 0;
         while (currentSize < msgSize){
             if (msgSize >= 512){
                 perror("Out of msg size!");
+                break;
             }
-            recievedSize = recvfrom(mySocket, buf, 4, 0, (struct sockaddr *) &si_other, &slen);
+            recievedSize = recvfrom(mySocket, buf, 64, 0, (struct sockaddr *) &si_other, &slen);
             if (recievedSize < 0){
                 perror("message wasn't recieved completely");
             }

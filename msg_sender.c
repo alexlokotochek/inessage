@@ -43,7 +43,7 @@ void sendMessage(Message *message, char *address)
     
     //сначала отправляем длину сообщения
     unsigned long msgSize = strlen(json);
-    if ((sendto(sockfd, (void*)(&msgSize), sizeof(unsigned long), 0, (struct sockaddr*)&servaddr, sizeof servaddr)) < 0)
+    if ((sendto(sockfd, (void*)(&msgSize), sizeof(unsigned long), 0, (struct sockaddr*)&servaddr, sizeof (servaddr))) < 0)
     {
         printf("Error: Could not send broadcast msg size");
         close(sockfd);
@@ -80,7 +80,7 @@ void sendBroadcastMessage(Message *message)
     }
     
     struct sockaddr_in broadcastAddr;
-    memset(&broadcastAddr, 0, sizeof broadcastAddr);
+    memset(&broadcastAddr, 0, sizeof (broadcastAddr));
     broadcastAddr.sin_family = AF_INET;
     
     char *IPV4Adress = getMyIPV4Adress();
@@ -101,7 +101,7 @@ void sendBroadcastMessage(Message *message)
     
     //сначала отправляем длину сообщения
     unsigned long msgSize = strlen(json);
-    if ((sendto(sd, (void*)(&msgSize), sizeof(unsigned long), 0, (struct sockaddr*)&broadcastAddr, sizeof broadcastAddr)) < 0)
+    if ((sendto(sd, (void*)(&msgSize), sizeof(unsigned long), 0, (struct sockaddr*)&broadcastAddr, sizeof (broadcastAddr))) < 0)
     {
         printf("Error: Could not send broadcast msg size");
         close(sd);
@@ -109,7 +109,7 @@ void sendBroadcastMessage(Message *message)
     }
     
     //затем само сообщение
-    if ((sendto(sd, json, strlen(json), 0, (struct sockaddr*)&broadcastAddr, sizeof broadcastAddr)) < 0)
+    if ((sendto(sd, json, strlen(json), 0, (struct sockaddr*)&broadcastAddr, sizeof (broadcastAddr))) < 0)
     {
         printf("Error: Could not send broadcast");
         close(sd);

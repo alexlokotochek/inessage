@@ -120,7 +120,7 @@ pid_t launchServer(int port, char **neighbours)
             if (msgSize >= 512){
                 perror("Out of msg size!");
             }
-            recievedSize = recvfrom(mySocket, buf, 512, 0, (struct sockaddr *) &si_other, &slen);
+            recievedSize = recvfrom(mySocket, buf, 4, 0, (struct sockaddr *) &si_other, &slen);
             if (recievedSize < 0){
                 perror("message wasn't recieved completely");
             }

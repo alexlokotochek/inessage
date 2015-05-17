@@ -42,14 +42,12 @@ void sendMessage(Message *message, char *address)
     }
     
     //сначала отправляем длину сообщения
-    int msgSize = strlen(json);
+    size_t msgSize = strlen(json);
+    char msgSizeStr[10];
+    *msgSizeStr = 0;
+    sprintf(msgSizeStr, "%zul", msgSize);
     
-    
-    
-    printf("%d KuKaReKu\n", msgSize);
-    
-    
-    if ((sendto(sockfd, (void*)&msgSize, sizeof(int), 0, (struct sockaddr*)&servaddr, sizeof (servaddr))) < 0)
+    if ((sendto(sockfd, msgSizeStr, sizeof(int), 0, (struct sockaddr*)&servaddr, sizeof (servaddr))) < 0)
     {
         printf("Error: Could not send msg size");
         close(sockfd);
@@ -106,8 +104,12 @@ void sendBroadcastMessage(Message *message)
     }
     
     //сначала отправляем длину сообщения
-    int msgSize = strlen(json);
-    if ((sendto(sd, (void*)(&msgSize), sizeof(int), 0, (struct sockaddr*)&broadcastAddr, sizeof (broadcastAddr))) < 0)
+    size_t msgSize = strlen(json);
+    char msgSizeStr[10];
+    *msgSizeStr = 0;
+    sprintf(msgSizeStr, "%zul", msgSize);
+    
+    if ((sendto(sd, msgSizeStr, sizeof(int), 0, (struct sockaddr*)&broadcastAddr, sizeof (broadcastAddr))) < 0)
     {
         printf("Error: Could not send broadcast msg size");
         close(sd);

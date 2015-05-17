@@ -6,6 +6,6 @@
 #include "message.h"
 #include "storage.h"
 
-void didRecieveMessage(char *, char **neighbours, struct Table* storage);
+struct Table* didRecieveMessage(char *, char **neighbours, struct Table* storage);
 
 #endif

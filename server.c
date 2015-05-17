@@ -70,11 +70,11 @@ pid_t launchServer(int port, char **neighbours)
     
     struct sockaddr_in si_me, si_other;
     
-    int s;
+    int mySocket;
     socklen_t slen = sizeof(si_other);
     char buf[512];
 
-    if((s = socket(AF_INET, SOCK_DGRAM, 0)) < 0)
+    if((mySocket = socket(AF_INET, SOCK_DGRAM, 0)) < 0)
     {
         fprintf(stderr, "Can't open a socket\n");
         exit(EXIT_FAILURE);
@@ -91,7 +91,7 @@ pid_t launchServer(int port, char **neighbours)
     sa.sa_handler = &SIGTERM_HANDLER;
     sigaction(SIGTERM, &sa, NULL);
     
-    if(bind(s, (struct sockaddr*)&si_me, sizeof(si_me)) < 0)
+    if(bind(mySocket, (struct sockaddr*)&si_me, sizeof(si_me)) < 0)
     {
         fprintf(stderr, "Can't bind the port\n");
         exit(EXIT_FAILURE);
@@ -107,31 +107,45 @@ pid_t launchServer(int port, char **neighbours)
     while (1)
     {
         memset(buf, 0, 512);
-        ssize_t n = recvfrom(s, buf, 512, 0, (struct sockaddr *) &si_other, &slen);
-        
-        if (n < 0)
-        {
-            perror("rcvfrom issue");
+        unsigned long msgSize;
+        //ssize_t n = recvfrom(s, buf, 512, 0, (struct sockaddr *) &si_other, &slen);
+        if (recvfrom(mySocket, &msgSize, sizeof(msgSize), 0, (struct sockaddr *) &si_other, &slen) != sizeof(unsigned long)){
+            perror("couldn't recieve msg size");
             exit(EXIT_FAILURE);
         }
+            
+        ssize_t recievedSize = 0, currentSize = 0;
+        while (currentSize < msgSize){
+            recievedSize = recvfrom(mySocket, buf, 512, 0, (struct sockaddr *) &si_other, &slen);
+            if (recievedSize < 0){
+                perror("message wasn't recieved completely");
+            }
+            currentSize += recievedSize;
+        }
         
-        if (n < 512)
-            buf[n] = '\0';
+//        if (msgSize < 0)
+//        {
+//            perror("rcvfrom issue");
+//            exit(EXIT_FAILURE);
+//        }
+        
+        if (msgSize < 512)
+            buf[msgSize] = '\0';
         else
             buf[511] = '\0';
 
-        DLog("Server got %zdz bytes\n", n);
+        DLog("Server got %zdz bytes\n", msgSize);
         DLog("Row data: %s\n", buf);
         
         if (strlen(buf))
         {
-            didRecieveMessage(buf, neighbours, inputStorage);
+            inputStorage = didRecieveMessage(buf, neighbours, inputStorage);
         }
         
         if (shouldTerminate)
         {
             DLog("Server terminated\n");
-            close(s);
+            close(mySocket);
             exit(0);
         }
         

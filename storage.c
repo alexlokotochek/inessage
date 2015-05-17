@@ -13,7 +13,7 @@
 
 struct Table* initializeStorage()
 {
-    return createTable(32);
+    return createTable(4);
 }
 
 struct Table* saveMessage_json(char* json, struct Table* storage)
@@ -54,7 +54,7 @@ void printLOG(struct Table* storage)
             
             while (currentNode->next != NULL)
             {
-                if (msg == NULL || currentNode->key == NULL)
+                if (msg == NULL || currentNode->key == NULL || strlen(currentNode->key) == 0)
                     break;
                 currentNode = currentNode->next;
                 Message* msg = messageFromJSON(currentNode->key);

@@ -9,13 +9,13 @@
 #include <fcntl.h>
 #include <time.h>
 
-void didRecieveMessage(char *json, char **neighbours, struct Table* storage)
+struct Table* didRecieveMessage(char *json, char **neighbours, struct Table* storage)
 {
     Message *message;
     if ((message =  messageFromJSON(json)) == NULL)
     {
         fprintf(stderr, "MSG_RCV : messageFromJSON returns nil");
-        return;
+        return storage;
     }
     
     DLog("Server recieved raw data:%s\n", json);
@@ -24,7 +24,7 @@ void didRecieveMessage(char *json, char **neighbours, struct Table* storage)
     {
         DLog("Decline a message\n");
         printMessage(message);
-        return;
+        return storage;
     }
     
     int numberOfNeighbours = 0;
@@ -57,10 +57,12 @@ void didRecieveMessage(char *json, char **neighbours, struct Table* storage)
     }
     else
     {
-//        storage = saveMessage_json(json, storage);
+        storage = saveMessage_json(json, storage);
         printf("You have a message:\n");
         printMessage(message);
     }
 
     releaseMessage(message);
+    
+    return storage;
 }

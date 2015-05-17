@@ -120,25 +120,25 @@ pid_t launchServer(int port, char **neighbours)
         
         DLog("\nMSG SIZE: %zu\n", msgSize);
         if (msgSize > 512)
+        {
+            DLog("msgSize > 512\n");
             continue;
+        }
         
         memset(buf, 0, 512);
         
         ssize_t recievedSize = 0, currentSize = 0;
         while (currentSize < msgSize)
         {
-            if (msgSize >= 512)
-            {
-                DLog("Out of msg size!");
-                break;
-            }
-            recievedSize = recvfrom(mySocket, buf, 64, 0, (struct sockaddr *) &si_other, &slen);
+            recievedSize = recvfrom(mySocket, buf, msgSize - currentSize, 0, (struct sockaddr *) &si_other, &slen);
             if (recievedSize < 0)
             {
                 DLog("message wasn't recieved completely");
             }
             currentSize += recievedSize;
         }
+        
+        DLog("Why you are not exiting?\n");
         
         if (strlen(buf) != msgSize)
         {

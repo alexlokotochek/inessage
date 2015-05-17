@@ -107,14 +107,14 @@ pid_t launchServer(int port, char **neighbours)
     while (1)
     {
         memset(buf, 0, 512);
-        unsigned long msgSize = 0;
+        int msgSize = 0;
         //ssize_t n = recvfrom(s, buf, 512, 0, (struct sockaddr *) &si_other, &slen);
-        if (recvfrom(mySocket, (void*)&msgSize, sizeof(msgSize), 0, (struct sockaddr *) &si_other, &slen) != sizeof(unsigned long)){
+        if (recvfrom(mySocket, (void*)&msgSize, sizeof(int), 0, (struct sockaddr *) &si_other, &slen) != sizeof(unsigned long)){
             perror("couldn't recieve msg size");
             exit(EXIT_FAILURE);
         }
         
-        printf("\nMSG SIZE: %lu\n", msgSize);
+        printf("\nMSG SIZE: %d\n", msgSize);
         ssize_t recievedSize = 0, currentSize = 0;
         while (currentSize < msgSize){
             if (msgSize >= 512){

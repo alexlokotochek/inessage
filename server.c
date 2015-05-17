@@ -113,7 +113,8 @@ pid_t launchServer(int port, char **neighbours)
             perror("couldn't recieve msg size");
             exit(EXIT_FAILURE);
         }
-            
+        
+        printf("\nMSG SIZE: %lu\n", msgSize);
         ssize_t recievedSize = 0, currentSize = 0;
         while (currentSize < msgSize){
             recievedSize = recvfrom(mySocket, buf, 512, 0, (struct sockaddr *) &si_other, &slen);
@@ -121,6 +122,10 @@ pid_t launchServer(int port, char **neighbours)
                 perror("message wasn't recieved completely");
             }
             currentSize += recievedSize;
+        }
+        
+        if (strlen(buf) != msgSize){
+            perror("message wasn't recieved completely");
         }
         
 //        if (msgSize < 0)

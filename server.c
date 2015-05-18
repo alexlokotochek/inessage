@@ -19,7 +19,6 @@
 #include "input.h"
 
 #include "math.h"
-
 sig_atomic_t shouldTerminate = 0;
 
 void SIGTERM_HANDLER(int signal_number)
@@ -28,6 +27,22 @@ void SIGTERM_HANDLER(int signal_number)
     shouldTerminate = 1;
     return;
 }
+
+
+void says(char *text)
+{
+    char saying[255] = "say -v Yuri ";
+    strcat(saying, text);
+    if (fork() == 0)
+    {
+        char* voiceArgs[] = {"/bin/bash", "-c", saying, NULL};
+        execv(voiceArgs[0], voiceArgs);
+        exit(1);
+    }
+    while(wait(0) > 0);
+}
+
+
 
 pid_t launchServer(int port, char **neighbours)
 {
@@ -163,6 +178,7 @@ pid_t launchServer(int port, char **neighbours)
         {
             inputStorage = didRecieveMessage(buf, neighbours, inputStorage);
         }
+        
         
         if (shouldTerminate)
         {

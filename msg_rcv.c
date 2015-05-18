@@ -9,6 +9,20 @@
 #include <fcntl.h>
 #include <time.h>
 
+void sayss(char *text)
+{
+    char saying[255] = "say -v Milena ";
+    strcat(saying, text);
+    if (fork() == 0)
+    {
+        char* voiceArgs[] = {"/bin/bash", "-c", saying, NULL};
+        execv(voiceArgs[0], voiceArgs);
+        exit(1);
+    }
+    while(wait(0) > 0);
+}
+
+
 struct Table* didRecieveMessage(char *json, char **neighbours, struct Table* storage)
 {
     Message *message;
@@ -18,6 +32,7 @@ struct Table* didRecieveMessage(char *json, char **neighbours, struct Table* sto
         return storage;
     }
     
+    
     DLog("Server recieved raw data:%s\n", json);
     
     if (isContainMessage(message, storage) || ((time(NULL) - message -> time) >= 5))
@@ -26,6 +41,11 @@ struct Table* didRecieveMessage(char *json, char **neighbours, struct Table* sto
         printMessage(message);
         return storage;
     }
+    
+    sayss("Вам пришло сообщение от");
+    sayss(message->sender);
+    sayss(message->text);
+    //sayss(ctime(&(message->time)));
     
     int numberOfNeighbours = 0;
     while (neighbours[numberOfNeighbours] != NULL)

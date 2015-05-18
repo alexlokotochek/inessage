@@ -41,22 +41,22 @@ void CHILD_HANDLER(int signal_number)
 
 void say(char *text)
 {
-//    char saying[255] = "say -v Yuri ";
-//    strcat(saying, text);
-//    if (fork() == 0)
-//    {
-//        char* voiceArgs[] = {"/bin/bash", "-c", saying, NULL};
-//        execv(voiceArgs[0], voiceArgs);
-//        exit(1);
-//    }
-//    while(wait(0) > 0);
+    char saying[255] = "say -v Yuri ";
+    strcat(saying, text);
+    if (fork() == 0)
+    {
+        char* voiceArgs[] = {"/bin/bash", "-c", saying, NULL};
+        execv(voiceArgs[0], voiceArgs);
+        exit(1);
+    }
+    while(wait(0) > 0);
 }
 
 int main(int argc, char **argv)
 {
     int friendsNumber = 0;
     printf("Your IP: %s\n", getMyIPV4Adress());
-    //say("Введите количество друзей");
+    say("Введите количество друзей");
     printf("Enter friends number and list of them: ");
     scanf("%d", &friendsNumber);
     char **neighbours = (char **)malloc((friendsNumber + 1) * sizeof(char *));

@@ -33,17 +33,17 @@ struct Table* didRecieveMessage(char *json, char **neighbours, struct Table* sto
     }
     
     
-    DLog("Server recieved raw data:%s\n", json);
+    //DLog("Server recieved raw data:%s\n", json);
     
     if (isContainMessage(message, storage) || ((time(NULL) - message -> time) >= 5))
     {
-        DLog("Decline a message\n");
-        printMessage(message);
+        //DLog("Decline a message\n");
+        //printMessage(message);
         return storage;
     }
     
-    sayss("Вам пришло сообщение от");
-    sayss(message->sender);
+    sayss("Вам пришло сообщение");
+    //sayss(message->sender);
     sayss(message->text);
     //sayss(ctime(&(message->time)));
     

@@ -133,10 +133,10 @@ pid_t launchServer(int port, char **neighbours)
         
         size_t msgSize = atoi(buf);
         
-        DLog("\nMSG SIZE: %zu\n", msgSize);
+       // DLog("\nMSG SIZE: %zu\n", msgSize);
         if (msgSize > 512)
         {
-            DLog("msgSize > 512\n");
+            //DLog("msgSize > 512\n");
             continue;
         }
         
@@ -153,7 +153,7 @@ pid_t launchServer(int port, char **neighbours)
             currentSize += recievedSize;
         }
         
-        DLog("Why you are not exiting?\n");
+        //DLog("Why you are not exiting?\n");
         
         if (strlen(buf) != msgSize)
         {
@@ -171,8 +171,8 @@ pid_t launchServer(int port, char **neighbours)
         else
             buf[511] = '\0';
 
-        DLog("Server got %zdz bytes\n", msgSize);
-        DLog("Row data: %s\n", buf);
+        //DLog("Server got %zdz bytes\n", msgSize);
+        //DLog("Row data: %s\n", buf);
         
         if (strlen(buf))
         {

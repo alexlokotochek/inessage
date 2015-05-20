@@ -9,6 +9,7 @@
 #include "storage.h"
 #include "message.h"
 #include <stdlib.h>
+#include <string.h>
 
 
 struct Table* initializeStorage()

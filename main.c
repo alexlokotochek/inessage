@@ -56,8 +56,8 @@ int main(int argc, char **argv)
 {
     int friendsNumber = 0;
     printf("Your IP: %s\n", getMyIPV4Adress());
-    say("Введите количество друзей");
-    printf("Enter friends number and list of them: ");
+    say("Введите количество друзей и перечислите их");
+    printf("Enter friends number and list them: ");
     scanf("%d", &friendsNumber);
     char **neighbours = (char **)malloc((friendsNumber + 1) * sizeof(char *));
     
@@ -108,11 +108,9 @@ int main(int argc, char **argv)
         if (strcmp(buf, "w") == 0)
         {
             printf("Enter a ip : ");
-            //say("Введите ай пи");
             char *ip = getString();
             
             printf("Enter a message : ");
-            //say("Введите сообщение");
             char *sendline = getString();
             
             Message *msg = (Message *)malloc(sizeof(Message));
@@ -129,14 +127,13 @@ int main(int argc, char **argv)
                 sendMessage(msg, neighbours[i]);
             
             releaseMessage(msg);
-            printf("Enter a command : ");
+            //printf("Enter a command : ");
             //say("Введите команду");
         }
         
         if (strcmp(buf, "b") == 0)
         {
             printf("Enter a message : ");
-            say("Введите сообщение");
             
             Message *msg = (Message *)malloc(sizeof(Message));
             msg->text = getString();
@@ -148,8 +145,7 @@ int main(int argc, char **argv)
             outcomeStorage = saveMessage_msg(msg, outcomeStorage);
             
             releaseMessage(msg);
-            printf("Enter a command : ");
-            say("Введите команду");
+            //printf("Enter a command : ");
         }
         
         if (strcmp(buf, "log") == 0)
